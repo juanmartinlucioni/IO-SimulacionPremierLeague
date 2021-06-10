@@ -47,21 +47,22 @@ print(TopTeams)
 
 # %%
 # TODO -Rank Teams by Skill
-df_teams = pd.DataFrame(team_stats_general, columns=['Squad', 'xG', '90s'])
+df_teams = pd.DataFrame(team_stats_general, columns=['Squad', 'xG','xGA','Save%','SoTA','Tkl','Blocks','Cmp%','Kp'])
 Skill = []
+bestXG = df_teams.at[]
 for i in range(20):
     #atacking stats
     xGp = ((df_teams.at[i,'xG']/ bestXG)*100)*25
-    Sotp = ((df_teams.at[i, 'Sot'] / bestXG)*100)*25
-    KPp = ((df_teams.at[i, 'Kp'] / bestXG)*100)*25
-    CPp = ((df_teams.at[i, '%Cp'] / bestXG)*100)*25
+    Sotp = ((df_teams.at[i, 'SoTA'] / bestSot)*100)*25
+    KPp = ((df_teams.at[i, 'Kp'] / bestKP)*100)*25
+    CPp = ((df_teams.at[i, 'Cmp%'] / bestCP)*100)*25
     #defensive stats
-    xGAp = ((df_teams.at[i, 'xGA'] / bestXG)*100)*25
-    Tp = ((df_teams.at[i, 'Tkl'] / bestXG)*100)*25
-    Bp = ((df_teams.at[i, 'Blocks'] / bestXG)*100)*25
-    SPp = ((df_teams.at[i, 'Save%'] / bestXG)*100)*25
+    xGAp = ((df_teams.at[i, 'xGA'] / bestXGA)*100)*25
+    Tp = ((df_teams.at[i, 'Tkl'] / bestT)*100)*25
+    Bp = ((df_teams.at[i, 'Blocks'] / bestB)*100)*25
+    SPp = ((df_teams.at[i, 'Save%'] / bestSP)*100)*25
     #Overall Stats
-    atk = xGp + Sotp + KPp + CPp
+    atk = xGp + Sotp + KPp + CPp,
     dfc = xGAp + Tp + Bp + SPp
     teambyskill = [df_teams.at[i,'rank'], atk, dfc]
     Skill.append(teambykill)
