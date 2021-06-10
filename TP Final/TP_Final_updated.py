@@ -29,6 +29,7 @@ player_stats_complete = pd.read_csv('player-stats-complete.csv')
 player_stats_defense = pd.read_csv('player-stats-defense.csv')
 player_stats_msc = pd.read_csv('player-stats-msc.csv')
 player_stats_gk = pd.read_csv('player-stats-gk.csv') 
+team_stats_skills = pd.read_csv('league-stats-skill.csv') 
 
 #Filter, Sort & Save Stats
 #Filtramos columnas de interes
@@ -47,25 +48,33 @@ print(TopTeams)
 
 # %%
 # TODO -Rank Teams by Skill
-df_teams = pd.DataFrame(team_stats_general, columns=['Squad', 'xG','xGA','Save%','SoTA','Tkl','Blocks','Cmp%','Kp'])
+df_teams = pd.DataFrame(team_stats_skills, columns=['Rk', 'Squad', 'xG','xGA','Save%','SoT','Tkl','Blocks','Cmp%','KP'])
 Skill = []
-bestXG = df_teams.at[]
+bestXG = df_teams['xG'].max()
+bestXGA = df_teams['xGA'].min()
+bestSP = df_teams['Save%'].max()
+bestSoT = df_teams['SoT'].max()
+bestT = df_teams['Tkl'].max()
+bestB = df_teams['Blocks'].max()
+bestCP = df_teams['Cmp%'].max()
+bestKP = df_teams['KP'].max()
+
 for i in range(20):
     #atacking stats
-    xGp = ((df_teams.at[i,'xG']/ bestXG)*100)*25
-    Sotp = ((df_teams.at[i, 'SoTA'] / bestSot)*100)*25
-    KPp = ((df_teams.at[i, 'Kp'] / bestKP)*100)*25
-    CPp = ((df_teams.at[i, 'Cmp%'] / bestCP)*100)*25
+    xGp = ((df_teams.at[i,'xG']/ bestXG)*25)
+    Sotp = ((df_teams.at[i, 'SoT'] / bestSoT)*25)
+    KPp = ((df_teams.at[i, 'KP'] / bestKP)*25)
+    CPp = ((df_teams.at[i, 'Cmp%'] / bestCP)*25)
     #defensive stats
-    xGAp = ((df_teams.at[i, 'xGA'] / bestXGA)*100)*25
-    Tp = ((df_teams.at[i, 'Tkl'] / bestT)*100)*25
-    Bp = ((df_teams.at[i, 'Blocks'] / bestB)*100)*25
-    SPp = ((df_teams.at[i, 'Save%'] / bestSP)*100)*25
+    xGAp = ((bestXGA / df_teams.at[i, 'xGA'])*25)
+    Tp = ((df_teams.at[i, 'Tkl'] / bestT)*25)
+    Bp = ((df_teams.at[i, 'Blocks'] / bestB)*25)
+    SPp = ((df_teams.at[i, 'Save%'] / bestSP)*25)
     #Overall Stats
-    atk = xGp + Sotp + KPp + CPp,
+    atk = xGp + Sotp + KPp + CPp
     dfc = xGAp + Tp + Bp + SPp
-    teambyskill = [df_teams.at[i,'rank'], atk, dfc]
-    Skill.append(teambykill)
+    teambyskill = [df_teams.at[i,'Squad'],df_teams.at[i,'Rk'], atk.round(), dfc.round()]
+    Skill.append(teambyskill)
 print(Skill)
 
 # %%
