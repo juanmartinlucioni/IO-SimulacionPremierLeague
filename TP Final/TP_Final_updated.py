@@ -47,47 +47,66 @@ print(TopTeams)
 
 # %%
 # TODO -Rank Teams by Skill
-
+df_teams = pd.DataFrame(team_stats_general, columns=['Squad', 'xG', '90s'])
+Skill = []
+for i in range(20):
+    #atacking stats
+    xGp = ((df_teams.at[i,'xG']/ bestXG)*100)*25
+    Sotp = ((df_teams.at[i, 'Sot'] / bestXG)*100)*25
+    KPp = ((df_teams.at[i, 'Kp'] / bestXG)*100)*25
+    CPp = ((df_teams.at[i, '%Cp'] / bestXG)*100)*25
+    #defensive stats
+    xGAp = ((df_teams.at[i, 'xGA'] / bestXG)*100)*25
+    Tp = ((df_teams.at[i, 'Tkl'] / bestXG)*100)*25
+    Bp = ((df_teams.at[i, 'Blocks'] / bestXG)*100)*25
+    SPp = ((df_teams.at[i, 'Save%'] / bestXG)*100)*25
+    #Overall Stats
+    atk = xGp + Sotp + KPp + CPp
+    dfc = xGAp + Tp + Bp + SPp
+    teambyskill = [df_teams.at[i,'rank'], atk, dfc]
+    Skill.append(teambykill)
+print(Skill)
 
 # %%
 #Filtro jugadores por posicion
-# TODO - Falta lograr meter mas de un filtro en el mismo
 #Short List Delanteros(xG+xA)
-#Agregar que filtre por POS ('FW')
-df_players_attack = pd.DataFrame(player_stats_complete, columns=['Player', 'Pos', 'Squad', 'xG','xA'])
+df_players_attack = pd.DataFrame(player_stats_complete, columns=['Player', 'Pos', 'Squad', 'xG','xA', '90s'])
 sortedByXG = df_players_attack.sort_values(by='xG', axis=0, ascending=False, ignore_index=True)
 TopAttkPlayers = []
-for i in range(531):
+for i in range(532):
+    Gsi = sortedByTI.at[i, '90s']
     xGi = sortedByXG.at[i, 'xG']
     xAi = sortedByXG.at[i, 'xA']
     Posi = sortedByXG.at[i, 'Pos']
-    if xGi > 10 and xAi > 5 and Posi == 'FW':
+    if Gsi > 20 and xGi > 10 and xAi > 5 and Posi == 'FW':
         TopAttkPlayers.append(sortedByXG.loc[i])
 print(TopAttkPlayers)
 
 #%%
 #Short List MedioCampistas(xA) + (T+I)
-#Agregar que filtre por POS ('MF')
 # Expected Assist
-df_players_mid = pd.DataFrame(player_stats_complete, columns=['Player', 'Pos', 'Squad','xA', 'Tkl+Int'])
+df_players_mid = pd.DataFrame(player_stats_complete, columns=['Player', 'Pos', 'Squad', 'xA', '90s'])
 sortedByXA = df_players_mid.sort_values(by='xA', axis=0, ascending=False, ignore_index=True)
-TopMidPlayers = []
-for i in range(531):
+TopMidPlayersByXA = []
+for i in range(532):
+    Gsi = sortedByTI.at[i, '90s']
     xAi = sortedByXA.at[i, 'xA']
-    xTIi = sortedByTI.at[i, 'Tkl+Int']
-    Posi = sortedByXG.at[i, 'Pos']
-    if xAi > 5 + and xTIi > 100 and Posi = 'MF':
-        TopMidPlayers.append(sortedByXA.loc[i])
-print(TopMidPlayers)
+    Posi = sortedByXA.at[i, 'Pos']
+    if Gsi > 20 and xAi > 5 and Posi == 'MF':
+        TopMidPlayersByXA.append(sortedByXA.loc[i])
+print(TopMidPlayersByXA)
+
 # Tackles & Interceptions
-# df_player_defense = pd.DataFrame(player_stats_defense, columns=['Player', 'Pos', 'Squad', , 'Blocks'])
-# sortedByTI = df_player_defense.sort_values(by='Tkl+Int', axis=0, ascending=False, ignore_index=True)
-# TopMidPlayersByTI = []
-# for i in range(532):
-#     xGi = sortedByTI.at[i, 'Tkl+Int']
-#     if xGi > 100:
-#         TopMidPlayersByTI.append(sortedByTI.loc[i])
-# print(TopMidPlayersByTI)
+df_player_defense = pd.DataFrame(player_stats_defense, columns=['Player', 'Pos', 'Squad', 'Tkl+Int', 'Blocks', '90s'])
+sortedByTI = df_player_defense.sort_values(by='Tkl+Int', axis=0, ascending=False, ignore_index=True)
+TopMidPlayersByTI = []
+for i in range(532):
+    Gsi = sortedByTI.at[i, '90s']
+    xTIi = sortedByTI.at[i, 'Tkl+Int']
+    Posi = sortedByTI.at[i, 'Pos']
+    if Gsi > 20 and xTIi > 100 and Posi == 'MF':
+        TopMidPlayersByTI.append(sortedByTI.loc[i])
+print(TopMidPlayersByTI)
 
 #%%
 #Short List Defensores (T) + (B) + (%AD)
@@ -104,7 +123,6 @@ for i in range(532):
         TopDefPlayers.append(sortedByTI.loc[i])
 print(TopDefPlayers)
 
-#%%
 # Aerial Success %
 df_player_msc = pd.DataFrame(player_stats_msc, columns=['Player', 'Pos', 'Squad', '90s', 'Won%'])
 sortedByAS = df_player_msc.sort_values(by='Won%', axis=0, ascending=False, ignore_index=True)
@@ -127,8 +145,6 @@ for i in range(42):
     if Gsi > 30 and Si>73:
         TopGkPlayersBy90s.append(sortedBy90s.loc[i])
 print(TopGkPlayersBy90s)
-
-
 
 # TODO -Problema Optimizacion
 
