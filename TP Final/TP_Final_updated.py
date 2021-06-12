@@ -70,26 +70,26 @@ print(Skill)
 #%% Sim League with out changes
 
 # Teams
-ManchesterCity = [Skill[0], [0,0,0,0]]
-ManchesterUtd = [Skill[1], [0,0,0,0]]
-Liverpool = [Skill[2], [0,0,0,0]]
-Chelsea = [Skill[3], [0,0,0,0]]
-LeicesterCity = [Skill[4], [0,0,0,0]]
-WestHam = [Skill[5], [0,0,0,0]]
-Tottenham = [Skill[6], [0,0,0,0]]
-Arsenal = [Skill[7], [0,0,0,0]]
-LeedsUnited = [Skill[8], [0,0,0,0]]
-Everton = [Skill[9], [0,0,0,0]]
-AstonVilla = [Skill[10], [0,0,0,0]]
-NewcastleUtd = [Skill[11], [0,0,0,0]]
-Wolves = [Skill[12], [0,0,0,0]]
-CrystalPalace = [Skill[13], [0,0,0,0]]
-Southampton = [Skill[14], [0,0,0,0]]
-Brighton = [Skill[15], [0,0,0,0]]
-Burnley = [Skill[16], [0,0,0,0]]
-Fulham = [Skill[17], [0,0,0,0]]
-WestBrom = [Skill[18], [0,0,0,0]]
-SheffieldUtd = [Skill[19], [0,0,0,0]]
+ManchesterCity = [Skill[0], [0,0,0,0,0,0]]
+ManchesterUtd = [Skill[1], [0,0,0,0,0,0]]
+Liverpool = [Skill[2], [0,0,0,0,0,0]]
+Chelsea = [Skill[3], [0,0,0,0,0,0]]
+LeicesterCity = [Skill[4], [0,0,0,0,0,0]]
+WestHam = [Skill[5], [0,0,0,0,0,0]]
+Tottenham = [Skill[6], [0,0,0,0,0,0]]
+Arsenal = [Skill[7], [0,0,0,0,0,0]]
+LeedsUnited = [Skill[8], [0,0,0,0,0,0]]
+Everton = [Skill[9], [0,0,0,0,0,0]]
+AstonVilla = [Skill[10], [0,0,0,0,0,0]]
+NewcastleUtd = [Skill[11], [0,0,0,0,0,0]]
+Wolves = [Skill[12], [0,0,0,0,0,0]]
+CrystalPalace = [Skill[13], [0,0,0,0,0,0]]
+Southampton = [Skill[14], [0,0,0,0,0,0]]
+Brighton = [Skill[15], [0,0,0,0,0,0]]
+Burnley = [Skill[16], [0,0,0,0,0,0]]
+Fulham = [Skill[17], [0,0,0,0,0,0]]
+WestBrom = [Skill[18], [0,0,0,0,0,0]]
+SheffieldUtd = [Skill[19], [0,0,0,0,0,0]]
 
 Teams = [ManchesterCity, ManchesterUtd, Liverpool, Chelsea, LeicesterCity, WestHam, Tottenham, Arsenal, LeedsUnited, Everton, AstonVilla, NewcastleUtd, Wolves, CrystalPalace, Southampton, Brighton, Burnley, Fulham, WestBrom, SheffieldUtd]
 
@@ -169,6 +169,8 @@ Points =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 Wins = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 Loses = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 Draws = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+GF = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+GA = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 for x in range(20):
     print("========================================")
     print(Teams[x][0][0] + "'s Home Games: ")
@@ -181,34 +183,51 @@ for x in range(20):
             awayScore = awayGoals(Teams[x][0], Teams[y][0])
             print(Teams[x][0][0], homeScore, ":", awayScore, Teams[y][0][0])
             if homeScore > awayScore:
-              Wins[x]+=1
-              Loses[y]+=1
-              Points[x]+=3 
+              Wins[x] += 1
+              Loses[y] += 1
+              Points[x] += 3
+              GF[x] += homeScore
+              GA[x] += awayScore
+              GF[y] += awayScore
+              GA[y] += homeScore
             elif homeScore < awayScore:
-              Wins[y]+=1
-              Loses[x]+=1
-              Points[y]+=3 
+              Wins[y] += 1
+              Loses[x] += 1
+              Points[y] += 3
+              GF[x] += homeScore
+              GA[x] += awayScore
+              GF[y] += awayScore
+              GA[y] += homeScore
             elif homeScore == awayScore:
-              Draws[x]+=1
-              Draws[y]+=1
-              Points[x]+=1
-              Points[y]+=1
+              Draws[x] += 1
+              Draws[y] += 1
+              Points[x] += 1
+              Points[y] += 1
+              GF[x] += homeScore
+              GA[x] += awayScore
+              GF[y] += awayScore
+              GA[y] += homeScore
+            
             Teams[x][1][0]= Points[x]
             Teams[x][1][1]= Wins[x]
             Teams[x][1][2]= Draws[x]
             Teams[x][1][3]= Loses[x]
+            Teams[x][1][4]= GF[x]
+            Teams[x][1][5]= GA[x]
 
             Teams[y][1][0]= Points[y]
             Teams[y][1][1]= Wins[y]
             Teams[y][1][2]= Draws[y]
             Teams[y][1][3]= Loses[y]
+            Teams[y][1][4]= GF[y]
+            Teams[y][1][5]= GA[y]
 
-            print(Teams[x][1])
 
 #League Table
-# TODO - Sort table by points
+sortedTeams = sorted(Teams, key=lambda x: x[1][0], reverse=True)
+print("| TEAM                      | POINTS | WINS | DRAWS | LOSSES | GOALS FOR | GOALS AGAINST |")
 for x in range(20):
-    print(Teams[x][0][0],': ', Teams[x][1][0])
+    print('|', sortedTeams[x][0][0]," "*(24 - len(sortedTeams[x][0][0])),'|  ', sortedTeams[x][1][0]," "*(3 - len(str(sortedTeams[x][1][0]))),'| ', sortedTeams[x][1][1]," "*(2 - len(str(sortedTeams[x][1][1]))),'|  ', sortedTeams[x][1][2]," "*(2 - len(str(sortedTeams[x][1][2]))),'|  ', sortedTeams[x][1][3]," "*(3 - len(str(sortedTeams[x][1][3]))),'|    ', sortedTeams[x][1][4]," "*(4 - len(str(sortedTeams[x][1][4]))),"|     ", sortedTeams[x][1][5]," "*(7 - len(str(sortedTeams[x][1][5]))),"|")
    
 
 
@@ -221,7 +240,7 @@ df_players_attack = pd.DataFrame(player_stats_complete, columns=['Player', 'Pos'
 sortedByXG = df_players_attack.sort_values(by='xG', axis=0, ascending=False, ignore_index=True)
 TopAttkPlayers = []
 for i in range(532):
-    Gsi = sortedByTI.at[i, '90s']
+    Gsi = sortedByXG.at[i, '90s']
     xGi = sortedByXG.at[i, 'xG']
     xAi = sortedByXG.at[i, 'xA']
     Posi = sortedByXG.at[i, 'Pos']
@@ -236,7 +255,7 @@ df_players_mid = pd.DataFrame(player_stats_complete, columns=['Player', 'Pos', '
 sortedByXA = df_players_mid.sort_values(by='xA', axis=0, ascending=False, ignore_index=True)
 TopMidPlayersByXA = []
 for i in range(532):
-    Gsi = sortedByTI.at[i, '90s']
+    Gsi = sortedByXA.at[i, '90s']
     xAi = sortedByXA.at[i, 'xA']
     Posi = sortedByXA.at[i, 'Pos']
     if Gsi > 20 and xAi > 5 and Posi == 'MF':
