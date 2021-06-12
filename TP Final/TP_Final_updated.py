@@ -20,6 +20,7 @@
 #https://fbref.com/en/comps/9/Premier-League-Stats
 import pandas as pd
 import numpy as np
+import math
 #Import Data
 league_stats = pd.read_csv('league-stats.csv')
 team_stats_general = pd.read_csv('team-stats-general.csv')
@@ -31,21 +32,6 @@ player_stats_msc = pd.read_csv('player-stats-msc.csv')
 player_stats_gk = pd.read_csv('player-stats-gk.csv') 
 team_stats_skills = pd.read_csv('league-stats-skill.csv') 
 
-#Filter, Sort & Save Stats
-#Filtramos columnas de interes
-df = pd.DataFrame(league_stats, columns=['Squad', 'xG','xGA','xGD'])
-#Sorteamos por una columna en especifico
-sorted = df.sort_values(by='xG',axis=0,ascending=False,ignore_index=True)
-print(sorted)
-#Iteramos y guardamos la data relevante en un Array
-TopTeams = []
-for i in range(20):
-    xGi = sorted.at[i,'xG']
-    if  xGi > 55:
-        TopTeams.append(sorted.loc[i])
-print(TopTeams)
-
-
 # %%
 # TODO -Rank Teams by Skill
 df_teams = pd.DataFrame(team_stats_skills, columns=['Rk', 'Squad', 'xG','xGA','Save%','SoT','Tkl','Blocks','Cmp%','KP'])
@@ -55,7 +41,7 @@ bestXGA = df_teams['xGA'].min()
 bestSP = df_teams['Save%'].max()
 bestSoT = df_teams['SoT'].max()
 bestT = df_teams['Tkl'].max()
-bestB = df_teams['Blocks'].max()
+bestB = df_teams['Blocks'].max() 
 bestCP = df_teams['Cmp%'].max()
 bestKP = df_teams['KP'].max()
 
@@ -73,9 +59,160 @@ for i in range(20):
     #Overall Stats
     atk = xGp + Sotp + KPp + CPp
     dfc = xGAp + Tp + Bp + SPp
-    teambyskill = [df_teams.at[i,'Squad'],df_teams.at[i,'Rk'], atk.round(), dfc.round()]
+    pos = 1
+    xG = df_teams.at[i, 'xG']
+    Sp = df_teams.at[i, 'Save%']/2
+    teambyskill = [df_teams.at[i,'Squad'],df_teams.at[i,'Rk'], atk.round(), dfc.round(), pos, xG/38,Sp]
     Skill.append(teambyskill)
+#TODO NOTAS
+    # xG y S% mandarlo a un array que sea teamstats asi no se mezcla con skill
 print(Skill)
+#%% Sim League with out changes
+
+# Teams
+ManchesterCity = [Skill[0], [0,0,0,0]]
+ManchesterUtd = [Skill[1], [0,0,0,0]]
+Liverpool = [Skill[2], [0,0,0,0]]
+Chelsea = [Skill[3], [0,0,0,0]]
+LeicesterCity = [Skill[4], [0,0,0,0]]
+WestHam = [Skill[5], [0,0,0,0]]
+Tottenham = [Skill[6], [0,0,0,0]]
+Arsenal = [Skill[7], [0,0,0,0]]
+LeedsUnited = [Skill[8], [0,0,0,0]]
+Everton = [Skill[9], [0,0,0,0]]
+AstonVilla = [Skill[10], [0,0,0,0]]
+NewcastleUtd = [Skill[11], [0,0,0,0]]
+Wolves = [Skill[12], [0,0,0,0]]
+CrystalPalace = [Skill[13], [0,0,0,0]]
+Southampton = [Skill[14], [0,0,0,0]]
+Brighton = [Skill[15], [0,0,0,0]]
+Burnley = [Skill[16], [0,0,0,0]]
+Fulham = [Skill[17], [0,0,0,0]]
+WestBrom = [Skill[18], [0,0,0,0]]
+SheffieldUtd = [Skill[19], [0,0,0,0]]
+
+Teams = [ManchesterCity, ManchesterUtd, Liverpool, Chelsea, LeicesterCity, WestHam, Tottenham, Arsenal, LeedsUnited, Everton, AstonVilla, NewcastleUtd, Wolves, CrystalPalace, Southampton, Brighton, Burnley, Fulham, WestBrom, SheffieldUtd]
+
+def homeGoals(ht, at):
+    if ht[0] != at[0]:
+        bonusRank = (-1 * (ht[1]-at[1]))/100
+        bonusAtk = (-1 * (ht[2] - at[3]))/100
+        goals = 0
+
+        # Better ATK
+        if ht[2] > at[2]:
+            xGToTest = ht[5] * (1+bonusRank+bonusAtk)
+            xGTestRound = round(xGToTest)
+            for i in range(xGTestRound):
+                chanceOfGoal = np.random.random()
+                if chanceOfGoal > at[6]/100:
+                    goals += 1
+
+        # Equal ATK
+        if ht[2] == at[2]:
+            xGToTest = ht[5]
+            xGTestRound = round(xGToTest)
+            for i in range(xGTestRound):
+                chanceOfGoal = np.random.random()
+                if chanceOfGoal > at[6]/100:
+                    goals += 1
+
+        # Worse ATK
+        if ht[2] < at[2]:
+            xGToTest = ht[5] * (1+bonusRank-bonusAtk)
+            xGTestRound = round(xGToTest)
+            for i in range(xGTestRound):
+                chanceOfGoal = np.random.random()
+                if chanceOfGoal > at[6]/100:
+                    goals += 1
+        return goals
+    else:
+        return 'Same Team'
+        
+def awayGoals(ht, at):
+    if ht[0] != at[0]:
+        bonusRank = (-1 * (at[1]-ht[1]))/100 #TODO chequear
+        bonusAtk = (-1 * (at[2] - ht[3]))/100
+        goals = 0
+
+        # Better ATK
+        if at[2] > ht[2]:
+            xGToTest = at[5] * (1+bonusRank+bonusAtk)
+            xGTestRound = round(xGToTest)
+            for i in range(xGTestRound):
+                chanceOfGoal = np.random.random()
+                if chanceOfGoal > ht[6]/100:
+                    goals += 1
+
+        # Equal ATK
+        if at[2] == ht[2]:
+            xGToTest = at[5]
+            xGTestRound = round(xGToTest)
+            for i in range(xGTestRound):
+                chanceOfGoal = np.random.random()
+                if chanceOfGoal > ht[6]/100:
+                    goals += 1
+
+        # Worse ATK
+        if at[2] < ht[2]:
+            xGToTest = at[5] * (1+bonusRank+bonusAtk)
+            xGTestRound = round(xGToTest)
+            for i in range(xGTestRound):
+                chanceOfGoal = np.random.random()
+                if chanceOfGoal > ht[6]/100:
+                    goals += 1
+        return goals
+    else:
+        return 'Same Team'
+#League Stats
+Points =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+Wins = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+Loses = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+Draws = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+for x in range(20):
+    print("========================================")
+    print(Teams[x][0][0] + "'s Home Games: ")
+    print("========================================")
+    for y in range(20):
+        if Teams[x][0] == Teams[y][0]:
+            pass
+        else:
+            homeScore = homeGoals(Teams[x][0], Teams[y][0])
+            awayScore = awayGoals(Teams[x][0], Teams[y][0])
+            print(Teams[x][0][0], homeScore, ":", awayScore, Teams[y][0][0])
+            if homeScore > awayScore:
+              Wins[x]+=1
+              Loses[y]+=1
+              Points[x]+=3 
+            elif homeScore < awayScore:
+              Wins[y]+=1
+              Loses[x]+=1
+              Points[y]+=3 
+            elif homeScore == awayScore:
+              Draws[x]+=1
+              Draws[y]+=1
+              Points[x]+=1
+              Points[y]+=1
+            Teams[x][1][0]= Points[x]
+            Teams[x][1][1]= Wins[x]
+            Teams[x][1][2]= Draws[x]
+            Teams[x][1][3]= Loses[x]
+
+            Teams[y][1][0]= Points[y]
+            Teams[y][1][1]= Wins[y]
+            Teams[y][1][2]= Draws[y]
+            Teams[y][1][3]= Loses[y]
+
+            print(Teams[x][1])
+
+#League Table
+# TODO - Sort table by points
+for x in range(20):
+    print(Teams[x][0][0],': ', Teams[x][1][0])
+   
+
+
+
 
 # %%
 #Filtro jugadores por posicion
@@ -161,9 +298,6 @@ print(TopGkPlayersBy90s)
 
 # %%
 # TODO - Rank Teams by Skill (incluyendo los nuevos cambios)
-
-# %%
-# TODO - Simulacion Teams sin cambios
 
 # %%
 # TODO - Simulacion Teams con los cambios
