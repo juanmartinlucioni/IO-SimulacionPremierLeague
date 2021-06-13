@@ -22,15 +22,11 @@ import pandas as pd
 import numpy as np
 import math
 #Import Data
-league_stats = pd.read_csv('league-stats.csv')
-team_stats_general = pd.read_csv('team-stats-general.csv')
-team_stats_defense = pd.read_csv('team-stats-defense.csv')
-team_stats_goalkeeping = pd.read_csv('team-stats-goalkeeping.csv')
-player_stats_complete = pd.read_csv('player-stats-complete.csv')
-player_stats_defense = pd.read_csv('player-stats-defense.csv')
-player_stats_msc = pd.read_csv('player-stats-msc.csv')
-player_stats_gk = pd.read_csv('player-stats-gk.csv') 
-team_stats_skills = pd.read_csv('league-stats-skill.csv') 
+team_stats_skills = pd.read_csv('league-stats-skill.csv')
+lc_stats_skills = pd.read_csv('LC_player_stats.csv')
+bundes_player_stats = pd.read_csv('bundesliga-players-stats.csv')
+# laliga_player_stats = pd.read_csv ()
+
 
 # %%
 # TODO -Rank Teams by Skill
@@ -257,88 +253,187 @@ for i in range(nSim):
 print('Probabilidad de que Leicester City termine en el Top 4: ',np.sum(LCPos < 5)/nSim)
 #Con 10.000 runs nos dio una Prob de 0.2584
 
+#%%
+#Datos del Leicester City 20-21
+LC_name = df_teams.at[4, 'Squad']
+LC_xG= df_teams.at[4, 'xG'] 
+LC_Sot = df_teams.at[4, 'SoT'] 
+LC_KP = df_teams.at[4, 'KP'] 
+LC_CP = df_teams.at[4, 'Cmp%']
+#defensive stats
+LC_xGA = df_teams.at[4, 'xGA']
+LC_T = df_teams.at[4, 'Tkl']
+LC_B = df_teams.at[4, 'Blocks']
+LC_SP = df_teams.at[4, 'Save%']
+LC_Stats = [LC_name, LC_xG, LC_Sot, LC_KP, LC_CP, LC_xGA, LC_T, LC_B, LC_SP]
+print(LC_Stats)
 
+# TODO - Afectar los datos y ver como modifica el correr la liga y las chances del leicester 
+# xGA cambia segun como cambian los otros datos de def (mejoran 10%, xGA tiene que caer 10%)
+# EJEMPLO - New Data
+# Current DEF
+LC_Def_xGA = ((bestXGA / LC_xGA)*25)
+LC_Def_T = ((LC_T / bestT)*25)
+LC_Def_B = ((LC_B / bestB)*25)
+LC_Def_SP = ((LC_SP / bestSP)*25)
+
+LC_Def = LC_Def_xGA + LC_Def_T + LC_Def_B + LC_Def_SP
+print('Current Defense Stat =', LC_Def,
+'Skill calculada arriba =', Teams[4][0][3])
+
+#New DEF Stats
+Comparison_Def_Base = LC_Def_T + LC_Def_B + LC_Def_SP
+
+#Esto en realidad se determinaria comparando LC_T vs LC_T_New ((LC_T_New/LC_T)-1)
+LC_Def_T2 = LC_Def_T*1.05
+LC_Def_B2 = LC_Def_B*1.07
+LC_Def_SP2 = LC_Def_SP*1.1
+
+New_Def_Base = LC_Def_T2 + LC_Def_B2 + LC_Def_SP2
+
+Def_Mejora = (New_Def_Base/Comparison_Def_Base)-1
+
+LC_xGA2 = LC_xGA*(1-Def_Mejora)
+LC_Def_xGA2 = ((bestXGA / LC_xGA2)*25)
+
+New_LC_Def = LC_Def_xGA2 + LC_Def_T2 + LC_Def_B2 + LC_Def_SP2
+print('Current Defense Stat =', LC_Def,
+    'New Defense Stat =', New_LC_Def)
+Teams[4][0][3] = New_LC_Def
+
+#Corremos un test run de la liga con nuevos datos
+for i in range(nSim):
+    runLeague(Teams)
+print('Probabilidad de que Leicester City termine en el Top 4: ',np.sum(LCPos < 5)/nSim)
+
+# Volver Def al valor original
+Teams[4][0][3] = LC_Def
+#%% 
+# TODO - Players y comformacion del equipo
+# Necesito a xG quienes lo componen
+# xG Compuesto por MFA + FW es 42.2 de 56.0 
+# Tenes que parar 3 ( Vardy [19.7] + Barnes [6.2] + Ihenacho [7.8] ) xG=[33.4] de 42.2
+# Tenemos un problemas Barnes hace 6.2 xG mientras que Madison hace 4.4, pero en xG+xA Madison hace 9.7 mientras que barnes se queda en 7.3
+# LC_player_stats.csv
+
+# FW = xG + SOT  // x
+# MFFW = xG + SOT + KP + CMP% // y
+# MF = TK + KP + CMP% // z
+# DF = TK + BLK + CMP% // w
+# GK = %S  // u
+
+# df_LC_players = pd.DataFrame(lc_stats_skills, columns=['Player', 'Pos', 'xG', 'SoT', 'KP', 'Cmp%', 'Tkl', 'Blocks', 'Save%', 'Price'])
+
+# FW Players
+df_LC_FW_players = pd.DataFrame(lc_stats_skills, columns=['Player', 'Pos', 'xG', 'SoT', 'Price'])
+LCFWPlayers = []
+for i in range(27):
+    Posi = df_LC_FW_players.at[i, 'Pos']
+    if Posi == 'FW':
+        LCFWPlayers.append(df_LC_FW_players.loc[i])
+print(LCFWPlayers)
+
+# MFFW 
+df_LC_MFFW_players = pd.DataFrame(lc_stats_skills, columns=['Player', 'Pos', 'xG', 'SoT', 'KP', 'Cmp%' 'Price'])
+LCMFFWPlayers = []
+for i in range(27):
+    Posi = df_LC_MFFW_players.at[i, 'Pos']
+    if Posi == 'MFFW':
+        LCMFFWPlayers.append(df_LC_MFFW_players.loc[i])
+print(LCMFFWPlayers)
+
+# MF
+df_LC_MF_players = pd.DataFrame(lc_stats_skills, columns=['Player', 'Pos', 'Tkl', 'KP', 'Cmp%', 'Price'])
+LCMFPlayers = []
+for i in range(27):
+    Posi = df_LC_MF_players.at[i, 'Pos']
+    if Posi == 'MF':
+        LCMFPlayers.append(df_LC_MF_players.loc[i])
+print(LCMFPlayers)
+
+# DF
+df_LC_DF_players = pd.DataFrame(lc_stats_skills, columns=['Player', 'Pos', 'Tkl', 'Blocks', 'Cmp%', 'Price'])
+LCDFPlayers = []
+for i in range(27):
+    Posi = df_LC_DF_players.at[i, 'Pos']
+    if Posi == 'DF':
+        LCDFPlayers.append(df_LC_DF_players.loc[i])
+print(LCDFPlayers)
+
+# GK
+df_LC_GK_players = pd.DataFrame(lc_stats_skills, columns=['Player', 'Pos', 'Save%', 'Price'])
+LCGKPlayers = []
+for i in range(27):
+    Posi = df_LC_GK_players.at[i, 'Pos']
+    if Posi == 'GK':
+        LCGKPlayers.append(df_LC_GK_players.loc[i])
+print(LCGKPlayers)
+    
 # %%
-#Filtro jugadores por posicion
-#Short List Delanteros(xG+xA)
-df_players_attack = pd.DataFrame(player_stats_complete, columns=['Player', 'Pos', 'Squad', 'xG','xA', '90s'])
-sortedByXG = df_players_attack.sort_values(by='xG', axis=0, ascending=False, ignore_index=True)
-TopAttkPlayers = []
-for i in range(532):
-    Gsi = sortedByXG.at[i, '90s']
-    xGi = sortedByXG.at[i, 'xG']
-    xAi = sortedByXG.at[i, 'xA']
-    Posi = sortedByXG.at[i, 'Pos']
-    if Gsi > 20 and xGi > 10 and xAi > 5 and Posi == 'FW':
-        TopAttkPlayers.append(sortedByXG.loc[i])
-print(TopAttkPlayers)
+# Top Players Bundesliga
+FWPlayers = []
+MFFWPlayers = []
+MFPlayers = []
+DFPlayers = []
+GKPlayers = []
 
 #%%
-#Short List MedioCampistas(xA) + (T+I)
-# Expected Assist
-df_players_mid = pd.DataFrame(player_stats_complete, columns=['Player', 'Pos', 'Squad', 'xA', '90s'])
-sortedByXA = df_players_mid.sort_values(by='xA', axis=0, ascending=False, ignore_index=True)
-TopMidPlayersByXA = []
-for i in range(532):
-    Gsi = sortedByXA.at[i, '90s']
-    xAi = sortedByXA.at[i, 'xA']
-    Posi = sortedByXA.at[i, 'Pos']
-    if Gsi > 20 and xAi > 5 and Posi == 'MF':
-        TopMidPlayersByXA.append(sortedByXA.loc[i])
-print(TopMidPlayersByXA)
+# FW
+league_players_stats = bundes_player_stats
+df_FW_players = pd.DataFrame(league_players_stats, columns=['Player','90s', 'Pos', 'xG', 'SoT', 'Price'])
+for i in range(505):
+    Posi = df_FW_players.at[i, 'Pos']
+    GamesPlayedi = df_FW_players.at[i, '90s']
+    xGi = df_FW_players.at[i, 'xG']
+    if Posi == 'FW' and GamesPlayedi > 20 and xGi > 8:
+        FWPlayers.append(df_FW_players.loc[i])
+print(FWPlayers)
 
-# Tackles & Interceptions
-df_player_defense = pd.DataFrame(player_stats_defense, columns=['Player', 'Pos', 'Squad', 'Tkl+Int', 'Blocks', '90s'])
-sortedByTI = df_player_defense.sort_values(by='Tkl+Int', axis=0, ascending=False, ignore_index=True)
-TopMidPlayersByTI = []
-for i in range(532):
-    Gsi = sortedByTI.at[i, '90s']
-    xTIi = sortedByTI.at[i, 'Tkl+Int']
-    Posi = sortedByTI.at[i, 'Pos']
-    if Gsi > 20 and xTIi > 100 and Posi == 'MF':
-        TopMidPlayersByTI.append(sortedByTI.loc[i])
-print(TopMidPlayersByTI)
+# MFFW
+df_MFFW_players = pd.DataFrame(league_players_stats, columns=['Player', '90s', 'Pos', 'xG', 'SoT', 'KP', 'Cmp%', 'Price'])
+for i in range(505):
+    Posi = df_MFFW_players.at[i, 'Pos']
+    GamesPlayedi = df_MFFW_players.at[i, '90s']
+    KPi = df_MFFW_players.at[i, 'KP']
+    if Posi == 'MFFW' and GamesPlayedi > 20 and KPi > 22:
+        MFFWPlayers.append(df_MFFW_players.loc[i])
+print(MFFWPlayers)
+
+# MF
+df_MF_players = pd.DataFrame(league_players_stats, columns=['Player', '90s', 'Pos', 'Tkl', 'Cmp%', 'KP', 'Price'])
+for i in range(505):
+    Posi = df_MF_players.at[i, 'Pos']
+    GamesPlayedi = df_MF_players.at[i, '90s']
+    CMPi = df_MF_players.at[i, 'Cmp%']
+    if Posi == 'MF' and GamesPlayedi > 20 and CMPi > 75:
+        MFPlayers.append(df_MF_players.loc[i])
+print(MFPlayers)
+
+# DF
+df_DF_players = pd.DataFrame(league_players_stats, columns=['Player', '90s', 'Pos', 'Tkl', 'Blocks', 'Cmp%', 'Price'])
+for i in range(505):
+    Posi = df_DF_players.at[i, 'Pos']
+    GamesPlayedi = df_DF_players.at[i, '90s']
+    Blocksi = df_DF_players.at[i, 'Blocks']
+    if Posi == 'DF' and GamesPlayedi > 20 and Blocksi > 32:
+        DFPlayers.append(df_DF_players.loc[i])
+print(DFPlayers)
+
+# GK
+df_GK_players = pd.DataFrame(league_players_stats, columns=['Player', '90s', 'Pos', 'Save%', 'Price'])
+for i in range(505):
+    Posi = df_GK_players.at[i, 'Pos']
+    GamesPlayedi = df_GK_players.at[i, '90s']
+    Savei = df_GK_players.at[i, 'Save%']
+    if Posi == 'GK' and GamesPlayedi > 20 and Savei > 70:
+        GKPlayers.append(df_GK_players.loc[i])
+print(GKPlayers)
 
 #%%
-#Short List Defensores (T) + (B) + (%AD)
-#Agregar que filtre por POS ('DF')
-# Tackles & Interceptions
-df_player_defense = pd.DataFrame(player_stats_defense, columns=['Player', 'Pos', 'Squad', '90s', 'Tkl+Int', 'Blocks'])
-sortedByTI = df_player_defense.sort_values(by='Tkl+Int', axis=0, ascending=False, ignore_index=True)
-TopDefPlayers = []
-for i in range(532):
-    Gsi = sortedByTI.at[i, '90s']
-    xGi = sortedByTI.at[i, 'Tkl+Int']
-    Bi = sortedByTI.at[i, 'Blocks']
-    if Gsi > 20 and xGi > 100 and Bi > 70:
-        TopDefPlayers.append(sortedByTI.loc[i])
-print(TopDefPlayers)
-
-# Aerial Success %
-df_player_msc = pd.DataFrame(player_stats_msc, columns=['Player', 'Pos', 'Squad', '90s', 'Won%'])
-sortedByAS = df_player_msc.sort_values(by='Won%', axis=0, ascending=False, ignore_index=True)
-TopDefPlayersByAS = []
-for i in range(532):
-    Gsi = sortedByAS.at[i, '90s']
-    ASi = sortedByAS.at[i, 'Won%']
-    if Gsi > 20 and ASi > 70:
-        TopDefPlayersByAS.append(sortedByAS.loc[i])
-print(TopDefPlayersByAS)
-
-#Short List GoalKeepers(%S)
-# TODO - Filtrar primero por minutos jugados mayor a 1000 que son mas de 10 partidos, sino las estadisticas procentuales fallan.
-df_player_gk = pd.DataFrame(player_stats_gk, columns=['Player', 'Pos', 'Squad','90s', 'Save%'])
-sortedBy90s = df_player_gk.sort_values(by='90s', axis=0, ascending=False, ignore_index=True)
-TopGkPlayersBy90s = []
-for i in range(42):
-    Gsi = sortedBy90s.at[i, '90s']
-    Si = sortedBy90s.at[i, 'Save%']
-    if Gsi > 30 and Si>73:
-        TopGkPlayersBy90s.append(sortedBy90s.loc[i])
-print(TopGkPlayersBy90s)
 
 # TODO -Problema Optimizacion
-
+# Funcionn objetivo es  maximizar ATK + DFC 
+# yi *(pricei  +  atki + defi) + zi(pricei + save%i)
 
 # %%
 # TODO - Rank Teams by Skill (incluyendo los nuevos cambios)

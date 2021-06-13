@@ -96,3 +96,72 @@ print(P.value)
 # %%
 # Complejizacion 4.0
 # Bulk buy o Elegir cantidad de cada uno 
+
+
+#%%
+#Filtro jugadores por posicion (OLD)
+#Short List Delanteros(xG+xA)
+df_players_attack = pd.DataFrame(player_stats_complete, columns=['Player', 'Pos', 'Squad', 'xG','xA', '90s'])
+sortedByXG = df_players_attack.sort_values(by='xG', axis=0, ascending=False, ignore_index=True)
+TopAttkPlayers = []
+for i in range(532):
+    Gsi = sortedByXG.at[i, '90s']
+    xGi = sortedByXG.at[i, 'xG']
+    xAi = sortedByXG.at[i, 'xA']
+    Posi = sortedByXG.at[i, 'Pos']
+    if Gsi > 20 and xGi > 10 and xAi > 5 and Posi == 'FW':
+        TopAttkPlayers.append(sortedByXG.loc[i])
+print(TopAttkPlayers)
+
+#%%
+#Short List MedioCampistas(xA) + (T+I)
+# Expected Assist
+df_players_mid = pd.DataFrame(player_stats_complete, columns=['Player', 'Pos', 'Squad', 'xA', '90s'])
+sortedByXA = df_players_mid.sort_values(by='xA', axis=0, ascending=False, ignore_index=True)
+TopMidPlayersByXA = []
+for i in range(532):
+    Gsi = sortedByXA.at[i, '90s']
+    xAi = sortedByXA.at[i, 'xA']
+    Posi = sortedByXA.at[i, 'Pos']
+    if Gsi > 20 and xAi > 5 and Posi == 'MF':
+        TopMidPlayersByXA.append(sortedByXA.loc[i])
+print(TopMidPlayersByXA)
+
+# Tackles & Interceptions
+df_player_defense = pd.DataFrame(player_stats_defense, columns=['Player', 'Pos', 'Squad', 'Tkl+Int', 'Blocks', '90s'])
+sortedByTI = df_player_defense.sort_values(by='Tkl+Int', axis=0, ascending=False, ignore_index=True)
+TopMidPlayersByTI = []
+for i in range(532):
+    Gsi = sortedByTI.at[i, '90s']
+    xTIi = sortedByTI.at[i, 'Tkl+Int']
+    Posi = sortedByTI.at[i, 'Pos']
+    if Gsi > 20 and xTIi > 100 and Posi == 'MF':
+        TopMidPlayersByTI.append(sortedByTI.loc[i])
+print(TopMidPlayersByTI)
+
+#%%
+#Short List Defensores (T) + (B)
+#Agregar que filtre por POS ('DF')
+# Tackles & Interceptions
+df_player_defense = pd.DataFrame(player_stats_defense, columns=['Player', 'Pos', 'Squad', '90s', 'Tkl+Int', 'Blocks'])
+sortedByTI = df_player_defense.sort_values(by='Tkl+Int', axis=0, ascending=False, ignore_index=True)
+TopDefPlayers = []
+for i in range(532):
+    Gsi = sortedByTI.at[i, '90s']
+    xGi = sortedByTI.at[i, 'Tkl+Int']
+    Bi = sortedByTI.at[i, 'Blocks']
+    if Gsi > 20 and xGi > 100 and Bi > 70:
+        TopDefPlayers.append(sortedByTI.loc[i])
+print(TopDefPlayers)
+
+#Short List GoalKeepers(%S)
+# TODO - Filtrar primero por minutos jugados mayor a 1000 que son mas de 10 partidos, sino las estadisticas procentuales fallan.
+df_player_gk = pd.DataFrame(player_stats_gk, columns=['Player', 'Pos', 'Squad','90s', 'Save%'])
+sortedBy90s = df_player_gk.sort_values(by='90s', axis=0, ascending=False, ignore_index=True)
+TopGkPlayersBy90s = []
+for i in range(42):
+    Gsi = sortedBy90s.at[i, '90s']
+    Si = sortedBy90s.at[i, 'Save%']
+    if Gsi > 30 and Si>73:
+        TopGkPlayersBy90s.append(sortedBy90s.loc[i])
+print(TopGkPlayersBy90s)
