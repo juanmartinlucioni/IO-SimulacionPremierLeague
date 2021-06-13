@@ -56,14 +56,12 @@ for i in range(20):
     atk = xGp + Sotp + KPp + CPp
     dfc = xGAp + Tp + Bp + SPp
     pos = df_teams.at[i, 'Poss']
-    print(pos)
     xG = df_teams.at[i, 'xG']
     Sp = df_teams.at[i, 'Save%']/3
     teambyskill = [df_teams.at[i,'Squad'],df_teams.at[i,'Rk'], atk.round(), dfc.round(), pos, xG/38,Sp]
     Skill.append(teambyskill)
 #TODO NOTAS
     # xG y S% mandarlo a un array que sea teamstats asi no se mezcla con skill
-print(Skill)
 #%% Sim League with out changes
 
 # Teams
@@ -302,9 +300,9 @@ print('Current Defense Stat =', LC_Def,
 Teams[4][0][3] = New_LC_Def
 
 #Corremos un test run de la liga con nuevos datos
-for i in range(nSim):
-    runLeague(Teams)
-print('Probabilidad de que Leicester City termine en el Top 4: ',np.sum(LCPos < 5)/nSim)
+# for i in range(nSim):
+#     runLeague(Teams)
+# print('Probabilidad de que Leicester City termine en el Top 4: ',np.sum(LCPos < 5)/nSim)
 
 # Volver Def al valor original
 Teams[4][0][3] = LC_Def
@@ -325,7 +323,7 @@ Teams[4][0][3] = LC_Def
 # df_LC_players = pd.DataFrame(lc_stats_skills, columns=['Player', 'Pos', 'xG', 'SoT', 'KP', 'Cmp%', 'Tkl', 'Blocks', 'Save%', 'Price'])
 
 # FW Players
-df_LC_FW_players = pd.DataFrame(lc_stats_skills, columns=['Player', 'Pos', 'xG', 'SoT', 'Price'])
+df_LC_FW_players = pd.DataFrame(lc_stats_skills, columns=['Player', '90s', 'Pos', 'xG', 'SoT', 'Price'])
 LCFWPlayers = []
 for i in range(27):
     Posi = df_LC_FW_players.at[i, 'Pos']
@@ -334,7 +332,7 @@ for i in range(27):
 print(LCFWPlayers)
 
 # MFFW 
-df_LC_MFFW_players = pd.DataFrame(lc_stats_skills, columns=['Player', 'Pos', 'xG', 'SoT', 'KP', 'Cmp%' 'Price'])
+df_LC_MFFW_players = pd.DataFrame(lc_stats_skills, columns=['Player', '90s', 'Pos', 'xG', 'SoT', 'KP', 'Cmp%', 'Price'])
 LCMFFWPlayers = []
 for i in range(27):
     Posi = df_LC_MFFW_players.at[i, 'Pos']
@@ -343,7 +341,7 @@ for i in range(27):
 print(LCMFFWPlayers)
 
 # MF
-df_LC_MF_players = pd.DataFrame(lc_stats_skills, columns=['Player', 'Pos', 'Tkl', 'KP', 'Cmp%', 'Price'])
+df_LC_MF_players = pd.DataFrame(lc_stats_skills, columns=['Player', '90s', 'Pos', 'Tkl', 'Cmp%', 'KP', 'Price'])
 LCMFPlayers = []
 for i in range(27):
     Posi = df_LC_MF_players.at[i, 'Pos']
@@ -352,7 +350,7 @@ for i in range(27):
 print(LCMFPlayers)
 
 # DF
-df_LC_DF_players = pd.DataFrame(lc_stats_skills, columns=['Player', 'Pos', 'Tkl', 'Blocks', 'Cmp%', 'Price'])
+df_LC_DF_players = pd.DataFrame(lc_stats_skills, columns=['Player', '90s', 'Pos', 'Tkl', 'Blocks', 'Cmp%', 'Price'])
 LCDFPlayers = []
 for i in range(27):
     Posi = df_LC_DF_players.at[i, 'Pos']
@@ -361,15 +359,15 @@ for i in range(27):
 print(LCDFPlayers)
 
 # GK
-df_LC_GK_players = pd.DataFrame(lc_stats_skills, columns=['Player', 'Pos', 'Save%', 'Price'])
+df_LC_GK_players = pd.DataFrame(lc_stats_skills, columns=['Player', '90s', 'Pos', 'Save%', 'Price'])
 LCGKPlayers = []
 for i in range(27):
     Posi = df_LC_GK_players.at[i, 'Pos']
     if Posi == 'GK':
         LCGKPlayers.append(df_LC_GK_players.loc[i])
 print(LCGKPlayers)
-    
-# %%
+
+#%%
 # Top Players Bundesliga
 FWPlayers = []
 MFFWPlayers = []
@@ -377,7 +375,6 @@ MFPlayers = []
 DFPlayers = []
 GKPlayers = []
 
-#%%
 # FW
 league_players_stats = bundes_player_stats
 df_FW_players = pd.DataFrame(league_players_stats, columns=['Player','90s', 'Pos', 'xG', 'SoT', 'Price'])
@@ -430,10 +427,130 @@ for i in range(505):
 print(GKPlayers)
 
 #%%
+# Poner todos los jugadores en un solo array para cada posicion
+FWLength = len(LCFWPlayers)
+for i in range(FWLength):
+    FWPlayers.append(LCFWPlayers[i])
 
+MFFWLength = len(LCMFFWPlayers)
+for i in range(MFFWLength):
+    MFFWPlayers.append(LCMFFWPlayers[i])
+
+MFLength = len(LCMFPlayers)
+for i in range(MFLength):
+    MFPlayers.append(LCMFPlayers[i])
+
+DFLength = len(LCDFPlayers)
+for i in range(DFLength):
+    DFPlayers.append(LCDFPlayers[i])
+
+GKLength = len(LCGKPlayers)
+for i in range(GKLength):
+    GKPlayers.append(LCGKPlayers[i])
+
+#%%
+cFW = []
+cMFFW = []
+cMF = []
+cDF = []
+cGK = []
+
+for i in range(len(FWPlayers)):
+    cFW.append(FWPlayers[i][5])
+# for i in range(len(MFFWPlayers)):
+#     cMFFW.append(MFFWPlayers[i][7])
+# for i in range(len(MFPlayers)):
+#     MFPlayers.append(MFPlayers[i][6])
+# for i in range(len(DFPlayers)):
+#     DFPlayers.append(DFPlayers[i][6])
+# for i in range(len(GKPlayers)):
+#     GKPlayers.append(GKPlayers[i][4])
+
+print(cGK)
+
+#%%
 # TODO -Problema Optimizacion
+# Planteamos el problema con picos
+import picos
+# Creo el problema
+P = picos.Problem()
+# Tipo de jugadores
+#FW
+x = picos.BinaryVariable('x', 11)
+
+#MFFW
+# y = picos.BinaryVariable('y', 2)
+# #MF
+# z = picos.BinaryVariable('z', 2)
+# #DF
+# w = picos.BinaryVariable('w', 2)
+# #GK
+# v = picos.BinaryVariable('v', 2)
+#matriz de costos
+cFW = np.array([[80000000.0, 45000000.0, 17000000.0, 7000000.0, 14500000.0, 1200000.0, 19000000.0, 0, 0, 0, 0]])
+# # cMFFW = []
+# # cMF = []
+# # cDF = []
+# # cGK = []
+
+# for i in range(len(FWPlayers)):
+#     np.append(cFW, FWPlayers[i][5])
+
+# for i in range(len(MFFWPlayers)):
+#     cMFFW.append(MFFWPlayers[i][7])
+# for i in range(len(MFPlayers)):
+#     MFPlayers.append(MFPlayers[i][6])
+# for i in range(len(DFPlayers)):
+#     DFPlayers.append(DFPlayers[i][6])
+# for i in range(len(GKPlayers)):
+#     GKPlayers.append(GKPlayers[i][4])
+
+print(FWPlayers)    
+#xG FW 
+xGFWTemp = np.array([[31.6, 23.7, 24.3, 9.1, 9.7, 9.0, 17.9, 0.1, 0.0, 19.7, 7.8]])
+
+# xGFW = []
+# for i in range(len(FWPlayers)):
+#     xGFW.append(FWPlayers[i][3])
+# print(xGFW)
+    
+#Defino objetivo y función objetivo
+P.set_objective('max', xGFWTemp*x)
+#Constraints
+#Limite de dinero
+# P.add_constraint(sum(cFW) + sum(cMFFW) + sum(cMF) + sum(cDF) + sum(cGK) <= 150000000)
+P.add_constraint(sum(cFW*x) <= 50000000)
+#Limite de FW
+P.add_constraint(sum(x) == 2)
+#Limite de MFFW
+# P.add_constraint(sum(y) == 2)
+#Limite de MF
+# P.add_constraint(sum(z) == 3)
+#Limite de DF
+# P.add_constraint(sum(w) == 3)
+#Limite de GK
+# P.add_constraint(sum(v) == 1)
+
+
+#Verbosity
+P.options.verbosity = 0
+#Problema en consola
+print(P)
+#Resuelvo
+P.solve(solver='glpk')
+#Imprimo punto óptimo
+print('x*=', x)
+    #   'y*=', y,
+    #   'z*=', z,
+    #   'w*=', w,
+    #   'v*=', v)
+#Imprimo valor óptimo
+print(P.value)
+
 # Funcionn objetivo es  maximizar ATK + DFC 
 # yi *(pricei  +  atki + defi) + zi(pricei + save%i)
+#Constraints 
+
 
 # %%
 # TODO - Rank Teams by Skill (incluyendo los nuevos cambios)
