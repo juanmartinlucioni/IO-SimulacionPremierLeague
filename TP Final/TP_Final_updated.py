@@ -25,14 +25,15 @@ import math
 team_stats_skills = pd.read_csv('league-stats-skill.csv')
 lc_stats_skills = pd.read_csv('LC_player_stats.csv')
 bundes_player_stats = pd.read_csv('bundesliga-players-stats.csv')
-# laliga_player_stats = pd.read_csv ()
+
 
 
 # %%
-# TODO -Rank Teams by Skill
+# Rank Teams by Skill
 df_teams = pd.DataFrame(team_stats_skills, columns=['Rk', 'Squad', 'xG','xGA','Save%','SoT','Tkl','Blocks','Cmp%','KP','Poss'])
 Skill = []
 bestXG = df_teams['xG'].max()
+print(bestXG)
 bestXGA = df_teams['xGA'].min()
 bestSP = df_teams['Save%'].max()
 bestSoT = df_teams['SoT'].max()
@@ -60,8 +61,7 @@ for i in range(20):
     Sp = df_teams.at[i, 'Save%']/3
     teambyskill = [df_teams.at[i,'Squad'],df_teams.at[i,'Rk'], atk.round(), dfc.round(), pos, xG/38,Sp]
     Skill.append(teambyskill)
-#TODO NOTAS
-    # xG y S% mandarlo a un array que sea teamstats asi no se mezcla con skill
+
 #%% Sim League with out changes
 
 # Teams
@@ -87,7 +87,7 @@ WestBrom = [Skill[18], [0,0,0,0,0,0,0]]
 SheffieldUtd = [Skill[19], [0,0,0,0,0,0,0]]
 
 Teams = [ManchesterCity, ManchesterUtd, Liverpool, Chelsea, LeicesterCity, WestHam, Tottenham, Arsenal, LeedsUnited, Everton, AstonVilla, NewcastleUtd, Wolves, CrystalPalace, Southampton, Brighton, Burnley, Fulham, WestBrom, SheffieldUtd]
-
+# TODO - add rand() a xG & xGA
 def homeGoals(ht, at):
     if ht[0] != at[0]:
         bonusRank = (-1 * (ht[1] - at[1]))/100
@@ -266,7 +266,7 @@ LC_SP = df_teams.at[4, 'Save%']
 LC_Stats = [LC_name, LC_xG, LC_Sot, LC_KP, LC_CP, LC_xGA, LC_T, LC_B, LC_SP]
 print(LC_Stats)
 
-# TODO - Afectar los datos y ver como modifica el correr la liga y las chances del leicester 
+# TODO - XGA MOD - Afectar los datos y ver como modifica el correr la liga y las chances del leicester 
 # xGA cambia segun como cambian los otros datos de def (mejoran 10%, xGA tiene que caer 10%)
 # EJEMPLO - New Data
 # Current DEF
@@ -307,20 +307,12 @@ Teams[4][0][3] = New_LC_Def
 # Volver Def al valor original
 Teams[4][0][3] = LC_Def
 #%% 
-# TODO - Players y comformacion del equipo
-# Necesito a xG quienes lo componen
-# xG Compuesto por MFA + FW es 42.2 de 56.0 
-# Tenes que parar 3 ( Vardy [19.7] + Barnes [6.2] + Ihenacho [7.8] ) xG=[33.4] de 42.2
-# Tenemos un problemas Barnes hace 6.2 xG mientras que Madison hace 4.4, pero en xG+xA Madison hace 9.7 mientras que barnes se queda en 7.3
-# LC_player_stats.csv
-
+# Players y comformacion del equipo
 # FW = xG + SOT  // x
 # MFFW = xG + SOT + KP + CMP% // y
 # MF = TK + KP + CMP% // z
 # DF = TK + BLK + CMP% // w
-# GK = %S  // u
-
-# df_LC_players = pd.DataFrame(lc_stats_skills, columns=['Player', 'Pos', 'xG', 'SoT', 'KP', 'Cmp%', 'Tkl', 'Blocks', 'Save%', 'Price'])
+# GK = %S  // v
 
 # FW Players
 df_LC_FW_players = pd.DataFrame(lc_stats_skills, columns=['Player', '90s', 'Pos', 'xG', 'SoT', 'Price'])
@@ -451,16 +443,23 @@ for i in range(GKLength):
     GKPlayers.append(LCGKPlayers[i])
 
 #%%
+# TODO - OPT Arrays Players 
 #FW
 cFW = []
-KPMFFW = []
-xGMFFW = []
-# for i in range(len(FWPlayers)):
-#     cFW.append(FWPlayers[i][5])
-
+xGFW = []
+SoTFW = []
+for i in range(len(FWPlayers)):
+    cFW.append(FWPlayers[i][5])
+for i in range(len(FWPlayers)):
+    xGFW.append(FWPlayers[i][3])
+for i in range(len(FWPlayers)):
+    SoTFW.append(FWPlayers[i][4])
+print(SoTFW)
 
 #MFFW
 cMFFW = []
+KPMFFW = []
+xGMFFW = []
 for i in range(len(MFFWPlayers)):
     cMFFW.append(MFFWPlayers[i][7])
 for i in range(len(MFFWPlayers)):
@@ -505,15 +504,9 @@ for i in range(len(GKPlayers)):
 for i in range(len(GKPlayers)):
     SavePGK.append(GKPlayers[i][3])
 
-print(len(MFPlayers))
-print(cMF)
-print(CMPMF)
-print(TKLMF)
-print(KPMF)
-
 
 #%%
-# TODO -Problema Optimizacion
+# Problema Optimizacion
 # Planteamos el problema con picos
 import picos
 # Creo el problema
@@ -523,12 +516,13 @@ P = picos.Problem()
 x = picos.BinaryVariable('x', 11)
 #MFFW
 y = picos.BinaryVariable('y', 16)
-# #MF
+#MF
 z = picos.BinaryVariable('z', 15)
-# #DF
+#DF
 w = picos.BinaryVariable('w', 34)
-# #GK
+#GK
 v = picos.BinaryVariable('v', 5)
+# TODO - append to np.array
 #Matriz de costos
 cFW = np.array([[80000000.0, 45000000.0, 17000000.0, 7000000.0, 14500000.0, 1200000.0, 19000000.0, 0, 0, 0, 0]])
 cMFFW = np.array([[825000.0, 7000000.0, 34000000.0, 3600000.0, 11000000.0, 525000.0, 3400000.0, 9000000.0, 13000000.0, 18500000.0, 12000000.0, 8000000.0, 0, 0, 0, 0]])
@@ -541,7 +535,7 @@ print(MFFWPlayers)
 print(MFPlayers)   
 #xG FW 
 xGFWTemp = np.array([[31.6, 23.7, 24.3, 9.1, 9.7, 9.0, 17.9, 0.1, 0.0, 19.7, 7.8]])
-SoTFWTemp = np.array([[]])
+SoTFWTemp = np.array([[56, 47, 53, 19, 23, 28, 43, 0, 0, 27, 25]])
 
 #MFFW
 KPMFFWTemp = np.array([[46, 48, 50, 52, 63, 32, 26, 32, 44, 38, 46, 24, 23, 6, 7, 52]])
@@ -561,7 +555,7 @@ BDFTemp = np.array([[72, 66, 38, 39, 67, 45, 53, 50, 41, 72, 70, 53, 58, 77, 40,
 SavePTemp = np.array([[71.7, 71.5, 71.1, 70.3, 65.7]])
     
 #Defino objetivo y función objetivo
-P.set_objective('max', xGFWTemp*x + KPMFFWTemp*y + (1+xGMFFWTemp)*y + (1+KPMFTemp)*z + (1+TKLMFTemp)*z + CMPMFTemp*z + CMPDFTemp*w + (1+TKLDFTemp)*w + (1+BDFTemp)*w + SavePTemp*v)
+P.set_objective('max', xGFWTemp*x + SoTFWTemp*x+ KPMFFWTemp*y + (1+xGMFFWTemp)*y + (1+KPMFTemp)*z + (1+TKLMFTemp)*z + CMPMFTemp*z + CMPDFTemp*w + (1+TKLDFTemp)*w + (1+BDFTemp)*w + SavePTemp*v)
 # Interesante la funcion objetivo, tenemos que buscar la forma de darle el peso que le corresponde a cada estadistica /25? y hacerlo igual que el skill? 
 
 
@@ -607,6 +601,7 @@ CMPNew = []
 TKLNew = []
 BNew = []
 SPNew = []
+xGANew = []
 for i in range(len(FWPlayers)):
     currentx = round(x[i])
     if currentx == 1:
@@ -644,21 +639,108 @@ for i in range(len(GKPlayers)):
         if GKPlayers[i][4] >= 1:
             SPNew.append(GKPlayers[i][3])   
 print (startingXI)
-print(sum(xGNew))
-print(sum(SoTNew))
-print(sum(KPNew))
-print(sum(CMPNew)/len(CMPNew))
-print(sum(TKLNew))
-print(sum(BNew))
-print(sum(SPNew))
+NewPlayers_xG = sum(xGNew)
+NewPlayers_SoT = sum(SoTNew)
+NewPlayers_KP = sum(KPNew)
+NewPlayers_CMP = sum(CMPNew)
+NewPlayers_TKL = sum(TKLNew)
+NewPlayers_B = sum(BNew)
+NewPlayers_SP = sum(SPNew)
+#%%
+#New LC Stats
+print(len(lc_stats_skills))
+#%%
+#Set up new-league-stats-skills
+# TODO - Checkear el nerf 
+#atk
+LC_New_xG = LC_xG*4/5 + NewPlayers_xG/2
+LC_New_SoT = LC_Sot*4/5 + NewPlayers_SoT/2
+LC_New_KP = LC_KP*4/5 + NewPlayers_KP/2
+LC_New_CP = (LC_CP*len(lc_stats_skills) + NewPlayers_CMP)/(len(lc_stats_skills)+len(CMPNew))
+#dfc
+#TODO - new xGA
+LC_New_xGA = LC_xGA 
+LC_New_TKL = LC_T*4/5 + NewPlayers_TKL/2
+LC_New_B = LC_B*4/5 + NewPlayers_B/2
+LC_New_SP = NewPlayers_SP
+#import Data
+team_stats_skills.at[4,'xG']=LC_New_xG
+team_stats_skills.at[4,'SoT']=LC_New_SoT
+team_stats_skills.at[4,'KP']=LC_New_KP
+team_stats_skills.at[4,'Cmp%']=LC_New_CP
+team_stats_skills.at[4,'xGA']=LC_New_xGA
+team_stats_skills.at[4,'Tkl']=LC_New_TKL
+team_stats_skills.at[4,'Blocks']=LC_New_B
+team_stats_skills.at[4,'Save%']=LC_New_SP
 
-
+team_stats_skills.to_csv('new-league-stats-skill.csv',index=False)
 
 # %%
-# TODO - Rank Teams by Skill (incluyendo los nuevos cambios)
-# ARMAR el mejor 11 sin vender 
-# Stats de benched players un 1/4 de lo que reemplazan 
+# Rank Teams by Skill (incluyendo los nuevos cambios)
+new_team_stats_skills = pd.read_csv('new-league-stats-skill.csv')
+df_teams = pd.DataFrame(new_team_stats_skills, columns=['Rk', 'Squad', 'xG','xGA','Save%','SoT','Tkl','Blocks','Cmp%','KP','Poss'])
+Skill = []
+bestXG = df_teams['xG'].max()
+print(bestXG)
+bestXGA = df_teams['xGA'].min()
+bestSP = df_teams['Save%'].max()
+bestSoT = df_teams['SoT'].max()
+bestT = df_teams['Tkl'].max()
+bestB = df_teams['Blocks'].max() 
+bestCP = df_teams['Cmp%'].max()
+bestKP = df_teams['KP'].max()
 
-
+for i in range(20):
+    #atacking stats
+    xGp = ((df_teams.at[i,'xG']/ bestXG)*25)
+    Sotp = ((df_teams.at[i, 'SoT'] / bestSoT)*25)
+    KPp = ((df_teams.at[i, 'KP'] / bestKP)*25)
+    CPp = ((df_teams.at[i, 'Cmp%'] / bestCP)*25)
+    #defensive stats
+    xGAp = ((bestXGA / df_teams.at[i, 'xGA'])*25)
+    Tp = ((df_teams.at[i, 'Tkl'] / bestT)*25)
+    Bp = ((df_teams.at[i, 'Blocks'] / bestB)*25)
+    SPp = ((df_teams.at[i, 'Save%'] / bestSP)*25)
+    #Overall Stats
+    atk = xGp + Sotp + KPp + CPp
+    dfc = xGAp + Tp + Bp + SPp
+    pos = df_teams.at[i, 'Poss']
+    xG = df_teams.at[i, 'xG']
+    Sp = df_teams.at[i, 'Save%']/3
+    teambyskill = [df_teams.at[i,'Squad'],df_teams.at[i,'Rk'], atk.round(), dfc.round(), pos, xG/38,Sp]
+    Skill.append(teambyskill)    
+print(Skill)
 # %%
-# TODO - Simulacion Teams con los cambios
+# Simulacion Teams con los cambios
+# Teams
+ManchesterCity = [Skill[0], [0,0,0,0,0,0,0]]
+ManchesterUtd = [Skill[1], [0,0,0,0,0,0,0]]
+Liverpool = [Skill[2], [0,0,0,0,0,0,0]]
+Chelsea = [Skill[3], [0,0,0,0,0,0,0]]
+LeicesterCity = [Skill[4], [0,0,0,0,0,0,0]]
+WestHam = [Skill[5], [0,0,0,0,0,0,0]]
+Tottenham = [Skill[6], [0,0,0,0,0,0,0]]
+Arsenal = [Skill[7], [0,0,0,0,0,0,0]]
+LeedsUnited = [Skill[8], [0,0,0,0,0,0,0]]
+Everton = [Skill[9], [0,0,0,0,0,0,0]]
+AstonVilla = [Skill[10], [0,0,0,0,0,0,0]]
+NewcastleUtd = [Skill[11], [0,0,0,0,0,0,0]]
+Wolves = [Skill[12], [0,0,0,0,0,0,0]]
+CrystalPalace = [Skill[13], [0,0,0,0,0,0,0]]
+Southampton = [Skill[14], [0,0,0,0,0,0,0]]
+Brighton = [Skill[15], [0,0,0,0,0,0,0,0]]
+Burnley = [Skill[16], [0,0,0,0,0,0,0,0]]
+Fulham = [Skill[17], [0,0,0,0,0,0,0]]
+WestBrom = [Skill[18], [0,0,0,0,0,0,0]]
+SheffieldUtd = [Skill[19], [0,0,0,0,0,0,0]]
+
+Teams = [ManchesterCity, ManchesterUtd, Liverpool, Chelsea, LeicesterCity, WestHam, Tottenham, Arsenal, LeedsUnited, Everton, AstonVilla, NewcastleUtd, Wolves, CrystalPalace, Southampton, Brighton, Burnley, Fulham, WestBrom, SheffieldUtd]
+
+nSim = 10000
+LCPos = np.zeros(nSim)
+
+for i in range(nSim):
+    runLeague(Teams)
+print('Probabilidad de que Leicester City termine en el Top 4: ',np.sum(LCPos < 4 )/nSim)
+#Corriendo la nueva liga 10000 veces LC termina en el top 4 = 0.619 with nerf a nuevos 1/2 y viejos 4/5 presupuesto de 100.000.000
+#Corriendo la nueva liga 10000 veces LC termina en el top 4 = 0.923 with nerf 2/3 a viejos
