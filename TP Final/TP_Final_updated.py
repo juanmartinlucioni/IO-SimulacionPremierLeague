@@ -38,7 +38,6 @@ for i in range(20):
     Tp = ((df_teams.at[i, 'Tkl'] / bestT)*25)
     Bp = ((df_teams.at[i, 'Blocks'] / bestB)*25)
     SPp = ((df_teams.at[i, 'Save%'] / bestSP)*25)
-    print(xGAp)
     #Overall Stats
     atk = xGp + Sotp + KPp + CPp
     dfc = xGAp + Tp + Bp + SPp
@@ -341,6 +340,7 @@ for i in range(len(LCGKPlayers)):
     SP_LC_GK.append(LCGKPlayers[i][3])
 
 #%%
+
 #LC Best XI
 # Planteamos el problema con picos
 # Creo el problema
@@ -685,7 +685,7 @@ P.set_objective('max', xGFWTemp*x + SoTFWTemp*x+ KPMFFWTemp*y + (1+xGMFFWTemp)*y
 #Constraints
 #Limite de dinero
 # P.add_constraint(sum(cFW) + sum(cMFFW) + sum(cMF) + sum(cDF) + sum(cGK) <= 150000000)
-P.add_constraint(sum(cFWTemp*x) + sum(cMFFWTemp*y) + sum(cMFTemp*z) + sum(cDFTemp*w) + sum(cGKTemp*v) <= 1000000000)
+P.add_constraint(sum(cFWTemp*x) + sum(cMFFWTemp*y) + sum(cMFTemp*z) + sum(cDFTemp*w) + sum(cGKTemp*v) <= 90000000)
 #Limite de FW
 P.add_constraint(sum(x) == 2)
 #Limite de MFFW
@@ -766,14 +766,21 @@ NewPlayers_TKL = sum(TKLNew)
 NewPlayers_B = sum(BNew)
 NewPlayers_SP = sum(SPNew)
 
+print(NewPlayers_xG)
+print(NewPlayers_SoT)
+print(NewPlayers_KP)
+print(NewPlayers_CMP)
+print(NewPlayers_TKL)
+print(NewPlayers_B)
+print(NewPlayers_SP)
+
 pl2021AVGg= 2.69
-bl2021AVGg= 3.20 
+bl2021AVGg= 3.20
 
 #%%
 #Set up new-league-stats-skills
-# TODO - Checkear el nerf 
 LC_name = df_teams.at[4, 'Squad']
-LC_xG= df_teams.at[4, 'xG'] 
+LC_xG= df_teams.at[4, 'xG']
 LC_Sot = df_teams.at[4, 'SoT'] 
 LC_KP = df_teams.at[4, 'KP'] 
 LC_CP = df_teams.at[4, 'Cmp%']
@@ -783,7 +790,6 @@ LC_T = df_teams.at[4, 'Tkl']
 LC_B = df_teams.at[4, 'Blocks']
 LC_SP = df_teams.at[4, 'Save%']
 LC_Stats = [LC_name, LC_xG, LC_Sot, LC_KP, LC_CP, LC_xGA, LC_T, LC_B, LC_SP]
-print(LC_Stats)
 
 LC_Def_xGA = ((bestXGA / LC_xGA)*25)
 LC_Def_T = ((LC_T / bestT)*25)
@@ -808,14 +814,11 @@ LC_New_Def_B2 = ((LC_New_B/LC_B)-1)
 LC_New_Def_SP2 = ((LC_New_SP/LC_SP)-1)
 
 New_Def_Base = LC_Def_T*(1+LC_New_Def_T2) + LC_Def_B*(1+LC_New_Def_B2) + LC_Def_SP*(1+LC_New_Def_SP2)
-print(New_Def_Base)
 
 #New xGA
 Def_Mejora = (New_Def_Base/Comparison_Def_Base)-1
-print(Def_Mejora)
 LC_xGA2 = LC_xGA*(1-Def_Mejora)
 LC_New_xGA = LC_xGA2
-print(LC_New_xGA)
 
 #import Data
 team_stats_skills.at[4,'xG']=LC_New_xG
@@ -888,7 +891,7 @@ SheffieldUtd = [newSkill[19], [0,0,0,0,0,0,0]]
 newTeams = [ManchesterCity, ManchesterUtd, Liverpool, Chelsea, LeicesterCity, WestHam, Tottenham, Arsenal, LeedsUnited, Everton, AstonVilla, NewcastleUtd, Wolves, CrystalPalace, Southampton, Brighton, Burnley, Fulham, WestBrom, SheffieldUtd]
 
 # Sim
-nSim = 1000
+nSim = 10000
 LCPos = np.zeros(nSim)
 
 for i in range(nSim):
@@ -896,3 +899,4 @@ for i in range(nSim):
 print('Probabilidad de que Leicester City termine en el Top 4: ',np.sum(LCPos < 4 )/nSim)
 #Corriendo la nueva liga 10000 veces LC termina en el top 4 = 0.619 with nerf a nuevos 1/2 y viejos 4/5 presupuesto de 100.000.000
 #Corriendo la nueva liga 10000 veces LC termina en el top 4 = 0.923 with nerf 2/3 a viejos
+#Corriendo la nueva liga 10000 veces LC termina en el top 4 = 0.782 con nerfs por cambio de liga pre-optimizacion
