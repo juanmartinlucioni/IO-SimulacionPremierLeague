@@ -243,7 +243,7 @@ def runLeague(dataSet):
     LCPos[i] = LCPosRun
 
 
-nSim = 1000
+nSim = 100
 LCPos = np.zeros(nSim)
 
 for i in range(nSim):
@@ -402,7 +402,8 @@ for i in range(505):
     Posi = df_MF_players.at[i, 'Pos']
     GamesPlayedi = df_MF_players.at[i, '90s']
     CMPi = df_MF_players.at[i, 'Cmp%']
-    if Posi == 'MF' and GamesPlayedi > 20 and CMPi > 75:
+    KPi = df_MF_players.at[i, 'KP']
+    if Posi == 'MF' and GamesPlayedi > 20 and CMPi > 75 and KPi >20 :
         MFPlayers.append(df_MF_players.loc[i])
 print(MFPlayers)
 
@@ -412,7 +413,8 @@ for i in range(505):
     Posi = df_DF_players.at[i, 'Pos']
     GamesPlayedi = df_DF_players.at[i, '90s']
     Blocksi = df_DF_players.at[i, 'Blocks']
-    if Posi == 'DF' and GamesPlayedi > 20 and Blocksi > 32:
+    Tkli = df_DF_players.at[i, 'Tkl']
+    if Posi == 'DF' and GamesPlayedi > 20 and Blocksi > 32 and Tkli > 45:
         DFPlayers.append(df_DF_players.loc[i])
 print(DFPlayers)
 
@@ -449,24 +451,66 @@ for i in range(GKLength):
     GKPlayers.append(LCGKPlayers[i])
 
 #%%
+#FW
 cFW = []
+KPMFFW = []
+xGMFFW = []
+# for i in range(len(FWPlayers)):
+#     cFW.append(FWPlayers[i][5])
+
+
+#MFFW
 cMFFW = []
+for i in range(len(MFFWPlayers)):
+    cMFFW.append(MFFWPlayers[i][7])
+for i in range(len(MFFWPlayers)):
+    KPMFFW.append(MFFWPlayers[i][5])
+for i in range(len(MFFWPlayers)):
+    xGMFFW.append(MFFWPlayers[i][3])
+
+#MF
 cMF = []
+CMPMF = []
+KPMF = []
+TKLMF = []
+for i in range(len(MFPlayers)):
+    cMF.append(MFPlayers[i][6])
+for i in range(len(MFPlayers)):
+    KPMF.append(MFPlayers[i][5])
+for i in range(len(MFPlayers)):
+    CMPMF.append(MFPlayers[i][4])
+for i in range(len(MFPlayers)):
+    TKLMF.append(MFPlayers[i][3])
+
+#DF
 cDF = []
+CMPDF = []
+TKLDF = []
+BDF = []
+for i in range(len(DFPlayers)):
+    cDF.append(DFPlayers[i][6])
+for i in range(len(DFPlayers)):
+    CMPDF.append(DFPlayers[i][5])
+for i in range(len(DFPlayers)):
+    TKLDF.append(DFPlayers[i][3])
+for i in range(len(DFPlayers)):
+    BDF.append(DFPlayers[i][4])
+
+
+#GK
 cGK = []
+SavePGK = []
+for i in range(len(GKPlayers)):
+    cGK.append(GKPlayers[i][4])
+for i in range(len(GKPlayers)):
+    SavePGK.append(GKPlayers[i][3])
 
-for i in range(len(FWPlayers)):
-    cFW.append(FWPlayers[i][5])
-# for i in range(len(MFFWPlayers)):
-#     cMFFW.append(MFFWPlayers[i][7])
-# for i in range(len(MFPlayers)):
-#     MFPlayers.append(MFPlayers[i][6])
-# for i in range(len(DFPlayers)):
-#     DFPlayers.append(DFPlayers[i][6])
-# for i in range(len(GKPlayers)):
-#     GKPlayers.append(GKPlayers[i][4])
+print(len(MFPlayers))
+print(cMF)
+print(CMPMF)
+print(TKLMF)
+print(KPMF)
 
-print(cGK)
 
 #%%
 # TODO -Problema Optimizacion
@@ -477,59 +521,65 @@ P = picos.Problem()
 # Tipo de jugadores
 #FW
 x = picos.BinaryVariable('x', 11)
-
 #MFFW
-# y = picos.BinaryVariable('y', 2)
+y = picos.BinaryVariable('y', 16)
 # #MF
-# z = picos.BinaryVariable('z', 2)
+z = picos.BinaryVariable('z', 15)
 # #DF
-# w = picos.BinaryVariable('w', 2)
+w = picos.BinaryVariable('w', 34)
 # #GK
-# v = picos.BinaryVariable('v', 2)
-#matriz de costos
+v = picos.BinaryVariable('v', 5)
+#Matriz de costos
 cFW = np.array([[80000000.0, 45000000.0, 17000000.0, 7000000.0, 14500000.0, 1200000.0, 19000000.0, 0, 0, 0, 0]])
-# # cMFFW = []
-# # cMF = []
-# # cDF = []
-# # cGK = []
+cMFFW = np.array([[825000.0, 7000000.0, 34000000.0, 3600000.0, 11000000.0, 525000.0, 3400000.0, 9000000.0, 13000000.0, 18500000.0, 12000000.0, 8000000.0, 0, 0, 0, 0]])
+cMF = np.array([[65000000.0, 1800000.0, 12000000.0, 17500000.0, 31000000.0, 525000.0, 3800000.0, 10500000.0, 13500000.0, 10500000.0, 0, 0, 0, 0, 0]])
+cDF = np.array([[4200000.0, 1900000.0, 13000000.0, 33000000.0, 27000000.0, 15500000.0, 9000000.0, 8000000.0, 2500000.0, 15500000.0, 7000000.0, 8000000.0, 13000000.0,13000000.0, 20000000.0, 6500000.0, 2000000.0, 3000000.0, 7000000.0, 8000000.0, 2200000.0, 3500000.0, 8500000.0, 1300000.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
+cGK = np.array([[6000000.0, 5500000.0, 8000000.0, 22500000.0, 0]])
 
-# for i in range(len(FWPlayers)):
-#     np.append(cFW, FWPlayers[i][5])
-
-# for i in range(len(MFFWPlayers)):
-#     cMFFW.append(MFFWPlayers[i][7])
-# for i in range(len(MFPlayers)):
-#     MFPlayers.append(MFPlayers[i][6])
-# for i in range(len(DFPlayers)):
-#     DFPlayers.append(DFPlayers[i][6])
-# for i in range(len(GKPlayers)):
-#     GKPlayers.append(GKPlayers[i][4])
-
-print(FWPlayers)    
+# print(FWPlayers)
+print(MFFWPlayers)
+print(MFPlayers)   
 #xG FW 
 xGFWTemp = np.array([[31.6, 23.7, 24.3, 9.1, 9.7, 9.0, 17.9, 0.1, 0.0, 19.7, 7.8]])
+SoTFWTemp = np.array([[]])
 
-# xGFW = []
-# for i in range(len(FWPlayers)):
-#     xGFW.append(FWPlayers[i][3])
-# print(xGFW)
+#MFFW
+KPMFFWTemp = np.array([[46, 48, 50, 52, 63, 32, 26, 32, 44, 38, 46, 24, 23, 6, 7, 52]])
+xGMFFWTemp = np.array([[5.2, 4.8, 10.0, 5.6, 7.9, 5.5, 2.1, 2.8, 10.0, 7.6, 1.4, 3.9, 3.2, 0.3, 0.5, 4.4]])
+
+#MF
+KPMFTemp = np.array([[67, 49, 37, 22, 29, 25, 24, 26, 50, 21, 0, 0, 6, 0, 48]])
+CMPMFTemp = np.array([[84.0, 78.2, 82.8, 83.6, 79.5, 84.0, 79.1, 78.6, 80.1, 77.2, 80.9, 77.8, 91.4, 73.1, 78.6]])
+TKLMFTemp = np.array([[45, 25, 19, 50, 38, 89, 61, 60, 60, 90, 11, 1, 35, 0, 77]])
+
+#DF 
+CMPDFTemp = np.array([[83.7, 71.4, 92.9, 88.8, 62.7, 82.7, 72.6, 80.2, 85.1, 91.0, 81.5, 74.0, 92.8, 75.6, 89.1, 82.6, 72.8, 71.4, 80.9, 86.6, 81.1, 76.3, 84.8, 84.1, 89.0, 81.2, 85.8, 79.2, 87.5, 74.2, 78.3, 83.8, 100.0, 88.2]])
+TKLDFTemp = np.array([[66, 51, 46, 65, 60, 76, 48, 63, 63, 64, 72, 58, 61, 60, 51, 63, 77, 58, 61, 50, 67, 71, 59, 63, 31, 15, 12, 63, 21, 23, 37, 59, 0, 63]])
+BDFTemp = np.array([[72, 66, 38, 39, 67, 45, 53, 50, 41, 72, 70, 53, 58, 77, 40, 65, 50, 46, 68, 59, 67, 71, 63, 63, 22, 16, 19, 54, 27, 28, 28, 53, 0, 47]])
+
+#GK
+SavePTemp = np.array([[71.7, 71.5, 71.1, 70.3, 65.7]])
     
 #Defino objetivo y función objetivo
-P.set_objective('max', xGFWTemp*x)
+P.set_objective('max', xGFWTemp*x + KPMFFWTemp*y + (1+xGMFFWTemp)*y + (1+KPMFTemp)*z + (1+TKLMFTemp)*z + CMPMFTemp*z + CMPDFTemp*w + (1+TKLDFTemp)*w + (1+BDFTemp)*w + SavePTemp*v)
+# Interesante la funcion objetivo, tenemos que buscar la forma de darle el peso que le corresponde a cada estadistica /25? y hacerlo igual que el skill? 
+
+
+
 #Constraints
 #Limite de dinero
 # P.add_constraint(sum(cFW) + sum(cMFFW) + sum(cMF) + sum(cDF) + sum(cGK) <= 150000000)
-P.add_constraint(sum(cFW*x) <= 50000000)
+P.add_constraint(sum(cFW*x) + sum(cMFFW*y) + sum(cMF*z) + sum(cDF*w) + sum(cGK*v) <= 100000000)
 #Limite de FW
 P.add_constraint(sum(x) == 2)
 #Limite de MFFW
-# P.add_constraint(sum(y) == 2)
+P.add_constraint(sum(y) == 2)
 #Limite de MF
-# P.add_constraint(sum(z) == 3)
+P.add_constraint(sum(z) == 3)
 #Limite de DF
-# P.add_constraint(sum(w) == 3)
+P.add_constraint(sum(w) == 3)
 #Limite de GK
-# P.add_constraint(sum(v) == 1)
+P.add_constraint(sum(v) == 1)
 
 
 #Verbosity
@@ -539,21 +589,76 @@ print(P)
 #Resuelvo
 P.solve(solver='glpk')
 #Imprimo punto óptimo
-print('x*=', x)
-    #   'y*=', y,
-    #   'z*=', z,
-    #   'w*=', w,
-    #   'v*=', v)
+print('x*=', x,
+      'y*=', y,
+      'z*=', z,
+      'w*=', w,
+      'v*=', v)
 #Imprimo valor óptimo
 print(P.value)
+print(sum(cFW*x) + sum(cMFFW*y) + sum(cMF*z) + sum(cDF*w) + sum(cGK*v))
 
-# Funcionn objetivo es  maximizar ATK + DFC 
-# yi *(pricei  +  atki + defi) + zi(pricei + save%i)
-#Constraints 
+# Starting XI
+startingXI = []
+xGNew = []
+SoTNew = []
+KPNew = []
+CMPNew = []
+TKLNew = []
+BNew = []
+SPNew = []
+for i in range(len(FWPlayers)):
+    currentx = round(x[i])
+    if currentx == 1:
+        startingXI.append(FWPlayers[i][0])
+        if FWPlayers[i][5] >= 1:
+            xGNew.append(FWPlayers[i][3])
+            SoTNew.append(FWPlayers[i][4])
+for i in range(len(MFFWPlayers)):
+    currenty = round(y[i])
+    if currenty == 1:
+        startingXI.append(MFFWPlayers[i][0])
+        if MFFWPlayers[i][7] >= 1:
+            xGNew.append(MFFWPlayers[i][3])
+            KPNew.append(MFFWPlayers[i][5])
+for i in range(len(MFPlayers)):
+    currentz = round(z[i])
+    if currentz == 1:
+        startingXI.append(MFPlayers[i][0])
+        if MFPlayers[i][6] >= 1:
+            KPNew.append(MFPlayers[i][5])
+            CMPNew.append(MFPlayers[i][4])
+            TKLNew.append(MFPlayers[i][3])
+for i in range(len(DFPlayers)):
+    currentw = round(w[i])
+    if currentw == 1:
+        startingXI.append(DFPlayers[i][0])
+        if DFPlayers[i][6] >= 1:
+            CMPNew.append(DFPlayers[i][5])
+            TKLNew.append(DFPlayers[i][3])
+            BNew.append(DFPlayers[i][4])
+for i in range(len(GKPlayers)):
+    currentv = round(v[i])
+    if currentv == 1:
+        startingXI.append(GKPlayers[i][0])
+        if GKPlayers[i][4] >= 1:
+            SPNew.append(GKPlayers[i][3])   
+print (startingXI)
+print(sum(xGNew))
+print(sum(SoTNew))
+print(sum(KPNew))
+print(sum(CMPNew)/len(CMPNew))
+print(sum(TKLNew))
+print(sum(BNew))
+print(sum(SPNew))
+
 
 
 # %%
 # TODO - Rank Teams by Skill (incluyendo los nuevos cambios)
+# ARMAR el mejor 11 sin vender 
+# Stats de benched players un 1/4 de lo que reemplazan 
+
 
 # %%
 # TODO - Simulacion Teams con los cambios
