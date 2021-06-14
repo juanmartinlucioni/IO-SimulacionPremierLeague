@@ -1,21 +1,7 @@
 #%%
-#Ideas
-# 1 - Fichaje de Futbol para mejorar un club
-# Problematica a enfrentar:
-# nuestro equipo X de futbol tiene problemas en estas areas: 
-# xG = Expected Goals
-# xP = Expected Points
-# Tenemos que buscando la informacion de posibles prospectos a fichar : 
-# Utilizar una optimizacion para conseguir la mejor combinacion de opciones a la hora de mejorar tanto nuestos xG y xP 
-# Pros: 
-# Es facil de obtener los datos
-# Pintaria entretenido
-
-# CONSIGNA: 
 # Nos contrato el Leicester City, salio 5 en la temporada 20-21, Quiere que analizemos los posibles fichajes de cara a la proxima temporada para asegurar una clasificacion a la Champions League el año proximo (terminar top 4). Con los datos de todos los jugadores de la premier league y con un presupuesto de 100 Millones de Libras, traer los refuerzos para lograrlo. Reconocer en que areas hay que mejorar y reforzar las mismas. 
-#Leicester Team Stats
 
-# IMPORTACION DE DATOS
+#IMPORTACION DE DATOS
 #Datasets from: 
 #https://fbref.com/en/comps/9/Premier-League-Stats
 import pandas as pd
@@ -26,10 +12,8 @@ team_stats_skills = pd.read_csv('league-stats-skill.csv')
 lc_stats_skills = pd.read_csv('LC_player_stats.csv')
 bundes_player_stats = pd.read_csv('bundesliga-players-stats.csv')
 
-
-
 # %%
-# Rank Teams by Skill
+# Rank Teams by Skill + Sim League without changes
 df_teams = pd.DataFrame(team_stats_skills, columns=['Rk', 'Squad', 'xG','xGA','Save%','SoT','Tkl','Blocks','Cmp%','KP','Poss'])
 Skill = []
 bestXG = df_teams['xG'].max()
@@ -61,9 +45,6 @@ for i in range(20):
     Sp = df_teams.at[i, 'Save%']/3
     teambyskill = [df_teams.at[i,'Squad'],df_teams.at[i,'Rk'], atk.round(), dfc.round(), pos, xG/38,Sp]
     Skill.append(teambyskill)
-
-#%% Sim League with out changes
-
 # Teams
 ManchesterCity = [Skill[0], [0,0,0,0,0,0,0]]
 ManchesterUtd = [Skill[1], [0,0,0,0,0,0,0]]
@@ -177,16 +158,12 @@ def runLeague(dataSet):
     GF = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     GA = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     for x in range(20):
-        # print("========================================")
-        # print(dataSet[x][0][0] + "'s Home Games: ")
-        # print("========================================")
         for y in range(20):
             if dataSet[x][0] == dataSet[y][0]:
                 pass
             else:
                 homeScore = homeGoals(dataSet[x][0], dataSet[y][0])
                 awayScore = awayGoals(dataSet[x][0], dataSet[y][0])
-                # print(dataSet[x][0][0], homeScore, ":", awayScore, dataSet[y][0][0])
                 if homeScore > awayScore:
                     Wins[x] += 1
                     Loses[y] += 1
@@ -307,7 +284,7 @@ Teams[4][0][3] = New_LC_Def
 # Volver Def al valor original
 Teams[4][0][3] = LC_Def
 #%% 
-# Players y comformacion del equipo
+# LC Players y comformacion del equipo + Top Bundes Players
 # FW = xG + SOT  // x
 # MFFW = xG + SOT + KP + CMP% // y
 # MF = TK + KP + CMP% // z
@@ -359,7 +336,6 @@ for i in range(27):
         LCGKPlayers.append(df_LC_GK_players.loc[i])
 print(LCGKPlayers)
 
-#%%
 # Top Players Bundesliga
 FWPlayers = []
 MFFWPlayers = []
@@ -420,7 +396,6 @@ for i in range(505):
         GKPlayers.append(df_GK_players.loc[i])
 print(GKPlayers)
 
-#%%
 # Poner todos los jugadores en un solo array para cada posicion
 FWLength = len(LCFWPlayers)
 for i in range(FWLength):
@@ -442,7 +417,6 @@ GKLength = len(LCGKPlayers)
 for i in range(GKLength):
     GKPlayers.append(LCGKPlayers[i])
 
-#%%
 # TODO - OPT Arrays Players 
 #FW
 cFW = []
@@ -646,9 +620,7 @@ NewPlayers_CMP = sum(CMPNew)
 NewPlayers_TKL = sum(TKLNew)
 NewPlayers_B = sum(BNew)
 NewPlayers_SP = sum(SPNew)
-#%%
-#New LC Stats
-print(len(lc_stats_skills))
+
 #%%
 #Set up new-league-stats-skills
 # TODO - Checkear el nerf 
@@ -676,7 +648,7 @@ team_stats_skills.at[4,'Save%']=LC_New_SP
 team_stats_skills.to_csv('new-league-stats-skill.csv',index=False)
 
 # %%
-# Rank Teams by Skill (incluyendo los nuevos cambios)
+# Rank Teams by Skill (incluyendo los nuevos cambios) + Sim League With Changes
 new_team_stats_skills = pd.read_csv('new-league-stats-skill.csv')
 df_teams = pd.DataFrame(new_team_stats_skills, columns=['Rk', 'Squad', 'xG','xGA','Save%','SoT','Tkl','Blocks','Cmp%','KP','Poss'])
 Skill = []
@@ -710,8 +682,6 @@ for i in range(20):
     teambyskill = [df_teams.at[i,'Squad'],df_teams.at[i,'Rk'], atk.round(), dfc.round(), pos, xG/38,Sp]
     Skill.append(teambyskill)    
 print(Skill)
-# %%
-# Simulacion Teams con los cambios
 # Teams
 ManchesterCity = [Skill[0], [0,0,0,0,0,0,0]]
 ManchesterUtd = [Skill[1], [0,0,0,0,0,0,0]]
@@ -736,6 +706,7 @@ SheffieldUtd = [Skill[19], [0,0,0,0,0,0,0]]
 
 Teams = [ManchesterCity, ManchesterUtd, Liverpool, Chelsea, LeicesterCity, WestHam, Tottenham, Arsenal, LeedsUnited, Everton, AstonVilla, NewcastleUtd, Wolves, CrystalPalace, Southampton, Brighton, Burnley, Fulham, WestBrom, SheffieldUtd]
 
+# Sim
 nSim = 10000
 LCPos = np.zeros(nSim)
 
