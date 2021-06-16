@@ -9,6 +9,7 @@ import picos
 import pandas as pd
 import numpy as np
 import math
+import matplotlib.pyplot as plt
 #Import Data
 team_stats_skills = pd.read_csv('league-stats-skill.csv')
 lc_stats_skills = pd.read_csv('LC_player_stats.csv')
@@ -881,12 +882,28 @@ SheffieldUtd = [newSkill[19], [0,0,0,0,0,0,0]]
 newTeams = [ManchesterCity, ManchesterUtd, Liverpool, Chelsea, LeicesterCity, WestHam, Tottenham, Arsenal, LeedsUnited, Everton, AstonVilla, NewcastleUtd, Wolves, CrystalPalace, Southampton, Brighton, Burnley, Fulham, WestBrom, SheffieldUtd]
 
 # Sim
-nSim = 10000
+nSim = 1000
 LCPos = np.zeros(nSim)
 
 for i in range(nSim):
     runLeague(newTeams)
-print('Probabilidad de que Leicester City termine en el Top 4: ',np.sum(LCPos < 4 )/nSim)
+print('Probabilidad de que Leicester City termine en el Top 4: ',np.sum(LCPos == 1  )/nSim)
+
 #Corriendo la nueva liga 10000 veces LC termina en el top 4 = 0.619 with nerf a nuevos 1/2 y viejos 4/5 presupuesto de 100.000.000
 #Corriendo la nueva liga 10000 veces LC termina en el top 4 = 0.923 with nerf 2/3 a viejos
 #Corriendo la nueva liga 10000 veces LC termina en el top 4 = 0.782 con nerfs por cambio de liga pre-optimizacion
+#%%
+# Cantidad de veces en las que termina en cada posicion
+plt.hist(LCPos ,range=[1, 5], bins=5, density=False)
+plt.title('Posicion del LC en la liga')
+plt.ylabel('Cantidad de Veces')
+plt.xlabel('Posicion')
+plt.show()
+# Posicion en la liga para cada SIM
+plt.plot(LCPos)
+plt.title('Posicion del LC en la liga')
+plt.ylabel('Posicion')
+plt.xlabel('Sim')
+plt.show()
+# Power ranking? 
+
