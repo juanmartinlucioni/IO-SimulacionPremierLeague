@@ -29,14 +29,14 @@ bestKP = df_teams['KP'].max()
 
 for i in range(20):
     #atacking stats
-    xGp = ((df_teams.at[i,'xG']/ bestXG)*25)
-    Sotp = ((df_teams.at[i, 'SoT'] / bestSoT)*25)
+    xGp = ((df_teams.at[i,'xG']/ bestXG)*50)
+    Sotp = ((df_teams.at[i, 'SoT'] / bestSoT)*12.5)
+    CPp = ((df_teams.at[i, 'Cmp%'] / bestCP)*12.5)
     KPp = ((df_teams.at[i, 'KP'] / bestKP)*25)
-    CPp = ((df_teams.at[i, 'Cmp%'] / bestCP)*25)
     #defensive stats
-    xGAp = ((bestXGA / df_teams.at[i, 'xGA'])*25)
-    Tp = ((df_teams.at[i, 'Tkl'] / bestT)*25)
-    Bp = ((df_teams.at[i, 'Blocks'] / bestB)*25)
+    xGAp = ((bestXGA / df_teams.at[i, 'xGA'])*50)
+    Tp = ((df_teams.at[i, 'Tkl'] / bestT)*12.5)
+    Bp = ((df_teams.at[i, 'Blocks'] / bestB)*12.5)
     SPp = ((df_teams.at[i, 'Save%'] / bestSP)*25)
     #Overall Stats
     atk = xGp + Sotp + KPp + CPp
@@ -267,13 +267,16 @@ for i in range(27):
     Posi = df_LC_MFFW_players.at[i, 'Pos']
     if Posi == 'MFFW':
         LCMFFWPlayers.append(df_LC_MFFW_players.loc[i])
-
+    if Posi == 'FWMF':
+        LCMFFWPlayers.append(df_LC_MFFW_players.loc[i])
 # MF
 df_LC_MF_players = pd.DataFrame(lc_stats_skills, columns=['Player', '90s', 'Pos', 'Tkl', 'Cmp%', 'KP', 'Price'])
 LCMFPlayers = []
 for i in range(27):
     Posi = df_LC_MF_players.at[i, 'Pos']
     if Posi == 'MF':
+        LCMFPlayers.append(df_LC_MF_players.loc[i])
+    if Posi == 'MFDF':
         LCMFPlayers.append(df_LC_MF_players.loc[i])
 
 # DF
@@ -282,6 +285,8 @@ LCDFPlayers = []
 for i in range(27):
     Posi = df_LC_DF_players.at[i, 'Pos']
     if Posi == 'DF':
+        LCDFPlayers.append(df_LC_DF_players.loc[i])
+    if Posi == 'DFFW':
         LCDFPlayers.append(df_LC_DF_players.loc[i])
 
 # GK
@@ -381,7 +386,7 @@ LC_BDFTemp = np.array([B_LC_DF])
 LC_SavePTemp = np.array([SP_LC_GK])
 
 #Defino objetivo y función objetivo
-P.set_objective('max', LC_xGFWTemp*f + LC_SoTFWTemp*f + LC_KPMFFWTemp*mffw + (1+LC_xGMFFWTemp)*mffw + LC_SOTMFFWTemp*mffw + LC_CMPMFFWTemp *mffw + (1+LC_KPMFTemp)*mf + (1+LC_TKLMFTemp)*mf + LC_CMPMFTemp*mf + LC_CMPDFTemp*df + (1+LC_TKLDFTemp)*df + (1+LC_BDFTemp)*df + LC_SavePTemp*gk)
+P.set_objective('max', LC_xGFWTemp*f*50 + LC_SoTFWTemp*f*12.5 + LC_KPMFFWTemp*mffw*25 + (1+LC_xGMFFWTemp)*mffw*50 + LC_SOTMFFWTemp*mffw*12.5 + LC_CMPMFFWTemp *mffw *12.5+ (1+LC_KPMFTemp)*mf*25 + (1+LC_TKLMFTemp)*mf*12.5 + LC_CMPMFTemp*mf*12.5 + LC_CMPDFTemp*df*12.5 + (1+LC_TKLDFTemp)*df*12.5 + (1+LC_BDFTemp)*df*12.5 + LC_SavePTemp*gk*25)
 #Constraints
 #Limite de FW
 P.add_constraint(sum(f) == 2)
@@ -463,15 +468,6 @@ LC_StartingXI_TKL = sum(TKLToReplace)
 LC_StartingXI_B = sum(BToReplace)
 LC_StartingXI_SP = sum(SPToReplace)
 
-print(LC_StartingXI_xG)
-print(LC_StartingXI_SoT)
-print(LC_StartingXI_KP)
-print(LC_StartingXI_CMP)
-print(LC_StartingXI_TKL)
-print(LC_StartingXI_B)
-print(LC_StartingXI_SP)
-
-
 #%%
 # Top Players Bundesliga
 FWPlayers = []
@@ -506,6 +502,8 @@ for i in range(505):
     df_MFFW_players.at[i, 'KP'] = (KPi*2.69)/3.2
     if Posi == 'MFFW' and GamesPlayedi > 20 and KPi > 22:
         MFFWPlayers.append(df_MFFW_players.loc[i])
+    if Posi == 'FWMF' and GamesPlayedi > 20 and KPi > 22:
+        MFFWPlayers.append(df_MFFW_players.loc[i])
 
 # MF
 df_MF_players = pd.DataFrame(league_players_stats, columns=['Player', '90s', 'Pos', 'Tkl', 'Cmp%', 'KP', 'Price'])
@@ -519,6 +517,10 @@ for i in range(505):
     df_MF_players.at[i, 'Tkl'] = (Tkli*2.69)/3.2
     if Posi == 'MF' and GamesPlayedi > 20 and CMPi > 75 and KPi >20 :
         MFPlayers.append(df_MF_players.loc[i])
+    if Posi == 'DFMF' and GamesPlayedi > 20 and CMPi > 75 and KPi >20 :
+        MFPlayers.append(df_MF_players.loc[i])
+    if Posi == 'MFDF' and GamesPlayedi > 20 and CMPi > 75 and KPi >20 :
+        MFPlayers.append(df_MF_players.loc[i])
 
 # DF
 df_DF_players = pd.DataFrame(league_players_stats, columns=['Player', '90s', 'Pos', 'Tkl', 'Blocks', 'Cmp%', 'Price'])
@@ -530,6 +532,8 @@ for i in range(505):
     df_DF_players.at[i, 'Blocks'] = (Blocksi*2.69)/3.2
     df_DF_players.at[i, 'Tkl'] = (Tkli*2.69)/3.2
     if Posi == 'DF' and GamesPlayedi > 20 and Blocksi > 32 and Tkli > 45:
+        DFPlayers.append(df_DF_players.loc[i])
+    if Posi == 'DFFW' and GamesPlayedi > 20 and Blocksi > 32 and Tkli > 45:
         DFPlayers.append(df_DF_players.loc[i])
 
 # GK
@@ -627,7 +631,6 @@ for i in range(len(GKPlayers)):
 for i in range(len(GKPlayers)):
     SavePGK.append(GKPlayers[i][3])
 
-
 #%%
 # Problema Optimizacion
 # Planteamos el problema con picos
@@ -636,15 +639,15 @@ import picos
 P = picos.Problem()
 # Tipo de jugadores
 #FW
-x = picos.BinaryVariable('x', 11)
+x = picos.BinaryVariable('x', len(FWPlayers))
 #MFFW
-y = picos.BinaryVariable('y', 16)
+y = picos.BinaryVariable('y', len(MFFWPlayers))
 #MF
-z = picos.BinaryVariable('z', 15)
+z = picos.BinaryVariable('z', len(MFPlayers))
 #DF
-w = picos.BinaryVariable('w', 34)
+w = picos.BinaryVariable('w', len(DFPlayers))
 #GK
-v = picos.BinaryVariable('v', 5)
+v = picos.BinaryVariable('v', len(GKPlayers))
 
 #Matriz de costos
 cFWTemp = np.array([cFW])
@@ -677,15 +680,13 @@ BDFTemp = np.array([BDF])
 SavePTemp = np.array([SavePGK])
     
 #Defino objetivo y función objetivo
-P.set_objective('max', xGFWTemp*x + SoTFWTemp*x+ KPMFFWTemp*y + (1+xGMFFWTemp)*y + SOTMFFWTemp*y + CMPMFFWTemp*y + (1+KPMFTemp)*z + (1+TKLMFTemp)*z + CMPMFTemp*z + CMPDFTemp*w + (1+TKLDFTemp)*w + (1+BDFTemp)*w + SavePTemp*v)
+P.set_objective('max', xGFWTemp*x*50 + SoTFWTemp*x*12.5 + KPMFFWTemp*y*25 + (1+xGMFFWTemp)*y*50 + SOTMFFWTemp*y*12.5 + CMPMFFWTemp*y*12.5 + (1+KPMFTemp)*z*25 + (1+TKLMFTemp)*z*12.5 + CMPMFTemp*z*12.5 + CMPDFTemp*w*12.5 + (1+TKLDFTemp)*w*12.5 + (1+BDFTemp)*w*12.5 + SavePTemp*v*25)
 # Interesante la funcion objetivo, tenemos que buscar la forma de darle el peso que le corresponde a cada estadistica /25? y hacerlo igual que el skill? 
-
-
 
 #Constraints
 #Limite de dinero
 # P.add_constraint(sum(cFW) + sum(cMFFW) + sum(cMF) + sum(cDF) + sum(cGK) <= 150000000)
-P.add_constraint(sum(cFWTemp*x) + sum(cMFFWTemp*y) + sum(cMFTemp*z) + sum(cDFTemp*w) + sum(cGKTemp*v) <= 90000000)
+P.add_constraint(sum(cFWTemp*x) + sum(cMFFWTemp*y) + sum(cMFTemp*z) + sum(cDFTemp*w) + sum(cGKTemp*v) <= 50000000)
 #Limite de FW
 P.add_constraint(sum(x) == 2)
 #Limite de MFFW
@@ -766,17 +767,6 @@ NewPlayers_TKL = sum(TKLNew)
 NewPlayers_B = sum(BNew)
 NewPlayers_SP = sum(SPNew)
 
-print(NewPlayers_xG)
-print(NewPlayers_SoT)
-print(NewPlayers_KP)
-print(NewPlayers_CMP)
-print(NewPlayers_TKL)
-print(NewPlayers_B)
-print(NewPlayers_SP)
-
-pl2021AVGg= 2.69
-bl2021AVGg= 3.20
-
 #%%
 #Set up new-league-stats-skills
 LC_name = df_teams.at[4, 'Squad']
@@ -791,9 +781,9 @@ LC_B = df_teams.at[4, 'Blocks']
 LC_SP = df_teams.at[4, 'Save%']
 LC_Stats = [LC_name, LC_xG, LC_Sot, LC_KP, LC_CP, LC_xGA, LC_T, LC_B, LC_SP]
 
-LC_Def_xGA = ((bestXGA / LC_xGA)*25)
-LC_Def_T = ((LC_T / bestT)*25)
-LC_Def_B = ((LC_B / bestB)*25)
+LC_Def_xGA = ((bestXGA / LC_xGA)*50)
+LC_Def_T = ((LC_T / bestT)*12.5)
+LC_Def_B = ((LC_B / bestB)*12.5)
 LC_Def_SP = ((LC_SP / bestSP)*25)
 
 #atk
@@ -848,15 +838,15 @@ newBestKP = df_new_teams['KP'].max()
 
 for i in range(20):
     #atacking stats
-    xGpNew = ((df_new_teams.at[i,'xG']/ newBestXG)*25)
-    SotpNew = ((df_new_teams.at[i, 'SoT'] / newBestSoT)*25)
+    xGpNew = ((df_new_teams.at[i,'xG']/ newBestXG)*50)
     KPpNew = ((df_new_teams.at[i, 'KP'] / newBestKP)*25)
-    CPpNew = ((df_new_teams.at[i, 'Cmp%'] / newBestCP)*25)
+    SotpNew = ((df_new_teams.at[i, 'SoT'] / newBestSoT)*12.5)
+    CPpNew = ((df_new_teams.at[i, 'Cmp%'] / newBestCP)*12.5)
     #defensive stats
-    xGApNew = ((newBestXGA / df_new_teams.at[i, 'xGA'])*25)
-    TpNew = ((df_new_teams.at[i, 'Tkl'] / newBestT)*25)
-    BpNew = ((df_new_teams.at[i, 'Blocks'] / newBestB)*25)
+    xGApNew = ((newBestXGA / df_new_teams.at[i, 'xGA'])*50)
     SPpNew = ((df_new_teams.at[i, 'Save%'] / newBestSP)*25)
+    TpNew = ((df_new_teams.at[i, 'Tkl'] / newBestT)*12.5)
+    BpNew = ((df_new_teams.at[i, 'Blocks'] / newBestB)*12.5)
     #Overall Stats
     atk = xGpNew + SotpNew + KPpNew + CPpNew
     dfc = xGApNew + TpNew + BpNew + SPpNew
