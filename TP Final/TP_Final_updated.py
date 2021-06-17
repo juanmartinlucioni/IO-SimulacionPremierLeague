@@ -688,7 +688,7 @@ P.set_objective('max', xGFWTemp*x*50 + SoTFWTemp*x*12.5 + KPMFFWTemp*y*25 + (1+x
 #Constraints
 #Limite de dinero
 # P.add_constraint(sum(cFW) + sum(cMFFW) + sum(cMF) + sum(cDF) + sum(cGK) <= 150000000)
-P.add_constraint(sum(cFWTemp*x) + sum(cMFFWTemp*y) + sum(cMFTemp*z) + sum(cDFTemp*w) + sum(cGKTemp*v) <= 1000000000)
+P.add_constraint(sum(cFWTemp*x) + sum(cMFFWTemp*y) + sum(cMFTemp*z) + sum(cDFTemp*w) + sum(cGKTemp*v) <= 100000000)
 #Limite de FW
 P.add_constraint(sum(x) == 2)
 #Limite de MFFW
@@ -887,7 +887,7 @@ LCPos = np.zeros(nSim)
 
 for i in range(nSim):
     runLeague(newTeams)
-print('Probabilidad de que Leicester City termine en el Top 4: ',np.sum(LCPos == 1)/nSim)
+print('Probabilidad de que Leicester City termine en el Top 4: ',np.sum(LCPos < 5)/nSim)
 
 #Corriendo la nueva liga 10000 veces LC termina en el top 4 = 0.619 with nerf a nuevos 1/2 y viejos 4/5 presupuesto de 100.000.000
 #Corriendo la nueva liga 10000 veces LC termina en el top 4 = 0.923 with nerf 2/3 a viejos
@@ -970,31 +970,49 @@ def createPitch():
     #Tidy Axes
     plt.axis('off')
 
-    playername = [1,2,3,4,5,6,7,8,9,10,11]
-    player0 = plt.Circle((10,45), 3, edgecolor="black",facecolor='yellow', fill=True, label=playername[0])
+    playername = []
+    tempName = []
+    for i in range(len(startingXI)):
+        tempName.append(startingXI[i].partition(" ")[2])
+        playername.append(tempName[i].partition("\\")[0])
+
+    player0 = plt.Circle((10,45), 3, edgecolor="black",facecolor='orange', fill=True, label=playername[0])
+    plt.text(3, 35, playername[10])
     ax.add_patch(player0)
     player1 = plt.Circle((37,25), 3, edgecolor="black",facecolor='yellow', fill=True, label=playername[1])
+    plt.text(30, 15, playername[9])
     ax.add_patch(player1)
     player2 = plt.Circle((37,65), 3, edgecolor="black",facecolor='yellow', fill=True, label=playername[2])
+    plt.text(29, 55, playername[8])
     ax.add_patch(player2)
     player3 = plt.Circle((30,45), 3, edgecolor="black",facecolor='yellow', fill=True, label=playername[3])
+    plt.text(23, 35, playername[7])
     ax.add_patch(player3)
     player4 = plt.Circle((70, 15), 3, edgecolor="black", facecolor="green", fill=True, label=playername[4])
+    plt.text(59, 5, playername[6])
     ax.add_patch(player4)
     player5 = plt.Circle((70, 75), 3, edgecolor="black", facecolor="green", fill=True, label=playername[5])
+    plt.text(65, 65, playername[5])
     ax.add_patch(player5)
     player6 = plt.Circle((55, 45), 3, edgecolor="black", facecolor="green", fill=True, label=playername[6])
+    plt.text(47, 35, playername[4])
     ax.add_patch(player6)
     player7 = plt.Circle((90, 60), 3, edgecolor="black", facecolor="blue", fill=True, label=playername[7])
+    plt.text(82, 50, playername[3])
     ax.add_patch(player7)
     player8 = plt.Circle((90, 30), 3, edgecolor="black", facecolor="blue", fill=True, label=playername[8])
+    plt.text(80, 20, playername[2])
     ax.add_patch(player8)
     player9 = plt.Circle((120, 50), 3, edgecolor="black", facecolor="blue", fill=True, label=playername[9])
+    plt.text(113, 40, playername[1])
     ax.add_patch(player9)
     player10 = plt.Circle((110, 40), 3, edgecolor="black", facecolor="blue", fill=True, label=playername[10])
+    plt.text(105, 30, playername[0])
     ax.add_patch(player10)
 
     #Display Pitch
     plt.show()
 
 createPitch()
+
+# %%
