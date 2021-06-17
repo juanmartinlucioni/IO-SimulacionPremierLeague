@@ -21,6 +21,7 @@ bundes_player_stats = pd.read_csv('bundesliga-players-stats.csv')
 df_teams = pd.DataFrame(team_stats_skills, columns=['Rk', 'Squad', 'xG','xGA','Save%','SoT','Tkl','Blocks','Cmp%','KP','Poss'])
 Skill = []
 bestXG = df_teams['xG'].max()
+
 bestXGA = df_teams['xGA'].min()
 bestSP = df_teams['Save%'].max()
 bestSoT = df_teams['SoT'].max()
@@ -234,12 +235,16 @@ def runLeague(dataSet):
     for z in range(20):
         if sortedTeams[z][0][0] == 'Leicester City':
             LCPosRun = sortedTeams[z][1][6]
-
+            LCPointsRun = sortedTeams[z][1][0] 
+        if sortedTeams[z][0][0] == 'Manchester City':
+            MCPointsRun = sortedTeams[z][1][0]
     LCPos[i] = LCPosRun
-
-
-nSim = 100
+    LCPoints[i]= LCPointsRun
+    MCPoints[i]= MCPointsRun
+nSim = 1000
 LCPos = np.zeros(nSim)
+LCPoints= np.zeros(nSim)
+MCPoints= np.zeros(nSim)
 
 for i in range(nSim):
     runLeague(Teams)
@@ -393,11 +398,11 @@ P.set_objective('max', LC_xGFWTemp*f*50 + LC_SoTFWTemp*f*12.5 + LC_KPMFFWTemp*mf
 #Limite de FW
 P.add_constraint(sum(f) == 2)
 #Limite de MFFW
-P.add_constraint(sum(mffw) == 2)
+P.add_constraint(sum(mffw) == 1)
 #Limite de MF
 P.add_constraint(sum(mf) == 3)
 #Limite de DF
-P.add_constraint(sum(df) == 3)
+P.add_constraint(sum(df) == 4)
 #Limite de GK
 P.add_constraint(sum(gk) == 1)
 
@@ -688,15 +693,15 @@ P.set_objective('max', xGFWTemp*x*50 + SoTFWTemp*x*12.5 + KPMFFWTemp*y*25 + (1+x
 #Constraints
 #Limite de dinero
 # P.add_constraint(sum(cFW) + sum(cMFFW) + sum(cMF) + sum(cDF) + sum(cGK) <= 150000000)
-P.add_constraint(sum(cFWTemp*x) + sum(cMFFWTemp*y) + sum(cMFTemp*z) + sum(cDFTemp*w) + sum(cGKTemp*v) <= 100000000)
+P.add_constraint(sum(cFWTemp*x) + sum(cMFFWTemp*y) + sum(cMFTemp*z) + sum(cDFTemp*w) + sum(cGKTemp*v) <= 39500000)
 #Limite de FW
 P.add_constraint(sum(x) == 2)
 #Limite de MFFW
-P.add_constraint(sum(y) == 2)
+P.add_constraint(sum(y) == 1)
 #Limite de MF
 P.add_constraint(sum(z) == 3)
 #Limite de DF
-P.add_constraint(sum(w) == 3)
+P.add_constraint(sum(w) == 4)
 #Limite de GK
 P.add_constraint(sum(v) == 1)
 
@@ -979,35 +984,35 @@ def createPitch(playernames):
     player0 = plt.Circle((10,45), 3, edgecolor="black",facecolor='orange', fill=True, label=playername[0])
     plt.text(3, 33, playername[10])
     ax.add_patch(player0)
-    player1 = plt.Circle((37,25), 3, edgecolor="black",facecolor='yellow', fill=True, label=playername[1])
-    plt.text(30, 15, playername[9])
+    player1 = plt.Circle((37,15), 3, edgecolor="black",facecolor='yellow', fill=True, label=playername[1])
+    plt.text(30, 5, playername[9])
     ax.add_patch(player1)
-    player2 = plt.Circle((37,65), 3, edgecolor="black",facecolor='yellow', fill=True, label=playername[2])
-    plt.text(29, 55, playername[8])
+    player2 = plt.Circle((37,75), 3, edgecolor="black",facecolor='yellow', fill=True, label=playername[2])
+    plt.text(30, 65, playername[8])
     ax.add_patch(player2)
-    player3 = plt.Circle((30,45), 3, edgecolor="black",facecolor='yellow', fill=True, label=playername[3])
-    plt.text(23, 37, playername[7])
+    player3 = plt.Circle((30,55), 3, edgecolor="black",facecolor='yellow', fill=True, label=playername[3])
+    plt.text(23, 45, playername[7])
     ax.add_patch(player3)
-    player4 = plt.Circle((70, 15), 3, edgecolor="black", facecolor="green", fill=True, label=playername[4])
-    plt.text(59, 5, playername[4])
+    player6 = plt.Circle((30, 35), 3, edgecolor="black", facecolor="yellow", fill=True, label=playername[6])
+    plt.text(23, 25, playername[6])
+    player4 = plt.Circle((70, 25), 3, edgecolor="black", facecolor="green", fill=True, label=playername[4])
+    plt.text(65, 15, playername[4])
     ax.add_patch(player4)
-    player5 = plt.Circle((70, 75), 3, edgecolor="black", facecolor="green", fill=True, label=playername[5])
-    plt.text(65, 65, playername[5])
+    player5 = plt.Circle((55, 45), 3, edgecolor="black", facecolor="green", fill=True, label=playername[5])
+    plt.text(45, 35, playername[5])
     ax.add_patch(player5)
-    player6 = plt.Circle((55, 45), 3, edgecolor="black", facecolor="green", fill=True, label=playername[6])
-    plt.text(47, 35, playername[6])
     ax.add_patch(player6)
-    player7 = plt.Circle((90, 60), 3, edgecolor="black", facecolor="blue", fill=True, label=playername[7])
-    plt.text(82, 50, playername[3])
+    player7 = plt.Circle((70, 65), 3, edgecolor="black", facecolor="green", fill=True, label=playername[7])
+    plt.text(65, 55, playername[3])
     ax.add_patch(player7)
-    player8 = plt.Circle((90, 30), 3, edgecolor="black", facecolor="blue", fill=True, label=playername[8])
-    plt.text(80, 20, playername[2])
+    player8 = plt.Circle((90, 45), 3, edgecolor="black", facecolor="blue", fill=True, label=playername[8])
+    plt.text(83, 35, playername[2])
     ax.add_patch(player8)
-    player9 = plt.Circle((120, 50), 3, edgecolor="black", facecolor="blue", fill=True, label=playername[9])
-    plt.text(113, 40, playername[1])
+    player9 = plt.Circle((107, 60), 3, edgecolor="black", facecolor="blue", fill=True, label=playername[9])
+    plt.text(100, 50, playername[1])
     ax.add_patch(player9)
-    player10 = plt.Circle((110, 40), 3, edgecolor="black", facecolor="blue", fill=True, label=playername[10])
-    plt.text(105, 30, playername[0])
+    player10 = plt.Circle((107, 30), 3, edgecolor="black", facecolor="blue", fill=True, label=playername[10])
+    plt.text(100, 20, playername[0])
     ax.add_patch(player10)
 
     #Display Pitch
@@ -1017,3 +1022,97 @@ createPitch(LC_startingXI)
 createPitch(startingXI)
 
 # %%
+# xG y xGA Graphics league without changes
+def scatter_xG(stats):
+    fig, ax = plt.subplots()
+
+    #Set plot size
+    fig.set_size_inches(7, 5)
+    Atk = []
+    Dfc = []
+    for i in range(len(stats)):
+        plt.plot(stats[i][2], stats[i][3], "o",label=stats[i][0])
+        Atk.append(stats[i][2])
+        Dfc.append(stats[i][3])
+        if stats[i][1] < 6:
+            plt.text(stats[i][2], stats[i][3]+1,stats[i][0])
+        # if stats[i][0] == "Leicester City":
+        #     plt.text(stats[i][2], stats[i][3]+1,'Leicester City')
+    #Cross
+    plt.plot([sum(Atk)/len(Atk),sum(Atk)/len(Atk)],[100,50],'k-', linestyle = ":", lw=1)
+    plt.plot([50,100],[sum(Dfc)/len(Dfc),sum(Dfc)/len(Dfc)],'k-', linestyle = ":", lw=1)
+
+    #Add labels to chart area
+    ax.set_title("Skill Ranking")
+    ax.set_xlabel("Attack")
+    ax.set_ylabel("Defence")
+
+    ax.text(49,50,"Poor attack, poor defense",color="red",size="8")
+
+    ax.text(85,99,"Strong attack, strong defense",color="red",size="8")
+
+    #Display the chart
+    plt.show()
+
+scatter_xG(Skill)
+scatter_xG(newSkill)
+# xG y xGA Graphics league with changes
+
+# plt.plot(LCPoints)
+# plt.plot(LCPos, color='red')
+# plt.title('Posicion del LC en la liga')
+# plt.ylabel('Cantidad de Veces')
+# plt.xlabel('Posicion')
+# plt.show()
+#%%
+fig, ax1 = plt.subplots()
+color = 'tab:green'
+ax1.set_xlabel('Simulations')
+ax1.set_ylabel('Points', color=color)
+ax1.plot(LCPoints, color=color)
+ax1.tick_params(axis='y', labelcolor=color)
+
+ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+
+color = 'tab:blue'
+
+ax2.set_ylabel('Position', color=color)  # we already handled the x-label with ax1
+ax2.plot(LCPos,"o",color=color)
+ax2.invert_yaxis()
+ax2.tick_params(axis='y', labelcolor=color,)
+
+fig.tight_layout()  # otherwise the right y-label is slightly clipped
+plt.show()
+#%%
+#Create the bare bones of what will be our visualisation
+fig, ax = plt.subplots()
+
+LCPointsCumulative = np.zeros(len(LCPoints))
+for i in range(len(LCPoints)):
+    LCPointsCumulative[i] = LCPointsCumulative[i-1] + LCPoints[i]
+
+MCPointsCumulative = np.zeros(len(MCPoints))
+for i in range(len(MCPoints)):
+    MCPointsCumulative[i] = MCPointsCumulative[i-1] + MCPoints[i]
+
+#Add our data as before, but setting colours and widths of lines
+plt.plot(LCPoints, color="#231F20", linewidth=2)
+plt.plot(MCPoints, color="#6CABDD", linewidth=2)
+
+#Give the axes and plot a title each
+plt.xlabel('Sims')
+plt.ylabel('Points')
+plt.title('Leicester v Man City Running Total Points')
+
+#Add a faint grey grid
+plt.grid()
+ax.xaxis.grid(color="#F8F8F8")
+ax.yaxis.grid(color="#F9F9F9")
+
+#Remove the margins between our lines and the axes
+plt.margins(x=0, y=0)
+
+#Remove the spines of the chart on the top and right sides
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
