@@ -911,7 +911,7 @@ plt.show()
 #%%
 # La funcion de la cancha la tomamos de: https://fcpython.com/visualisation/drawing-pitchmap-adding-lines-circles-matplotlib
 
-def createPitch():
+def createPitch(playernames):
 
     #Create figure
     fig = plt.figure()
@@ -972,12 +972,12 @@ def createPitch():
 
     playername = []
     tempName = []
-    for i in range(len(startingXI)):
-        tempName.append(startingXI[i].partition(" ")[2])
+    for i in range(len(playernames)):
+        tempName.append(playernames[i].partition(" ")[2])
         playername.append(tempName[i].partition("\\")[0])
 
     player0 = plt.Circle((10,45), 3, edgecolor="black",facecolor='orange', fill=True, label=playername[0])
-    plt.text(3, 35, playername[10])
+    plt.text(3, 33, playername[10])
     ax.add_patch(player0)
     player1 = plt.Circle((37,25), 3, edgecolor="black",facecolor='yellow', fill=True, label=playername[1])
     plt.text(30, 15, playername[9])
@@ -986,16 +986,16 @@ def createPitch():
     plt.text(29, 55, playername[8])
     ax.add_patch(player2)
     player3 = plt.Circle((30,45), 3, edgecolor="black",facecolor='yellow', fill=True, label=playername[3])
-    plt.text(23, 35, playername[7])
+    plt.text(23, 37, playername[7])
     ax.add_patch(player3)
     player4 = plt.Circle((70, 15), 3, edgecolor="black", facecolor="green", fill=True, label=playername[4])
-    plt.text(59, 5, playername[6])
+    plt.text(59, 5, playername[4])
     ax.add_patch(player4)
     player5 = plt.Circle((70, 75), 3, edgecolor="black", facecolor="green", fill=True, label=playername[5])
     plt.text(65, 65, playername[5])
     ax.add_patch(player5)
     player6 = plt.Circle((55, 45), 3, edgecolor="black", facecolor="green", fill=True, label=playername[6])
-    plt.text(47, 35, playername[4])
+    plt.text(47, 35, playername[6])
     ax.add_patch(player6)
     player7 = plt.Circle((90, 60), 3, edgecolor="black", facecolor="blue", fill=True, label=playername[7])
     plt.text(82, 50, playername[3])
@@ -1013,6 +1013,7 @@ def createPitch():
     #Display Pitch
     plt.show()
 
-createPitch()
+createPitch(LC_startingXI)
+createPitch(startingXI)
 
 # %%
