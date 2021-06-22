@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Arc
 #Data
 team_stats_skills = pd.read_csv('league-stats-skill.csv')
-lc_stats_skills = pd.read_csv('LC_player_stats.csv')
+pl_players_stats_skills = pd.read_csv('pl-players-stats-skills.csv')
 bundes_player_stats = pd.read_csv('bundesliga-players-stats.csv')
 
 #Funciones de Graficos
@@ -129,9 +129,9 @@ def createPitch(playernames):
 # TODO - Funcion traer own team
 def myTeam(teamname):
     #FW
-    df_FW_players = pd.DataFrame(bundes_player_stats,  columns=['Player','Squad', '90s', 'Pos', 'xG', 'SoT', 'Price'])
+    df_FW_players = pd.DataFrame(pl_players_stats_skills,  columns=['Player','Squad', '90s', 'Pos', 'xG', 'SoT', 'Price'])
     MyFWPlayers = []
-    for i in range(505):
+    for i in range(532):
         Posi = df_FW_players.at[i, 'Pos']
         Squad = df_FW_players.at[i, 'Squad']
         if Posi == 'FW' and Squad == teamname:
@@ -143,9 +143,9 @@ def myTeam(teamname):
     for i in range(len(MyFWPlayers)):
         SoT_MyFW.append(MyFWPlayers[i][5])
     #MFFW
-    df_MFFW_players = pd.DataFrame(bundes_player_stats, columns=['Player', 'Squad', '90s', 'Pos', 'xG', 'SoT', 'KP', 'Cmp%', 'Price'])
+    df_MFFW_players = pd.DataFrame(pl_players_stats_skills, columns=['Player', 'Squad', '90s', 'Pos', 'xG', 'SoT', 'KP', 'Cmp%', 'Price'])
     MyMFFWPlayers = []
-    for i in range(505):
+    for i in range(532):
         Posi = df_MFFW_players.at[i, 'Pos']
         Squad = df_MFFW_players.at[i, 'Squad']
         if Posi == 'MFFW' and Squad == teamname:
@@ -167,9 +167,9 @@ def myTeam(teamname):
     for i in range(len(MyMFFWPlayers)):
         CMP_MyMFFW.append(MyMFFWPlayers[i][7])
     #MF
-    df_MF_players = pd.DataFrame(bundes_player_stats, columns=['Player', 'Squad', '90s', 'Pos', 'Tkl', 'Cmp%', 'KP', 'Price'])
+    df_MF_players = pd.DataFrame(pl_players_stats_skills, columns=['Player', 'Squad', '90s', 'Pos', 'Tkl', 'Cmp%', 'KP', 'Price'])
     MyMFPlayers = []
-    for i in range(505):
+    for i in range(532):
         Posi = df_MF_players.at[i, 'Pos']
         Squad = df_MF_players.at[i, 'Squad']
         if Posi == 'MF' and Squad == teamname:
@@ -186,9 +186,9 @@ def myTeam(teamname):
     for i in range(len(MyMFPlayers)):
         TKL_MyMF.append(MyMFPlayers[i][4])
     #DF
-    df_DF_players = pd.DataFrame(bundes_player_stats, columns=['Player','Squad','90s', 'Pos', 'Tkl', 'Blocks', 'Cmp%', 'Price'])
+    df_DF_players = pd.DataFrame(pl_players_stats_skills, columns=['Player','Squad','90s', 'Pos', 'Tkl', 'Blocks', 'Cmp%', 'Price'])
     MyDFPlayers = []
-    for i in range(505):
+    for i in range(532):
         Posi = df_DF_players.at[i, 'Pos']
         Squad = df_DF_players.at[i, 'Squad']
         if Posi == 'DF' and Squad == teamname:
@@ -203,17 +203,17 @@ def myTeam(teamname):
     for i in range(len(MyDFPlayers)):
         TKL_MyDF.append(MyDFPlayers[i][4])
     #GK
-    df_GK_players = pd.DataFrame(bundes_player_stats, columns=['Player', 'Squad','90s', 'Pos', 'Save%', 'Price'])
+    df_GK_players = pd.DataFrame(pl_players_stats_skills, columns=['Player', 'Squad','90s', 'Pos', 'Save%', 'Price'])
     MyGKPlayers = []
-    for i in range(27):
+    for i in range(532):
         Posi = df_GK_players.at[i, 'Pos']
         Squad = df_GK_players.at[i, 'Squad']
         if Posi == 'GK' and Squad == teamname:
             MyGKPlayers.append(df_GK_players.loc[i])
     SP_MyGK = []
     for i in range(len(MyGKPlayers)):
-        SP_MyGK.append(MyGKPlayers[i][3])
-    print(len(MyMFPlayers)+len(MyMFFWPlayers) +
+        SP_MyGK.append(MyGKPlayers[i][4])
+    print('suma =',len(MyMFPlayers)+len(MyMFFWPlayers) +
           len(MyDFPlayers)+len(MyFWPlayers)+len(MyGKPlayers))
     return MyFWPlayers, MyMFFWPlayers, MyMFPlayers, MyDFPlayers, MyGKPlayers, xG_MyFW, SoT_MyFW, xG_MyMFFW, SoT_MyMFFW, KP_MyMFFW, CMP_MyMFFW, KP_MyMF, CMP_MyMF, TKL_MyMF, CMP_MyDF, TKL_MyDF, B_MyDF, SP_MyGK
 # TODO - Funcion para optimizar starting XI
@@ -222,5 +222,5 @@ def myTeam(teamname):
 # TODO - Funcion Merge Players to buy 
 
 
-team = 'Bayern Munich'
+team = 'Leicester City'
 myTeam(team)

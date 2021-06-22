@@ -1,0 +1,533 @@
+﻿Rk,Player,Pos,Squad,MP,Min,90s,xG,xA,Tkl,Blocks,Tkl+Int,Clr,Cmp%,KP,SoT,Save%,Price
+1,Patrick van Aanholt\Patrick-van-Aanholt,DF,Crystal Palace,22,1777,19.7,1.2,0.8,33,31,67,40,78.9,11,6,0,0
+2,Tammy Abraham\Tammy-Abraham,FW,Chelsea,22,1040,11.6,6.4,0.9,8,9,10,17,68.3,8,13,0,0
+3,Che Adams\Che-Adams,FW,Southampton,36,2667,29.6,8.8,5.8,30,26,41,16,70,34,31,0,0
+4,Tosin Adarabioyo\Tosin-Adarabioyo,DF,Fulham,33,2953,32.8,1.1,0.4,41,38,96,241,87.4,5,5,0,0
+5,AdriÃ¡n\Adrian,GK,Liverpool,3,270,3,0,0,0,0,0,0,76.8,0,0,52.6,0
+6,Sergio AgÃ¼ero\Sergio-Aguero,FWMF,Manchester City,12,559,6.2,3.3,1.3,3,5,7,1,84.1,6,10,0,0
+7,Ola Aina\Ola-Aina,DF,Fulham,31,2664,29.6,1,1.4,47,47,99,121,77.7,14,4,0,0
+8,Rayan AÃ¯t Nouri\Rayan-Ait-Nouri,DF,Wolves,21,1404,15.6,0.6,1,31,27,46,39,83.7,13,6,0,0
+9,Semi Ajayi\Semi-Ajayi,DF,West Brom,33,2780,30.9,1.3,0.3,58,62,99,148,74.4,5,4,0,0
+10,Nathan AkÃ©\Nathan-Ake,DF,Manchester City,10,797,8.9,0.1,0,15,6,21,26,93,1,1,0,0
+11,Marc Albrighton\Marc-Albrighton,DFFW,Leicester City,31,1746,19.4,1.3,4.4,43,32,71,26,68.8,39,9,0,0
+12,Thiago AlcÃ¡ntara\Thiago-Alcantara,MF,Liverpool,24,1854,20.6,1.4,2.3,68,28,110,21,89.5,29,5,0,0
+13,Toby Alderweireld\Toby-Alderweireld,DF,Tottenham,25,2240,24.9,0.8,0.3,37,53,52,162,83.7,7,3,0,0
+14,RÃºnar Alex RÃºnarsson\Runar-Alex-Runarsson,GK,Arsenal,1,16,0.2,0,0,0,0,0,0,63.6,0,0,100,0
+15,Trent Alexander-Arnold\Trent-Alexander-Arnold,DF,Liverpool,36,3031,33.7,2.8,8.1,58,44,107,71,75.3,73,11,0,0
+16,Ezgjan Alioski\Ezgjan-Alioski,DF,Leeds United,36,2461,27.3,1.5,3.1,82,46,118,61,80.1,27,8,0,0
+17,Alisson\Alisson,GK,Liverpool,33,2970,33,0.1,0,0,0,0,1,85.1,0,1,74.8,0
+18,Allan\Allan,MF,Everton,24,2051,22.8,0.2,0.9,75,39,98,30,85.8,16,2,0,0
+19,Dele Alli\Dele-Alli,MF,Tottenham,15,620,6.9,1.4,0.9,20,13,30,4,80.1,8,4,0,0
+20,Miguel AlmirÃ³n\Miguel-Almiron,MFFW,Newcastle Utd,34,2429,27,3.2,2.8,48,36,75,24,81.1,28,13,0,0
+21,Marcos Alonso\Marcos-Alonso,DF,Chelsea,13,960,10.7,1.7,1.1,13,22,24,37,81.6,12,9,0,0
+22,Steven Alzate\Steven-Alzate,MFDF,Brighton,15,896,10,0.7,0.5,19,16,26,9,89.5,10,2,0,0
+23,Daniel Amartey\Daniel-Amartey,DF,Leicester City,12,722,8,0.4,0,12,19,24,42,85.8,0,1,0,0
+24,Ethan Ampadu\Ethan-Ampadu,DFMF,Sheffield Utd,25,2089,23.2,0.3,0.9,62,48,101,120,80.5,10,2,0,0
+25,Joachim Andersen\Joachim-Andersen,DF,Fulham,31,2730,30.3,1.1,0.5,41,35,92,233,83.4,9,3,0,0
+26,Elliot Anderson\Elliot-Anderson,MF,Newcastle Utd,1,4,0,0,0,0,0,0,0,100,0,0,0,0
+27,Felipe Anderson\Felipe-Anderson,FWMF,West Ham,2,3,0,0,0,1,0,1,0,66.7,0,0,0,0
+28,Michail Antonio\Michail-Antonio,FW,West Ham,26,1974,21.9,11.4,2.3,14,25,23,8,66.5,23,23,0,0
+29,Alphonse Areola\Alphonse-Areola,GK,Fulham,36,3240,36,0,0,1,0,1,0,73.6,0,0,73.1,0
+30,Stuart Armstrong\Stuart-Armstrong,MF,Southampton,33,2764,30.7,3,2.7,70,31,100,21,79.7,34,12,0,0
+31,Kepa Arrizabalaga\Kepa-Arrizabalaga,GK,Chelsea,7,585,6.5,0,0,0,0,0,0,81.5,0,0,68.2,0
+32,Pierre-Emerick Aubameyang\Pierre-Emerick-Aubameyang,FW,Arsenal,29,2332,25.9,10.6,2.8,17,26,23,14,75,22,19,0,0
+33,Serge Aurier\Serge-Aurier,DF,Tottenham,19,1605,17.8,1.4,1.9,73,43,97,52,80.6,12,6,0,0
+34,Charlie Austin\Charlie-Austin,FW,West Brom,5,138,1.5,0.2,0,4,0,6,3,73.5,0,0,0,0
+35,Jordan Ayew\Jordan-Ayew,FWMF,Crystal Palace,33,2096,23.3,2.4,0.7,52,29,81,12,78.6,12,11,0,0
+36,Luke Ayling\Luke-Ayling,DF,Leeds United,38,3399,37.8,1.4,2.6,114,81,172,111,79.3,25,6,0,0
+37,CÃ©sar Azpilicueta\Cesar-Azpilicueta,DF,Chelsea,26,2188,24.3,0.8,2.6,52,37,89,97,87.5,26,4,0,0
+38,Eric Bailly\Eric-Bailly,DF,Manchester Utd,12,916,10.2,0.1,0,9,17,31,51,90.3,0,0,0,0
+39,FabiÃ¡n Balbuena\Fabian-Balbuena,DF,West Ham,14,1198,13.3,0.6,0,24,25,38,89,76.8,0,2,0,0
+40,George Baldock\George-Baldock,DF,Sheffield Utd,32,2787,31,1.1,1.7,55,46,90,82,78.5,17,2,0,0
+41,Gareth Bale\Gareth-Bale,FW,Tottenham,20,920,10.2,5.3,1.9,14,16,23,17,69.6,20,19,0,0
+42,Patrick Bamford\Patrick-Bamford,FW,Leeds United,38,3050,33.9,17.3,4.1,26,16,39,35,76.3,29,45,0,0
+43,Phil Bardsley\Phil-Bardsley,DF,Burnley,4,274,3,0.1,0,6,4,9,14,70.3,0,0,0,0
+44,Ross Barkley\Ross-Barkley,MF,Aston Villa,24,1531,17,3.2,3.6,6,19,11,8,81,39,11,0,0
+45,Ross Barkley\Ross-Barkley,MF,Chelsea,2,42,0.5,0,0.1,0,0,0,0,84.6,1,1,0,0
+46,Ashley Barnes\Ashley-Barnes,FW,Burnley,22,1331,14.8,5.1,0.7,16,15,21,9,63.5,13,12,0,0
+47,Harvey Barnes\Harvey-Barnes,FWMF,Leicester City,25,1945,21.6,6.2,1.5,22,24,38,13,74.8,25,25,0,0
+48,Kyle Bartley\Kyle-Bartley,DF,West Brom,30,2584,28.7,2.1,0.2,26,74,57,202,77.9,4,5,0,0
+49,Chris Basham\Chris-Basham,DFMF,Sheffield Utd,31,2576,28.6,0.8,0.8,76,49,121,124,81.4,10,1,0,0
+50,Michy Batshuayi\Michy-Batshuayi,FW,Crystal Palace,18,728,8.1,1.4,1.4,3,10,5,5,70.2,7,6,0,0
+51,Jan Bednarek\Jan-Bednarek,DF,Southampton,36,3100,34.4,1,0.3,48,59,126,216,84.6,5,5,0,0
+52,Donny van de Beek\Donny-van-de-Beek,MFFW,Manchester Utd,19,524,5.8,0.3,1,12,11,19,9,84.2,3,1,0,0
+53,HÃ©ctor BellerÃ­n\Hector-Bellerin,DF,Arsenal,25,2089,23.2,0.8,2.4,34,50,47,41,82.9,22,5,0,0
+54,SaÃ¯d Benrahma\Said-Benrahma,FWMF,West Ham,30,1391,15.5,2.3,4.4,31,15,44,10,78,27,11,0,0
+55,Josh Benson\Josh-Benson,MF,Burnley,6,264,2.9,0.2,0,8,3,9,2,72.9,0,0,0,0
+56,Christian Benteke\Christian-Benteke,FW,Crystal Palace,30,1816,20.2,8.1,1,13,17,18,38,63.8,15,33,0,0
+57,Gaetano Berardi\Gaetano-Berardi,DF,Leeds United,2,113,1.3,0,0,3,2,5,5,82.1,0,0,0,0
+58,JÃ³hann Berg GuÃ°mundsson\Johann-Berg-Gudmundsson,MF,Burnley,22,1363,15.1,1.7,0.5,19,19,36,14,75.4,10,8,0,0
+59,Sander Berge\Sander-Berge,MF,Sheffield Utd,15,1120,12.4,1.2,1.2,21,20,24,19,81.9,12,1,0,0
+60,Steven Bergwijn\Steven-Bergwijn,FWMF,Tottenham,21,1208,13.4,2.5,1.3,16,10,28,5,81.1,14,5,0,0
+61,Bernard\Bernard,MFFW,Everton,12,455,5.1,0.2,0.7,5,9,12,3,79.4,10,2,0,0
+62,Bernardo\Bernardo,DFMF,Brighton,3,206,2.3,0.3,0.2,8,6,8,3,71.3,2,0,0,0
+63,Ryan Bertrand\Ryan-Bertrand,DF,Southampton,29,2598,28.9,0.6,1.2,71,47,102,56,76.8,13,3,0,0
+64,Yves Bissouma\Yves-Bissouma,MF,Brighton,36,3111,34.6,1.2,1,114,56,174,67,87.2,15,3,0,0
+65,Jayden Bogle\Jayden-Bogle,DF,Sheffield Utd,16,1110,12.3,1.7,0.2,36,26,56,22,78.3,4,7,0,0
+66,Willy Boly\Willy-Boly,DF,Wolves,21,1879,20.9,1.1,0.4,41,27,64,104,82.8,3,3,0,0
+67,Jarrod Bowen\Jarrod-Bowen,FWMF,West Ham,38,2562,28.5,6.3,4.6,23,39,45,5,68,28,16,0,0
+68,Robbie Brady\Robbie-Brady,MF,Burnley,19,1052,11.7,0.8,0.9,22,25,31,24,67.7,7,5,0,0
+69,Rhian Brewster\Rhian-Brewster,FW,Sheffield Utd,27,1128,12.5,1.7,1.7,14,16,20,3,69.3,8,7,0,0
+70,Nathan Broadhead\Nathan-Broadhead,MF,Everton,1,3,0,0,0,1,0,1,0,100,0,0,0,0
+71,Josh Brownhill\Josh-Brownhill,MF,Burnley,33,2813,31.3,1.9,1.1,51,59,104,56,79,19,8,0,0
+72,Joe Bryan\Joe-Bryan,DFFW,Fulham,16,669,7.4,0.4,0.4,19,21,32,19,70.2,6,2,0,0
+73,Kean Bryan\Kean-Bryan,DF,Sheffield Utd,13,1004,11.2,0.4,0.4,24,26,52,70,72.9,4,1,0,0
+74,Oliver Burke\Oliver-Burke,FW,Sheffield Utd,25,1269,14.1,2.4,1.8,18,21,20,4,70.6,13,6,0,0
+75,Dan Burn\Dan-Burn,DF,Brighton,27,2061,22.9,1.5,1,47,39,84,95,76.7,9,6,0,0
+76,Jack Butland\Jack-Butland,GK,Crystal Palace,1,90,1,0,0,0,0,0,0,28.6,0,0,60,0
+77,David Button\David-Button,GK,West Brom,1,90,1,0,0,0,0,0,0,43.2,0,0,71.4,0
+78,Oskar Buur\Oskar-Buur,DF,Wolves,1,22,0.2,0,0,0,0,0,0,93.3,0,0,0,0
+79,Willy Caballero\Willy-Caballero,GK,Chelsea,1,90,1,0,0,0,0,0,0,92.3,0,0,0,0
+80,Gary Cahill\Gary-Cahill,DF,Crystal Palace,20,1800,20,0.7,0.7,13,45,32,127,84.6,8,3,0,0
+81,Tom Cairney\Tom-Cairney,MF,Fulham,10,759,8.4,0.7,1.4,5,6,6,3,88.7,20,4,0,0
+82,Dominic Calvert-Lewin\Dominic-Calvert-Lewin,FW,Everton,33,2871,31.9,15.3,2,17,31,22,31,71.6,17,46,0,0
+83,JoÃ£o Cancelo\Joao-Cancelo,DF,Manchester City,28,2299,25.5,2,4.9,77,38,130,36,85.7,44,11,0,0
+84,Ian Carlo Poveda\Ian-Carlo-Poveda,MFDF,Leeds United,14,355,3.9,0.4,0.8,9,4,11,0,73.5,4,3,0,0
+85,Andy Carroll\Andy-Carroll,FW,Newcastle Utd,18,392,4.4,1.2,0.1,2,2,3,11,63.1,2,2,0,0
+86,Scott Carson\Scott-Carson,GK,Manchester City,1,90,1,0,0,0,0,0,0,93.8,0,0,33.3,0
+87,Fabio Carvalho\Fabio-Carvalho,MFFW,Fulham,4,255,2.8,1.1,0.4,8,6,12,0,77.9,2,4,0,0
+88,Matty Cash\Matty-Cash,DF,Aston Villa,28,2372,26.4,0.3,2.2,78,77,127,110,73.9,22,2,0,0
+89,Kiko Casilla\Kiko-Casilla,GK,Leeds United,3,270,3,0,0,0,0,0,0,87.2,0,0,83.3,0
+90,Timothy Castagne\Timothy-Castagne,DF,Leicester City,27,2345,26.1,1.3,2,59,53,82,67,83.8,22,3,0,0
+91,Jonny Castro\Jonny-Castro,DF,Wolves,7,495,5.5,0.1,0.1,9,10,16,8,78.7,3,0,0,0
+92,Ivan Cavaleiro\Ivan-Cavaleiro,FWMF,Fulham,36,2472,27.5,5.4,3.4,28,38,46,22,71.9,44,16,0,0
+93,Edinson Cavani\Edinson-Cavani,FW,Manchester Utd,26,1375,15.3,7.4,2.7,15,6,25,11,78.7,15,15,0,0
+94,Dani Ceballos\Dani-Ceballos,MF,Arsenal,25,1615,17.9,0.7,2.9,40,29,64,21,86.5,27,2,0,0
+95,Calum Chambers\Calum-Chambers,DF,Arsenal,10,753,8.4,0.6,1.1,9,16,23,45,80.3,11,0,0,0
+96,Ben Chilwell\Ben-Chilwell,DF,Chelsea,27,2286,25.4,2.4,2.8,46,65,75,66,78.6,30,10,0,0
+97,Hamza Choudhury\Hamza-Choudhury,MF,Leicester City,10,316,3.5,0.4,0,11,9,16,6,80.9,0,1,0,0
+98,Andreas Christensen\Andreas-Christensen,DF,Chelsea,17,1371,15.2,0.1,0.4,20,26,46,80,92.8,6,0,0,0
+99,Carney Chukwuemeka\Carney-Chukwuemeka,FWMF,Aston Villa,2,20,0.2,0.1,0,2,1,2,0,62.5,0,0,0,0
+100,Ciaran Clark\Ciaran-Clark,DF,Newcastle Utd,22,1891,21,0.3,0.1,27,45,53,134,83,2,2,0,0
+101,Nathaniel Clyne\Nathaniel-Clyne,DF,Crystal Palace,13,1145,12.7,0.1,0.4,21,25,34,32,76.8,4,1,0,0
+102,Conor Coady\Conor-Coady,DF,Wolves,37,3303,36.7,1.3,0.1,31,59,56,163,88.1,2,2,0,0
+103,SÃ©amus Coleman\Seamus-Coleman,DFMF,Everton,25,1613,17.9,1.2,1.9,39,39,61,38,81.5,18,4,0,0
+104,Aaron Connolly\Aaron-Connolly,FW,Brighton,17,791,8.8,3.5,0.2,7,9,7,1,78.2,5,8,0,0
+105,Liam Cooper\Liam-Cooper,DF,Leeds United,25,2185,24.3,1.3,0,76,45,129,123,87.7,0,8,0,0
+106,Theo Corbeanu\Theo-Corbeanu,FW,Wolves,1,9,0.1,0,0.1,1,0,2,0,100,1,0,0,0
+107,Jack Cork\Jack-Cork,MF,Burnley,16,1350,15,0.3,0.3,25,20,40,24,82.8,7,0,0,0
+108,HÃ©lder Costa\Helder-Costa,MFFW,Leeds United,22,1156,12.8,2,0.9,30,19,36,9,73.8,9,6,0,0
+109,VladimÃ­r Coufal\Vladimir-Coufal,DF,West Ham,34,3054,33.9,1.2,4.6,77,74,116,122,70.9,46,5,0,0
+110,Aaron Cresswell\Aaron-Cresswell,DF,West Ham,36,3170,35.2,0.9,5.9,31,48,67,98,74.8,60,4,0,0
+111,Patrick Cutrone\Patrick-Cutrone,FWMF,Wolves,2,25,0.3,0.2,0,0,0,0,0,80,0,0,0,0
+112,Stuart Dallas\Stuart-Dallas,DFMF,Leeds United,38,3409,37.9,4.6,2.1,79,55,138,55,82,27,18,0,0
+113,Scott Dann\Scott-Dann,DF,Crystal Palace,15,1350,15,0.3,0,10,26,18,75,84.1,1,2,0,0
+114,Karl Darlow\Karl-Darlow,GK,Newcastle Utd,25,2250,25,0,0,0,0,1,2,50.1,1,0,66.7,0
+115,Ben Davies\Ben-Davies,DF,Tottenham,20,1346,15,0.2,0.6,26,24,39,72,77.9,7,0,0,0
+116,Tom Davies\Tom-Davies,MF,Everton,25,1423,15.8,0.2,1,33,21,67,30,83.8,7,0,0,0
+117,Keinan Davis\Keinan-Davis,FWMF,Aston Villa,15,277,3.1,1,0.5,3,2,3,2,73.4,5,2,0,0
+118,Leif Davis\Leif-Davis,DF,Leeds United,2,33,0.4,0,0,0,3,2,0,84.2,0,0,0,0
+119,Craig Dawson\Craig-Dawson,DF,West Ham,22,1925,21.4,1.7,0,13,32,52,133,82.5,1,5,0,0
+120,Kevin De Bruyne\Kevin-De-Bruyne,MF,Manchester City,25,1997,22.2,9.7,10.2,37,27,53,7,76,79,25,0,0
+121,Liam Delap\Liam-Delap,FW,Manchester City,1,40,0.4,0,0,0,0,0,0,71.4,0,0,0,0
+122,Fabian Delph\Fabian-Delph,MFDF,Everton,8,266,3,0,0.1,5,4,9,3,88,2,0,0,0
+123,Leander Dendoncker\Leander-Dendoncker,MFDF,Wolves,33,2503,27.8,3.3,0.7,49,59,76,75,87.9,16,8,0,0
+124,Mbaye Diagne\Mbaye-Diagne,FW,West Brom,16,1189,13.2,5,1.7,8,7,10,17,70.4,12,9,0,0
+125,Amad Diallo\Amad-Diallo,FW,Manchester Utd,3,166,1.8,0,0.5,3,2,6,3,84.4,2,1,0,0
+126,Ibrahima Diallo\Ibrahima-Diallo,MF,Southampton,22,1020,11.3,0.6,0.5,30,14,46,16,85.2,8,2,0,0
+127,Grady Diangana\Grady-Diangana,MFFW,West Brom,20,1235,13.7,1.2,0.2,35,30,49,5,72.9,5,5,0,0
+128,Raphael Dias Belloli\Raphael-Dias-Belloli,MF,Leeds United,30,2360,26.2,6,8.1,38,39,69,33,66.7,66,27,0,0
+129,RÃºben Dias\Ruben-Dias,DF,Manchester City,32,2843,31.6,2.4,0.1,31,45,53,118,93.5,3,7,0,0
+130,Eric Dier\Eric-Dier,DF,Tottenham,28,2520,28,0.9,0.1,24,50,47,169,84.6,3,2,0,0
+131,Lucas Digne\Lucas-Digne,DF,Everton,30,2681,29.8,0.6,5.4,78,59,104,96,72.5,44,0,0,0
+132,Virgil van Dijk\Virgil-van-Dijk,DF,Liverpool,5,370,4.1,0.3,0,3,3,3,12,90,0,2,0,0
+133,Issa Diop\Issa-Diop,DF,West Ham,18,1381,15.3,0.3,0,26,35,40,82,84.4,1,2,0,0
+134,Moussa Djenepo\Moussa-Djenepo,MF,Southampton,27,1240,13.8,0.9,0.6,46,27,57,16,73.8,7,2,0,0
+135,Matt Doherty\Matt-Doherty,DF,Tottenham,17,1240,13.8,0.4,0.8,23,41,41,54,80.6,11,1,0,0
+136,Gabriel Dos Santos\Gabriel-Dos-Santos,DF,Arsenal,23,1996,22.2,1,0.1,28,41,51,106,86,2,4,0,0
+137,Abdoulaye DoucourÃ©\Abdoulaye-Doucoure,MF,Everton,29,2443,27.1,2.1,2.2,56,43,91,29,86,18,5,0,0
+138,Martin DÃºbravka\Martin-Dubravka,GK,Newcastle Utd,13,1170,13,0,0,0,0,0,0,72.6,0,0,69.5,0
+139,Paul Dummett\Paul-Dummett,DF,Newcastle Utd,15,1255,13.9,0.3,0.5,21,30,38,95,76.8,4,1,0,0
+140,Lewis Dunk\Lewis-Dunk,DF,Brighton,33,2931,32.6,2.5,0.9,34,40,63,126,90,9,13,0,0
+141,Jimmy Dunne\Jimmy-Dunne,DF,Burnley,3,270,3,0.4,0.1,4,7,7,19,71.2,2,1,0,0
+142,Ederson\Ederson,GK,Manchester City,36,3240,36,0,0.4,0,0,0,2,83.1,1,0,75,0
+143,Kyle Edwards\Kyle-Edwards,MFFW,West Brom,5,118,1.3,0.1,0,3,2,4,0,85.7,0,1,0,0
+144,John Egan\John-Egan,DF,Sheffield Utd,31,2629,29.2,0.7,0.2,47,56,88,160,84.6,3,3,0,0
+145,Anthony Elanga\Anthony-Elanga,FW,Manchester Utd,2,155,1.7,0.3,0,4,2,5,1,81.1,1,1,0,0
+146,Ahmed Elmohamady\Ahmed-Elmohamady,DF,Aston Villa,14,839,9.3,0.5,0.6,18,15,45,32,78.1,13,1,0,0
+147,Mohamed Elneny\Mohamed-Elneny,MF,Arsenal,23,1544,17.2,0.5,0.2,16,18,36,24,93.4,4,2,0,0
+148,Jonny Evans\Jonny-Evans,DF,Leicester City,28,2473,27.5,1.7,0.3,21,27,62,146,87.5,8,3,0,0
+149,Eberechi Eze\Eberechi-Eze,MF,Crystal Palace,34,2559,28.4,2.2,2.8,39,32,68,6,79.3,39,13,0,0
+150,Åukasz FabiaÅ„ski\Lukasz-Fabianski,GK,West Ham,35,3150,35,0,0,0,3,0,1,60.5,0,0,69.4,0
+151,Fabinho\Fabinho,DFMF,Liverpool,30,2567,28.5,0.4,0.4,72,41,121,106,91.1,3,1,0,0
+152,Bruno Fernandes\Bruno-Fernandes,MF,Manchester Utd,37,3099,34.4,15.4,11,60,40,82,27,74.6,94,40,0,0
+153,Federico FernÃ¡ndez\Federico-Fernandez,DF,Newcastle Utd,24,2079,23.1,0.3,0.3,35,51,52,166,80.2,5,3,0,0
+154,Fernandinho\Fernandinho,MF,Manchester City,21,1188,13.2,0.8,0.9,31,15,57,32,87.7,12,3,0,0
+155,Sam Field\Sam-Field,MF,West Brom,3,62,0.7,0,0,9,6,9,4,65.2,0,0,0,0
+156,Roberto Firmino\Roberto-Firmino,FW,Liverpool,36,2838,31.5,12.6,6.4,35,58,45,11,79.7,46,32,0,0
+157,John Fleck\John-Fleck,MF,Sheffield Utd,31,2575,28.6,0.9,2.6,46,37,84,18,78,34,5,0,0
+158,Phil Foden\Phil-Foden,FWMF,Manchester City,28,1616,18,5.5,4.1,26,15,38,12,82,34,20,0,0
+159,Wesley Fofana\Wesley-Fofana,DF,Leicester City,28,2262,25.1,1,0.3,63,47,114,125,88.2,6,2,0,0
+160,Pablo Fornals\Pablo-Fornals,FWMF,West Ham,33,2572,28.6,6.5,2.6,44,53,77,9,77.3,30,15,0,0
+161,Fraser Forster\Fraser-Forster,GK,Southampton,8,720,8,0,0,0,0,0,4,56.2,0,0,67.9,0
+162,Timothy Fosu-Mensah\Timothy-Fosu-Mensah,DF,Manchester Utd,1,80,0.9,0,0.3,3,1,4,1,86.7,2,0,0,0
+163,Tyrese Francois\Tyrese-Francois,DF,Fulham,1,15,0.2,0,0,0,1,0,0,93.3,0,0,0,0
+164,Ryan Fraser\Ryan-Fraser,FWMF,Newcastle Utd,18,928,10.3,0.9,2.1,4,8,7,3,65.9,25,6,0,0
+165,Fred\Fred,MF,Manchester Utd,30,2390,26.6,1.9,2.5,88,62,135,33,88.2,24,7,0,0
+166,Ryan Fredericks\Ryan-Fredericks,DFFW,West Ham,14,569,6.3,0.3,1.2,13,16,21,22,72.8,13,2,0,0
+167,Christian Fuchs\Christian-Fuchs,DF,Leicester City,9,702,7.8,0.1,0,15,16,27,31,81.2,1,0,0,0
+168,Darnell Furlong\Darnell-Furlong,DF,West Brom,35,2932,32.6,2,2.1,49,80,76,120,59.5,17,5,0,0
+169,Conor Gallagher\Conor-Gallagher,MF,West Brom,30,2531,28.1,1.8,1.6,82,63,121,30,77.8,18,7,0,0
+170,Eric GarcÃ­a\Eric-Garcia,DF,Manchester City,6,383,4.3,0.1,0.1,10,5,15,12,93.6,2,0,0,0
+171,Dwight Gayle\Dwight-Gayle,FWMF,Newcastle Utd,18,514,5.7,2,0.5,6,3,7,0,79.8,6,6,0,0
+172,Jean-Philippe Gbamin\Jean-Philippe-Gbamin,MF,Everton,1,12,0.1,0,0,1,1,1,1,66.7,0,0,0,0
+173,David de Gea\David-de-Gea,GK,Manchester Utd,26,2295,25.5,0,0,0,0,0,1,77.1,0,0,67.1,0
+174,Anwar El Ghazi\Anwar-El-Ghazi,FW,Aston Villa,28,1613,17.9,8.1,2.3,16,11,26,12,70.5,24,26,0,0
+175,Kieran Gibbs\Kieran-Gibbs,DF,West Brom,10,809,9,0,0.3,14,17,28,33,72.2,3,0,0,0
+176,Morgan Gibbs-White\Morgan-Gibbs-White,FWMF,Wolves,11,414,4.6,1,0.6,7,6,10,1,80.9,9,3,0,0
+177,Billy Gilmour\Billy-Gilmour,MF,Chelsea,5,261,2.9,0,0.1,3,5,8,1,89.3,3,0,0,0
+178,Olivier Giroud\Olivier-Giroud,FW,Chelsea,17,748,8.3,4.8,0.7,8,3,12,10,74.2,7,10,0,0
+179,Ben Godfrey\Ben-Godfrey,DF,Everton,31,2685,29.8,0.9,0.6,56,85,101,135,84.6,1,2,0,0
+180,AndrÃ© Gomes\Andre-Gomes,MF,Everton,28,1570,17.4,0.5,1,48,30,63,9,83.2,15,3,0,0
+181,Joe Gomez\Joe-Gomez,DF,Liverpool,7,590,6.6,0,0,5,7,10,32,90.2,1,0,0,0
+182,Anthony Gordon\Anthony-Gordon,FWMF,Everton,3,88,1,0,0,3,2,4,1,84.6,1,0,0,0
+183,Karlan Grant\Karlan-Grant,FWMF,West Brom,21,1127,12.5,2.1,0,6,7,17,13,73.2,0,9,0,0
+184,Demarai Gray\Demarai-Gray,FW,Leicester City,1,19,0.2,0.1,0,2,0,2,0,63.6,0,0,0,0
+185,Jack Grealish\Jack-Grealish,FWMF,Aston Villa,26,2185,24.3,4.3,8.6,27,26,40,6,78.5,83,17,0,0
+186,Mason Greenwood\Mason-Greenwood,FW,Manchester Utd,31,1822,20.2,7.4,1.8,19,7,28,3,83.1,15,23,0,0
+187,Pascal GroÃŸ\Pascal-Gross,MFDF,Brighton,34,2484,27.6,5.6,5.5,44,33,69,24,75.5,67,4,0,0
+188,Kamil Grosicki\Kamil-Grosicki,FWMF,West Brom,3,148,1.6,0.1,0.1,1,1,1,2,65.3,3,0,0,0
+189,Vicente Guaita\Vicente-Guaita,GK,Crystal Palace,37,3330,37,0,0,0,0,0,1,55.4,0,0,63.7,0
+190,Ä°lkay GÃ¼ndoÄŸan\Ilkay-Gundogan,MF,Manchester City,28,2029,22.5,9,4.5,25,15,44,14,91,42,21,0,0
+191,Antwoine Hackford\Antwoine-Hackford,DFFW,Sheffield Utd,1,11,0.1,0.1,0,0,1,0,0,100,0,0,0,0
+192,SÃ©bastien Haller\Sebastien-Haller,FW,West Ham,16,937,10.4,2.9,1.2,11,4,16,7,67.9,9,11,0,0
+193,Rekeem Harper\Rekeem-Harper,MF,West Brom,2,32,0.4,0,0,2,0,2,0,81.3,0,1,0,0
+194,Jack Harrison\Jack-Harrison,MF,Leeds United,36,2847,31.6,6.6,7.1,67,39,92,26,67.8,58,19,0,0
+195,Kortney Hause\Kortney-Hause,DF,Aston Villa,7,630,7,1.2,0,5,6,17,65,78.2,0,1,0,0
+196,Kai Havertz\Kai-Havertz,MFFW,Chelsea,27,1520,16.9,6.3,1.6,19,27,30,15,86.1,17,15,0,0
+197,Isaac Hayden\Isaac-Hayden,MFDF,Newcastle Utd,24,1942,21.6,0.5,0.4,50,42,96,57,79.6,5,2,0,0
+198,Michael Hector\Michael-Hector,DF,Fulham,4,263,2.9,0.1,0,7,6,7,11,79.4,1,0,0,0
+199,Ahmed Hegazi\Ahmed-Hegazi,DF,West Brom,1,90,1,0,0,0,2,0,11,71.2,0,0,0,0
+200,Dean Henderson\Dean-Henderson,GK,Manchester Utd,13,1125,12.5,0,0,0,0,0,0,75.2,0,0,76,0
+201,Jordan Henderson\Jordan-Henderson,MFDF,Liverpool,21,1704,18.9,1.7,1.4,19,28,49,43,86.8,12,4,0,0
+202,Jeff Hendrick\Jeff-Hendrick,MF,Newcastle Utd,22,1422,15.8,1.1,0.7,6,24,18,28,80.5,4,2,0,0
+203,Pablo HernÃ¡ndez\Pablo-Hernandez,MF,Leeds United,16,427,4.7,1.2,0.7,5,2,10,1,74.2,6,3,0,0
+204,Son Heung-min\Son-Heung-min,FW,Tottenham,37,3114,34.6,10.3,8.9,29,34,52,4,76.7,77,35,0,0
+205,Ki-Jana Hoever\Ki-Jana-Hoever,DF,Wolves,12,577,6.4,0.1,0.2,18,7,27,20,74.3,3,0,0,0
+206,Rob Holding\Rob-Holding,DF,Arsenal,30,2558,28.4,1.1,0.2,39,54,62,157,89.3,4,2,0,0
+207,Mason Holgate\Mason-Holgate,DF,Everton,28,2287,25.4,0.8,0.6,65,55,106,110,78.8,9,3,0,0
+208,Conor Hourihane\Conor-Hourihane,MF,Aston Villa,4,225,2.5,0.5,0.8,0,3,0,2,74.8,4,2,0,0
+209,Callum Hudson-Odoi\Callum-Hudson-Odoi,FWDF,Chelsea,23,1059,11.8,1.4,3.1,24,18,34,8,82.2,31,6,0,0
+210,Niall Huggins\Niall-Huggins,DF,Leeds United,1,38,0.4,0,0,0,0,0,0,73.9,0,0,0,0
+211,Pierre HÃ¸jbjerg\Pierre-Hojbjerg,MF,Tottenham,38,3420,38,1.1,1.9,118,59,167,82,88.9,17,7,0,0
+212,Odion Ighalo\Odion-Ighalo,FW,Manchester Utd,1,10,0.1,0,0,0,0,0,0,100,0,0,0,0
+213,Kelechi Iheanacho\Kelechi-Iheanacho,FW,Leicester City,25,1459,16.2,7.8,2.9,12,19,16,1,79.8,25,25,0,0
+214,Danny Ings\Danny-Ings,FW,Southampton,29,2173,24.1,8.3,2.6,25,47,32,17,66.3,22,24,0,0
+215,Branislav IvanoviÄ‡\Branislav-Ivanovic,DF,West Brom,13,767,8.5,0.6,0.1,14,15,17,31,85.2,1,1,0,0
+216,Alex Iwobi\Alex-Iwobi,FWDF,Everton,30,1542,17.1,1.1,1.8,33,22,51,12,77,16,3,0,0
+217,JosÃ© Izquierdo\Jose-Izquierdo,DFMF,Brighton,1,9,0.1,0,0,0,0,0,0,88.9,0,1,0,0
+218,Phil Jagielka\Phil-Jagielka,DF,Sheffield Utd,10,526,5.8,0,0,9,15,21,47,76.3,0,0,0,0
+219,Alireza Jahanbakhsh\Alireza-Jahanbakhsh,FWMF,Brighton,21,528,5.9,1.6,3.2,8,9,15,1,74,11,3,0,0
+220,Daniel James\Daniel-James,FW,Manchester Utd,15,910,10.1,2.3,1.2,12,14,22,4,78,10,6,0,0
+221,Reece James\Reece-James,DF,Chelsea,32,2373,26.4,1.6,3,64,58,105,54,85,40,12,0,0
+222,Alexandre Jankewitz\Alexandre-Jankewitz,MF,Southampton,2,3,0,0,0,2,0,2,0,66.7,0,0,0,0
+223,Daniel Jebbison\Daniel-Jebbison,FW,Sheffield Utd,4,284,3.2,1.6,0,4,8,7,0,70.6,1,2,0,0
+224,Gabriel Jesus\Gabriel-Jesus,FW,Manchester City,29,2063,22.9,8.7,3.4,23,19,42,4,84.6,28,16,0,0
+225,RaÃºl JimÃ©nez\Raul-Jimenez,FW,Wolves,10,823,9.1,2.4,0.8,7,8,13,10,78.7,8,10,0,0
+226,Joelinton\Joelinton,FWMF,Newcastle Utd,31,1983,22,5.9,2.1,44,37,64,21,73.9,17,19,0,0
+227,Ben Johnson\Ben-Johnson,DF,West Ham,14,523,5.8,0.4,0.2,9,10,20,14,70.3,4,1,0,0
+228,Sam Johnstone\Sam-Johnstone,GK,West Brom,37,3330,37,0,0.4,0,1,0,0,49.9,1,0,70.6,0
+229,Curtis Jones\Curtis-Jones,MF,Liverpool,24,1179,13.1,1.4,1.6,21,18,38,10,91.2,13,8,0,0
+230,Jorginho\Jorginho,MF,Chelsea,28,2010,22.3,7,2.1,59,42,110,21,89.5,24,0,0,0
+231,Willian JosÃ©\Willian-Jose,FW,Wolves,17,1110,12.3,1.9,0.6,2,7,9,10,81.4,11,6,0,0
+232,Diogo Jota\Diogo-Jota,FW,Liverpool,19,1112,12.4,6.6,1.6,14,12,22,4,72.5,12,26,0,0
+233,James Justin\James-Justin,DF,Leicester City,23,2070,23,1.6,1.6,63,54,88,64,79.2,18,3,0,0
+234,Ozan Kabak\Ozan-Kabak,DF,Liverpool,9,801,8.9,0.1,0.2,19,5,31,49,90.6,1,0,0,0
+235,Aboubakar Kamara\Aboubakar-Kamara,FWDF,Fulham,11,315,3.5,0.4,0.4,2,10,4,2,71.9,6,2,0,0
+236,Harry Kane\Harry-Kane,FW,Tottenham,35,3082,34.2,20.5,7.4,18,30,33,41,70.1,48,47,0,0
+237,N'Golo KantÃ©\NGolo-Kante,MF,Chelsea,30,2146,23.8,0.9,1.1,87,62,149,32,86.6,21,3,0,0
+238,Moise Kean\Moise-Kean,FW,Everton,2,15,0.2,0,0,0,0,0,0,77.8,0,0,0,0
+239,Michael Keane\Michael-Keane,DF,Everton,35,2991,33.2,1.2,1.1,31,74,74,198,88.9,8,6,0,0
+240,Neeskens Kebano\Neeskens-Kebano,FWMF,Fulham,5,119,1.3,0.3,0,1,5,1,1,78.6,0,0,0,0
+241,Naby KeÃ¯ta\Naby-Keita,MF,Liverpool,10,520,5.8,0.5,0.8,7,11,19,6,87.4,6,2,0,0
+242,CaoimhÃ­n Kelleher\Caoimhin-Kelleher,GK,Liverpool,2,180,2,0,0,0,0,0,0,82.3,0,0,85.7,0
+243,Martin Kelly\Martin-Kelly,DF,Crystal Palace,1,2,0,0,0,1,0,1,1,100,0,0,0,0
+244,Jonjoe Kenny\Jonjoe-Kenny,DF,Everton,4,79,0.9,0,0,1,2,2,1,77,0,0,0,0
+245,Reda Khadra\Reda-Khadra,FW,Brighton,1,5,0.1,0,0,0,0,0,0,0,0,0,0,0
+246,Max Kilman\Max-Kilman,DF,Wolves,18,1310,14.6,0.4,0.5,27,20,45,58,88.6,4,2,0,0
+247,Joshua King\Joshua-King,MFFW,Everton,11,148,1.6,0.8,0,4,3,5,1,70.8,0,1,0,0
+248,Mateusz Klich\Mateusz-Klich,MF,Leeds United,35,2393,26.6,3.3,3.9,52,21,69,23,79.3,46,10,0,0
+249,Robin Koch\Robin-Koch,DFMF,Leeds United,17,1132,12.6,0.8,0.2,29,31,42,40,85.6,4,2,0,0
+250,Sead KolaÅ¡inac\Sead-Kolasinac,DF,Arsenal,1,90,1,0,0,0,0,0,0,84.4,0,0,0,0
+251,Terence Kongolo\Terence-Kongolo,DF,Fulham,1,90,1,0,0,4,2,4,6,94.9,1,0,0,0
+252,Ezri Konsa\Ezri-Konsa,DF,Aston Villa,36,3196,35.5,2.2,0.2,34,65,61,193,86.5,1,7,0,0
+253,Cheikhou KouyatÃ©\Cheikhou-Kouyate,DF,Crystal Palace,36,3121,34.7,0.8,0.2,69,62,107,163,78.8,6,2,0,0
+254,Mateo KovaÄiÄ‡\Mateo-Kovacic,MF,Chelsea,27,1815,20.2,1,1.8,55,15,77,13,91,23,4,0,0
+255,Emil Krafth\Emil-Krafth,DF,Newcastle Utd,16,1288,14.3,0.2,0.4,23,33,44,56,72.5,6,3,0,0
+256,Filip KrovinoviÄ‡\Filip-Krovinovic,MF,West Brom,11,546,6.1,0.2,0.3,16,5,18,6,84.4,5,2,0,0
+257,Alexandre Lacazette\Alexandre-Lacazette,FW,Arsenal,31,1923,21.4,9.7,2.7,25,17,39,13,78.2,18,25,0,0
+258,Adam Lallana\Adam-Lallana,MFFW,Brighton,30,1596,17.7,2.4,2.8,32,26,48,14,84.7,27,4,0,0
+259,Ã‰rik Lamela\Erik-Lamela,FWMF,Tottenham,23,717,8,1.4,0.9,18,8,22,1,78.5,8,9,0,0
+260,Tariq Lamptey\Tariq-Lamptey,DF,Brighton,11,886,9.8,0.6,1.1,17,15,30,17,78,11,2,0,0
+261,Manuel Lanzini\Manuel-Lanzini,MFFW,West Ham,17,566,6.3,1.2,0.9,6,15,12,5,88.9,11,3,0,0
+262,Aymeric Laporte\Aymeric-Laporte,DF,Manchester City,16,1344,14.9,0.8,0.7,13,18,21,53,92,4,1,0,0
+263,Jamaal Lascelles\Jamaal-Lascelles,DF,Newcastle Utd,19,1625,18.1,1,0,19,39,34,108,81.3,1,3,0,0
+264,Maxime Le Marchand\Maxime-Le-Marchand,DF,Fulham,2,123,1.4,0,0,2,0,2,7,95.1,0,0,0,0
+265,Mario Lemina\Mario-Lemina,MF,Fulham,28,1703,18.9,0.9,0.8,61,28,104,37,85.3,10,2,0,0
+266,Bernd Leno\Bernd-Leno,GK,Arsenal,35,3131,34.8,0,0,0,1,0,0,79.8,0,0,69.2,0
+267,Khanya Leshabela\Khanya-Leshabela,MF,Leicester City,1,10,0.1,0,0,1,0,1,0,77.8,0,0,0,0
+268,Jamal Lewis\Jamal-Lewis,DF,Newcastle Utd,24,1837,20.4,0.2,1.6,50,35,70,35,76.2,15,1,0,0
+269,Victor LindelÃ¶f\Victor-Lindelof,DF,Manchester Utd,29,2585,28.7,0.7,0.7,26,40,58,132,91.1,6,1,0,0
+270,Jesse Lingard\Jesse-Lingard,MFFW,West Ham,16,1421,15.8,5.1,1.5,15,7,22,1,81.3,17,20,0,0
+271,Jake Livermore\Jake-Livermore,MF,West Brom,18,1242,13.8,0.2,0.2,29,33,48,33,74.3,5,0,0,0
+272,Diego Llorente\Diego-Llorente,DF,Leeds United,15,1204,13.4,0.7,0.6,39,25,80,72,85.4,4,3,0,0
+273,Hugo Lloris\Hugo-Lloris,GK,Tottenham,38,3420,38,0,0,0,0,0,2,71.5,0,0,75.7,0
+274,Giovani Lo Celso\Giovani-Lo-Celso,MF,Tottenham,18,945,10.5,1.2,1.3,33,11,41,9,78.9,14,5,0,0
+275,Ruben Loftus-Cheek\Ruben-Loftus-Cheek,MFFW,Fulham,30,1909,21.2,3.1,1.4,32,24,55,15,83.1,15,8,0,0
+276,Ruben Loftus-Cheek\Ruben-Loftus-Cheek,FW,Chelsea,1,60,0.7,0,0,0,1,1,0,68.8,0,0,0,0
+277,Kevin Long\Kevin-Long,DF,Burnley,8,637,7.1,0.3,0,14,9,18,31,71,0,0,0,0
+278,Shane Long\Shane-Long,FWMF,Southampton,11,210,2.3,0,0,2,1,4,1,64.4,0,1,0,0
+279,Matthew Longstaff\Matthew-Longstaff,MF,Newcastle Utd,5,377,4.2,0,0.1,4,9,10,3,79.1,2,0,0,0
+280,Sean Longstaff\Sean-Longstaff,MF,Newcastle Utd,22,1412,15.7,1.4,1.1,36,29,55,21,79,11,5,0,0
+281,Ademola Lookman\Ademola-Lookman,FWMF,Fulham,34,2747,30.5,5.5,5.2,38,42,63,13,75.3,60,21,0,0
+282,Max Lowe\Max-Lowe,DF,Sheffield Utd,8,550,6.1,0.1,0.2,23,21,26,12,65,3,1,0,0
+283,Matthew Lowton\Matthew-Lowton,DF,Burnley,34,3060,34,0.7,2.3,67,66,122,116,68.8,24,4,0,0
+284,David Luiz\David-Luiz,DF,Arsenal,20,1396,15.5,0.9,0.4,15,23,27,67,83.6,2,2,0,0
+285,Douglas Luiz\Douglas-Luiz,MF,Aston Villa,33,2781,30.9,1.5,1.5,63,60,96,49,84.8,19,7,0,0
+286,John Lundstram\John-Lundstram,MF,Sheffield Utd,28,2032,22.6,2,1.2,26,39,47,34,81,19,4,0,0
+287,Alexis Mac Allister\Alexis-Mac-Allister,MFFW,Brighton,21,1115,12.4,1.1,2.4,25,20,36,5,79.4,15,3,0,0
+288,James Maddison\James-Maddison,MFFW,Leicester City,31,2099,23.3,4.4,5.3,37,13,48,6,77.3,52,24,0,0
+289,Harry Maguire\Harry-Maguire,DF,Manchester Utd,34,3047,33.9,2.1,0.3,30,45,91,176,89,7,9,0,0
+290,Riyad Mahrez\Riyad-Mahrez,FW,Manchester City,27,1949,21.7,5.6,5.9,20,24,26,3,84.2,41,22,0,0
+291,Ainsley Maitland-Niles\Ainsley-Maitland-Niles,MF,West Brom,15,1230,13.7,0.7,0.7,20,19,45,26,76.4,5,3,0,0
+292,Ainsley Maitland-Niles\Ainsley-Maitland-Niles,DF,Arsenal,11,490,5.4,0.1,0.2,17,13,30,12,78.5,3,1,0,0
+293,Josh Maja\Josh-Maja,FWMF,Fulham,15,810,9,4.8,1.1,7,5,11,2,87.7,8,7,0,0
+294,Sadio ManÃ©\Sadio-Mane,FW,Liverpool,35,2810,31.2,15.3,5.7,42,39,57,7,75.4,57,35,0,0
+295,Javier Manquillo\Javier-Manquillo,DF,Newcastle Utd,13,825,9.2,0,0.2,27,17,35,21,74,4,0,0,0
+296,Fernando MarÃ§al\Fernando-Marcal,DF,Wolves,13,623,6.9,0.1,0.2,10,19,18,23,82.7,4,0,0,0
+297,Solly March\Solly-March,DF,Brighton,21,1672,18.6,1.7,1.7,56,50,75,16,69.8,27,4,0,0
+298,Pablo MarÃ­\Pablo-Mari,DF,Arsenal,10,900,10,0,0,14,13,19,56,90.7,0,0,0,0
+299,Anthony Martial\Anthony-Martial,FW,Manchester Utd,22,1480,16.4,6.5,2,1,22,5,9,82.8,15,21,0,0
+300,Martinelli\Martinelli,FW,Arsenal,14,589,6.5,3.4,2.1,6,10,14,6,79.2,9,8,0,0
+301,Emiliano MartÃ­nez\Emiliano-Martinez,GK,Aston Villa,38,3420,38,0,0.2,0,0,0,0,65.6,2,0,76.8,0
+302,Arthur Masuaku\Arthur-Masuaku,DFFW,West Ham,12,1006,11.2,0.3,1.9,20,35,26,16,80.1,13,2,0,0
+303,Juan Mata\Juan-Mata,FWMF,Manchester Utd,9,509,5.7,1.1,0.8,2,2,4,3,84,8,3,0,0
+304,Jean-Philippe Mateta\Jean-Philippe-Mateta,FW,Crystal Palace,7,221,2.5,0.2,0,1,2,2,2,60.8,1,2,0,0
+305,Nemanja MatiÄ‡\Nemanja-Matic,MF,Manchester Utd,20,1106,12.3,0.3,0.4,24,30,42,21,90.5,7,3,0,0
+306,JoÃ«l Matip\Joel-Matip,DF,Liverpool,10,691,7.7,0.6,1,15,7,19,28,88.4,2,2,0,0
+307,Neal Maupay\Neal-Maupay,FWMF,Brighton,33,2512,27.9,13,3.6,24,18,36,9,77.4,31,22,0,0
+308,James McArthur\James-McArthur,MF,Crystal Palace,18,1466,16.3,0.2,0.9,56,39,79,25,81.5,13,0,0,0
+309,Oliver McBurnie\Oliver-McBurnie,FW,Sheffield Utd,23,1324,14.7,3.1,1.1,13,17,21,25,62.9,14,12,0,0
+310,Alex McCarthy\Alex-McCarthy,GK,Southampton,30,2700,30,0,0,0,0,0,1,64.3,0,0,63.8,0
+311,James McCarthy\James-McCarthy,MF,Crystal Palace,16,821,9.1,0,0.3,18,20,26,12,77.2,6,0,0,0
+312,John McGinn\John-McGinn,MF,Aston Villa,37,3330,37,2.2,3,74,39,119,30,77.3,40,11,0,0
+313,David McGoldrick\David-McGoldrick,FWMF,Sheffield Utd,35,2397,26.6,7.1,1.3,30,36,42,29,74.4,15,24,0,0
+314,Dwight McNeil\Dwight-McNeil,MF,Burnley,36,3069,34.1,1.1,6.5,43,58,81,27,68.9,50,9,0,0
+315,Scott McTominay\Scott-McTominay,MF,Manchester Utd,32,2129,23.7,2.1,0.9,48,56,99,54,87.3,14,7,0,0
+316,Ben Mee\Ben-Mee,DF,Burnley,30,2693,29.9,1.6,0.3,38,61,73,241,75.1,6,6,0,0
+317,Hannibal Mejbri\Hannibal-Mejbri,MF,Manchester Utd,1,9,0.1,0,0,0,0,0,0,100,0,0,0,0
+318,Benjamin Mendy\Benjamin-Mendy,DF,Manchester City,13,953,10.6,0.4,0.4,15,24,21,11,81.7,5,2,0,0
+319,Edouard Mendy\Edouard-Mendy,GK,Chelsea,31,2745,30.5,0,0,0,0,0,0,84.6,0,0,70.5,0
+320,Nampalys Mendy\Nampalys-Mendy,MF,Leicester City,23,1459,16.2,0.1,0.4,35,24,44,11,91.4,6,2,0,0
+321,Illan Meslier\Illan-Meslier,GK,Leeds United,35,3150,35,0,0.1,0,0,0,1,80.9,1,0,75.1,0
+322,Luka MilivojeviÄ‡\Luka-Milivojevic,MF,Crystal Palace,31,2359,26.2,2.3,1.3,67,47,111,50,81.1,20,5,0,0
+323,James Milner\James-Milner,MFDF,Liverpool,26,1070,11.9,0.4,1.2,26,39,42,21,84.9,13,3,0,0
+324,Yerry Mina\Yerry-Mina,DF,Everton,24,1937,21.5,1.3,0,25,38,38,130,90.9,0,4,0,0
+325,Takumi Minamino\Takumi-Minamino,MFFW,Liverpool,9,293,3.3,0.7,0,4,0,4,3,79.9,0,3,0,0
+326,Takumi Minamino\Takumi-Minamino,MFFW,Southampton,10,711,7.9,1.2,0.5,5,10,13,11,72.4,5,4,0,0
+327,Tyrone Mings\Tyrone-Mings,DF,Aston Villa,36,3194,35.5,1.9,0.6,33,84,71,230,79.6,7,7,0,0
+328,Tyrick Mitchell\Tyrick-Mitchell,DF,Crystal Palace,19,1710,19,0.4,0.4,69,51,99,67,70.2,3,2,0,0
+329,Aleksandar MitroviÄ‡\Aleksandar-Mitrovic,FW,Fulham,27,1402,15.6,6.5,2.6,11,18,14,7,76,22,17,0,0
+330,Jakub Moder\Jakub-Moder,DFMF,Brighton,12,647,7.2,0.9,0.2,16,17,24,14,74.6,3,3,0,0
+331,Jayson Molumby\Jayson-Molumby,MF,Brighton,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+332,Wesley Moraes\Wesley-Moraes,MFFW,Aston Villa,3,18,0.2,0,0,0,0,0,0,100,0,1,0,0
+333,Wes Morgan\Wes-Morgan,DF,Leicester City,3,18,0.2,0,0,0,0,0,1,100,0,0,0,0
+334,Mason Mount\Mason-Mount,MFFW,Chelsea,36,2890,32.1,6.8,7.8,75,47,111,15,82.3,90,26,0,0
+335,Lucas Moura\Lucas-Moura,FWMF,Tottenham,30,1411,15.7,2.2,2.3,34,18,54,11,74.7,16,6,0,0
+336,Lys Mousset\Lys-Mousset,FWMF,Sheffield Utd,11,296,3.3,0.7,0.3,0,1,0,1,80,3,2,0,0
+337,JoÃ£o Moutinho\Joao-Moutinho,MF,Wolves,33,2528,28.1,0.7,2.6,70,40,109,31,84.8,47,4,0,0
+338,Joel Mumbongo\Joel-Mumbongo,FW,Burnley,4,40,0.4,0,0,0,1,0,0,83.3,0,0,0,0
+339,Jacob Murphy\Jacob-Murphy,DFMF,Newcastle Utd,26,1626,18.1,1.2,2.2,49,41,69,34,68.4,18,8,0,0
+340,Shkodran Mustafi\Shkodran-Mustafi,DF,Arsenal,3,47,0.5,0,0,1,1,1,2,85.4,0,0,0,0
+341,Marvelous Nakamba\Marvelous-Nakamba,MF,Aston Villa,13,749,8.3,0,0,23,21,34,18,85.7,1,1,0,0
+342,Iliman Ndiaye\Iliman-Ndiaye,MF,Sheffield Utd,1,12,0.1,0,0,0,1,0,0,100,0,0,0,0
+343,Wilfred Ndidi\Wilfred-Ndidi,MFDF,Leicester City,26,2176,24.2,0.8,1.5,108,66,170,77,88.1,15,1,0,0
+344,Tanguy Ndombele\Tanguy-Ndombele,MF,Tottenham,33,2091,23.2,1.4,2.4,49,35,79,19,85.3,16,7,0,0
+345,Reiss Nelson\Reiss-Nelson,FW,Arsenal,2,71,0.8,0,0,0,1,1,1,56.7,0,0,0,0
+346,Pedro Neto\Pedro-Neto,FWMF,Wolves,31,2550,28.3,4.8,6.2,21,25,50,11,78.8,60,21,0,0
+347,RÃºben Neves\Ruben-Neves,MF,Wolves,36,2675,29.7,5.1,2.1,90,71,136,54,84.3,32,14,0,0
+348,Eddie Nketiah\Eddie-Nketiah,FW,Arsenal,17,423,4.7,2.4,0.8,4,7,5,4,82,5,5,0,0
+349,Niels Nkounkou\Niels-Nkounkou,DFFW,Everton,2,81,0.9,0,0,4,5,4,4,79.4,0,0,0,0
+350,Dan Nlundulu\Dan-Nlundulu,FW,Southampton,13,111,1.2,0.1,0,0,5,0,2,66.7,1,0,0,0
+351,Mark Noble\Mark-Noble,MF,West Ham,21,712,7.9,0,0.2,7,9,18,7,87.2,5,0,0,0
+352,Will Norris\Will-Norris,GK,Burnley,2,180,2,0,0.1,0,0,0,0,48.2,1,0,33.3,0
+353,Oliver Norwood\Oliver-Norwood,MF,Sheffield Utd,32,2220,24.7,0.5,1.8,56,37,95,61,79.6,31,1,0,0
+354,Jack O'Connell\Jack-OConnell,DF,Sheffield Utd,2,180,2,0,0,3,6,3,11,77.9,0,0,0,0
+355,Dara O'Shea\Dara-OShea,DF,West Brom,28,2102,23.4,0.2,0.1,51,53,90,143,66,6,0,0,0
+356,Michael Obafemi\Michael-Obafemi,FW,Southampton,4,61,0.7,0,0.1,1,1,2,0,86.7,1,0,0,0
+357,Denis Odoi\Denis-Odoi,DF,Fulham,3,270,3,0.1,0.1,3,6,4,11,82.7,1,1,0,0
+358,Angelo Ogbonna\Angelo-Ogbonna,DF,West Ham,28,2492,27.7,1.5,1,27,41,54,167,84.4,3,4,0,0
+359,Robin Olsen\Robin-Olsen,GK,Everton,7,630,7,0,0,0,0,0,2,71.4,0,0,70.4,0
+360,Josh Onomah\Josh-Onomah,MF,Fulham,11,374,4.2,0.6,0.1,10,4,13,4,89.8,2,1,0,0
+361,Divock Origi\Divock-Origi,FW,Liverpool,9,186,2.1,1,0.2,5,4,6,2,76.7,2,2,0,0
+362,Ben Osborn\Ben-Osborn,MFDF,Sheffield Utd,24,1604,17.8,1.2,2.1,29,29,45,16,78.9,19,4,0,0
+363,Owen Otasowie\Owen-Otasowie,MFFW,Wolves,6,187,2.1,0.6,0.1,7,3,10,2,70.3,2,0,0,0
+364,Alex Oxlade-Chamberlain\Alex-Oxlade-Chamberlain,FWMF,Liverpool,13,253,2.8,0.4,0.2,2,3,3,1,75.4,2,3,0,0
+365,Emerson Palmieri\Emerson-Palmieri,DF,Chelsea,2,90,1,0,0,3,2,4,10,81,0,0,0,0
+366,Thomas Partey\Thomas-Partey,MF,Arsenal,24,1534,17,1.3,1,47,29,73,25,86.9,12,4,0,0
+367,Rui PatrÃ­cio\Rui-Patricio,GK,Wolves,37,3329,37,0,0,0,0,0,1,66.7,0,0,68.6,0
+368,Bailey Peacock-Farrell\Bailey-Peacock-Farrell,GK,Burnley,4,360,4,0,0,0,0,0,0,51.3,0,0,44,0
+369,Lee Peltier\Lee-Peltier,DF,West Brom,4,229,2.5,0,0,10,2,12,12,63.2,1,0,0,0
+370,Nicolas PÃ©pÃ©\Nicolas-Pepe,FW,Arsenal,29,1616,18,7,0.9,20,25,38,13,75.7,11,20,0,0
+371,Matheus Pereira\Matheus-Pereira,MFFW,West Brom,33,2577,28.6,7.2,5.4,33,30,62,18,71.8,57,24,0,0
+372,Ricardo Pereira\Ricardo-Pereira,DF,Leicester City,15,959,10.7,0.4,0.5,37,28,53,26,78.3,9,4,0,0
+373,Ayoze PÃ©rez\Ayoze-Perez,MFFW,Leicester City,25,1331,14.8,3.2,1.3,32,31,51,6,76.6,23,13,0,0
+374,Kalvin Phillips\Kalvin-Phillips,MF,Leeds United,29,2428,27,0.4,3.8,74,61,123,59,82.8,34,5,0,0
+375,Matt Phillips\Matt-Phillips,MF,West Brom,33,1828,20.3,2.5,3.1,21,48,40,23,69.3,27,9,0,0
+376,Nathaniel Phillips\Nathaniel-Phillips,DF,Liverpool,17,1456,16.2,1.1,0.4,18,23,47,143,87.2,6,1,0,0
+377,Jaden Philogene Bidace\Jaden-Philogene-Bidace,FW,Aston Villa,1,1,0,0,0,0,0,1,1,50,0,0,0,0
+378,Jordan Pickford\Jordan-Pickford,GK,Everton,31,2742,30.5,0,0,0,2,0,3,66.1,1,0,71.1,0
+379,Erik Pieters\Erik-Pieters,DFMF,Burnley,20,1266,14.1,0.2,0.5,40,44,50,42,74.8,6,3,0,0
+380,Daniel Podence\Daniel-Podence,MFFW,Wolves,24,1661,18.5,3.1,1.9,18,7,33,6,75.2,23,14,0,0
+381,Paul Pogba\Paul-Pogba,MFFW,Manchester Utd,26,1897,21.1,2.1,2.1,37,22,62,47,82.8,24,11,0,0
+382,Nick Pope\Nick-Pope,GK,Burnley,32,2880,32,0,0.4,0,0,1,3,50.7,3,0,77,0
+383,Dennis Praet\Dennis-Praet,MFFW,Leicester City,15,718,8,0.5,0.8,12,14,21,3,79.2,7,2,0,0
+384,Davy PrÃ¶pper\Davy-Propper,MF,Brighton,7,213,2.4,0.1,0,7,2,9,0,76,0,2,0,0
+385,Christian Pulisic\Christian-Pulisic,FWMF,Chelsea,27,1738,19.3,5.4,2.8,25,31,34,9,80,26,16,0,0
+386,Aaron Ramsdale\Aaron-Ramsdale,GK,Sheffield Utd,38,3420,38,0,0.2,0,0,0,1,49.1,2,0,70.7,0
+387,Jacob Ramsey\Jacob-Ramsey,MF,Aston Villa,22,626,7,0.5,0.3,11,17,17,9,85.5,6,1,0,0
+388,Kayne Ramsey\Kayne-Ramsey,DF,Southampton,1,90,1,0,0,5,1,6,4,69.2,0,0,0,0
+389,Darren Randolph\Darren-Randolph,GK,West Ham,3,270,3,0,0,0,0,0,0,54.5,0,0,66.7,0
+390,Marcus Rashford\Marcus-Rashford,FW,Manchester Utd,37,2920,32.4,9.3,3.6,16,24,26,9,80.6,41,36,0,0
+391,Tim Ream\Tim-Ream,DF,Fulham,7,630,7,0,0,10,14,14,31,91.2,0,0,0,0
+392,Nathan Redmond\Nathan-Redmond,MFFW,Southampton,29,1738,19.3,3.3,3.3,32,29,50,11,75.9,29,14,0,0
+393,Harrison Reed\Harrison-Reed,MF,Fulham,31,2247,25,0.3,1.4,68,47,120,58,86.4,22,4,0,0
+394,Sergio ReguilÃ³n\Sergio-Reguilon,DF,Tottenham,27,2244,24.9,1.6,1.7,51,53,86,64,77.2,17,4,0,0
+395,Bobby Reid\Bobby-Reid,MFDF,Fulham,33,2372,26.4,4.8,1.4,32,37,49,41,74.1,15,8,0,0
+396,Declan Rice\Declan-Rice,MF,West Ham,32,2879,32,3.1,2.1,77,54,145,46,86.2,19,7,0,0
+397,Lewis Richardson\Lewis-Richardson,FWMF,Burnley,2,4,0,0,0,0,0,0,0,0,0,0,0,0
+398,Richarlison\Richarlison,FW,Everton,34,2861,31.8,11.5,3.2,49,33,69,38,69.2,25,32,0,0
+399,JaÃ¯ro Riedewald\Jairo-Riedewald,MF,Crystal Palace,33,1820,20.2,0.7,1,33,46,57,29,84.9,11,2,0,0
+400,Matt Ritchie\Matt-Ritchie,DFMF,Newcastle Utd,18,1350,15,0.4,1.5,17,31,40,43,67.7,24,1,0,0
+401,Tyler Roberts\Tyler-Roberts,MFFW,Leeds United,27,1340,14.9,2.1,1.8,18,20,27,14,72.2,15,12,0,0
+402,Andrew Robertson\Andrew-Robertson,DF,Liverpool,38,3383,37.6,1.4,6.9,53,62,87,91,79.9,66,5,0,0
+403,Antonee Robinson\Antonee-Robinson,DF,Fulham,28,2162,24,0.6,1.6,48,52,92,83,72.6,28,4,0,0
+404,Callum Robinson\Callum-Robinson,FWMF,West Brom,28,1560,17.3,3.1,0.8,14,16,28,9,70.9,14,11,0,0
+405,Jack Robinson\Jack-Robinson,DF,Sheffield Utd,11,877,9.7,0.4,0.9,16,12,33,60,80.6,1,0,0,0
+406,Hal Robson-Kanu\Hal-Robson-Kanu,FW,West Brom,19,561,6.2,1.5,0.4,3,5,7,4,74.4,6,6,0,0
+407,Marek RodÃ¡k\Marek-Rodak,GK,Fulham,2,180,2,0,0,0,0,0,0,80.4,0,0,50,0
+408,Joe Rodon\Joe-Rodon,DF,Tottenham,12,733,8.1,0,0,15,15,28,51,88.8,0,0,0,0
+409,Rodri\Rodri,MF,Manchester City,34,2748,30.5,2.5,1.7,83,42,123,73,91.5,27,7,0,0
+410,Rodrigo\Rodrigo,MFFW,Leeds United,26,1288,14.3,6.3,2.4,21,9,30,16,75.4,28,17,0,0
+411,James RodrÃ­guez\James-Rodriguez,FWMF,Everton,23,1764,19.6,3.4,5.4,20,24,36,1,79.1,43,19,0,0
+412,Jay Rodriguez\Jay-Rodriguez,FWMF,Burnley,31,1265,14.1,2.3,1.7,28,27,32,6,73.5,8,9,0,0
+413,Oriol Romeu\Oriol-Romeu,MF,Southampton,21,1763,19.6,0.4,1.1,68,32,95,19,82.8,14,4,0,0
+414,John Ruddy\John-Ruddy,GK,Wolves,2,91,1,0,0,0,0,0,0,79.2,0,0,75,0
+415,Antonio RÃ¼diger\Antonio-Rudiger,DF,Chelsea,19,1710,19,1.1,0.3,30,21,45,89,90.8,3,6,0,0
+416,Mathew Ryan\Mathew-Ryan,GK,Brighton,11,990,11,0,0,0,0,0,1,78.7,0,0,50,0
+417,Mathew Ryan\Mathew-Ryan,GK,Arsenal,3,270,3,0,0,0,0,0,0,92.5,0,0,88.9,0
+418,Allan Saint-Maximin\Allan-Saint-Maximin,FWMF,Newcastle Utd,25,1560,17.3,2.6,3.3,15,13,24,0,79.8,28,12,0,0
+419,Romain SaÃ¯ss\Romain-Saiss,DF,Wolves,27,2407,26.7,3.5,0.3,37,43,75,165,82,6,12,0,0
+420,Bukayo Saka\Bukayo-Saka,FWDF,Arsenal,32,2553,28.4,6.9,4.7,34,40,61,32,74.9,38,21,0,0
+421,Mamadou Sakho\Mamadou-Sakho,DF,Crystal Palace,4,276,3.1,0,0,4,3,4,14,87.8,0,0,0,0
+422,Mohamed Salah\Mohamed-Salah,FW,Liverpool,37,3078,34.2,20.9,6.3,26,14,35,11,83.2,54,46,0,0
+423,Mohammed Salisu\Mohammed-Salisu,DF,Southampton,12,844,9.4,0.4,0,32,25,58,38,82.4,1,1,0,0
+424,Davinson SÃ¡nchez\Davinson-Sanchez,DF,Tottenham,18,1486,16.5,1.1,0,40,19,54,123,86.9,0,0,0,0
+425,Robert SÃ¡nchez\Robert-Sanchez,GK,Brighton,27,2430,27,0,0,0,0,0,0,71.6,0,0,71.3,0
+426,Morgan Sanson\Morgan-Sanson,MF,Aston Villa,9,294,3.3,0,0.1,6,4,13,4,75.8,1,0,0,0
+427,Romaine Sawyers\Romaine-Sawyers,MF,West Brom,19,1487,16.5,0.1,0.4,31,18,53,15,85,5,0,0,0
+428,Dane Scarlett\Dane-Scarlett,FW,Tottenham,1,1,0,0,0,0,0,0,0,,0,0,0,0
+429,Fabian SchÃ¤r\Fabian-Schar,DF,Newcastle Utd,18,1246,13.8,1.2,0,19,24,41,63,77.7,1,4,0,0
+430,Jeffrey Schlupp\Jeffrey-Schlupp,MF,Crystal Palace,27,1428,15.9,1.6,1.7,37,35,58,15,70.9,17,10,0,0
+431,Kasper Schmeichel\Kasper-Schmeichel,GK,Leicester City,38,3420,38,0,0,0,0,0,0,72.7,0,0,65.7,0
+432,NÃ©lson Semedo\Nelson-Semedo,DF,Wolves,34,2983,33.1,1.9,1.1,85,54,129,89,81.4,20,11,0,0
+433,Femi Seriki\Femi-Seriki,DF,Sheffield Utd,1,1,0,0,0,0,0,0,0,,0,0,0,0
+434,Jamie Shackleton\Jamie-Shackleton,MFDF,Leeds United,13,461,5.1,0,0.3,8,7,14,5,88.3,2,0,0,0
+435,Xherdan Shaqiri\Xherdan-Shaqiri,MFFW,Liverpool,14,556,6.2,0.4,3,6,8,10,1,83.6,19,0,0,0
+436,Billy Sharp\Billy-Sharp,FW,Sheffield Utd,16,735,8.2,2.7,0.6,7,2,10,1,69.9,4,3,0,0
+437,Luke Shaw\Luke-Shaw,DF,Manchester Utd,32,2654,29.5,0.7,5.2,61,62,90,54,81.6,71,6,0,0
+438,Jonjo Shelvey\Jonjo-Shelvey,MF,Newcastle Utd,30,2617,29.1,2.5,2.7,48,35,91,67,73.8,38,9,0,0
+439,Shola Shoretire\Shola-Shoretire,FW,Manchester Utd,2,11,0.1,0,0,0,0,0,0,75,0,0,0,0
+440,Gylfi SigurÃ°sson\Gylfi-Sigurdsson,MF,Everton,36,2253,25,6.8,4.8,35,48,66,21,79.1,45,12,0,0
+441,Bernardo Silva\Bernardo-Silva,MFFW,Manchester City,26,2065,22.9,2.8,3.7,32,20,53,9,89.7,32,13,0,0
+442,FÃ¡bio Silva\Fabio-Silva,FW,Wolves,32,1369,15.2,6,0.5,10,12,15,6,74.4,11,16,0,0
+443,Thiago Silva\Thiago-Silva,DF,Chelsea,23,1935,21.5,1.1,0.3,23,26,51,114,93.5,5,4,0,0
+444,Moussa Sissoko\Moussa-Sissoko,MF,Tottenham,25,1585,17.6,0.4,0.5,25,27,41,32,84.1,5,1,0,0
+445,Islam Slimani\Islam-Slimani,FW,Leicester City,1,20,0.2,0,0,0,0,0,0,72.7,1,0,0,0
+446,William Smallbone\William-Smallbone,MF,Southampton,3,172,1.9,0.1,0,6,5,7,2,82.1,0,1,0,0
+447,Emile Smith-Rowe\Emile-Smith-Rowe,MFFW,Arsenal,20,1440,16,2,3,14,17,28,15,87.7,24,4,0,0
+448,Robert Snodgrass\Robert-Snodgrass,FWDF,West Ham,3,5,0.1,0,0,1,0,1,0,100,0,0,0,0
+449,Robert Snodgrass\Robert-Snodgrass,MFFW,West Brom,8,526,5.8,0.2,0.3,20,13,24,12,78.9,3,1,0,0
+450,CÃ©dric Soares\Cedric-Soares,DF,Arsenal,10,746,8.3,0.2,0.9,16,14,24,21,75.8,6,2,0,0
+451,TomÃ¡Å¡ SouÄek\Tomas-Soucek,MF,West Ham,38,3419,38,9.2,1.5,83,56,138,145,76.9,16,23,0,0
+452,Ã‡aÄŸlar SÃ¶yÃ¼ncÃ¼\Caglar-Soyuncu,DF,Leicester City,23,1819,20.2,0.5,0.2,31,22,58,109,89,4,3,0,0
+453,Zack Steffen\Zack-Steffen,GK,Manchester City,1,90,1,0,0,0,0,0,0,82.1,0,0,50,0
+454,Dale Stephens\Dale-Stephens,MF,Burnley,7,261,2.9,0.2,0,10,3,13,0,83.1,0,0,0,0
+455,Jack Stephens\Jack-Stephens,DF,Southampton,18,1537,17.1,0.7,0.5,37,41,62,84,83.2,8,2,0,0
+456,Raheem Sterling\Raheem-Sterling,FW,Manchester City,31,2536,28.2,12.2,4.8,20,17,34,2,85.4,38,28,0,0
+457,Enda Stevens\Enda-Stevens,DF,Sheffield Utd,30,2700,30,1.1,1.6,53,60,100,95,77.5,18,4,0,0
+458,John Stones\John-Stones,DF,Manchester City,22,1933,21.5,2.2,0.1,20,31,40,77,94.3,2,5,0,0
+459,Pascal Struijk\Pascal-Struijk,DFMF,Leeds United,27,2075,23.1,2.4,0.2,56,52,97,102,87.1,5,4,0,0
+460,Japhet Tanganga\Japhet-Tanganga,DF,Tottenham,6,487,5.4,0.2,0,4,9,6,19,84.3,0,0,0,0
+461,Matt Targett\Matt-Targett,DF,Aston Villa,38,3404,37.8,0.2,3.1,97,81,144,126,77,44,2,0,0
+462,James Tarkowski\James-Tarkowski,DF,Burnley,36,3240,36,2.6,0.7,74,70,131,236,72,10,6,0,0
+463,Percy Tau\Percy-Tau,FWMF,Brighton,3,103,1.1,0,0.3,1,2,1,0,75.9,3,0,0,0
+464,Sidnei Tavares\Sidnei-Tavares,MF,Leicester City,2,85,0.9,0.1,0,0,1,1,0,73.1,0,1,0,0
+465,Charlie Taylor\Charlie-Taylor,DF,Burnley,29,2426,27,0.1,1.8,46,67,74,96,69.9,15,2,0,0
+466,Neil Taylor\Neil-Taylor,DF,Aston Villa,1,16,0.2,0,0,1,0,1,0,90.9,0,0,0,0
+467,Allan Tchaptchet\Allan-Tchaptchet,DF,Southampton,1,13,0.1,0,0,0,0,0,0,0,0,0,0,0
+468,Nathan Tella\Nathan-Tella,FWMF,Southampton,18,745,8.3,1.8,0.8,12,13,21,5,73.3,6,7,0,0
+469,Alex Telles\Alex-Telles,DF,Manchester Utd,9,690,7.7,0.2,1.1,12,11,24,27,80.5,12,1,0,0
+470,Kenny Tete\Kenny-Tete,DF,Fulham,22,1481,16.5,0.2,1.6,58,30,87,61,74.4,17,2,0,0
+471,William Thomas Fish\William-Thomas-Fish,DF,Manchester Utd,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+472,Luke Thomas\Luke-Thomas,DF,Leicester City,14,969,10.8,0.3,0.2,23,28,39,26,74.2,5,3,0,0
+473,Youri Tielemans\Youri-Tielemans,MF,Leicester City,38,3357,37.3,4.5,3.3,77,57,113,29,78.6,48,18,0,0
+474,Kieran Tierney\Kieran-Tierney,DF,Arsenal,27,2299,25.5,0.4,4.1,29,50,49,77,76.2,33,3,0,0
+475,James Tomkins\James-Tomkins,DF,Crystal Palace,8,553,6.1,0.2,0.1,6,8,11,52,78.7,1,0,0,0
+476,Fikayo Tomori\Fikayo-Tomori,DF,Chelsea,1,45,0.5,0,0,3,4,4,8,93.1,0,0,0,0
+477,FerrÃ¡n Torres\Ferran-Torres,FWMF,Manchester City,24,1306,14.5,5.4,1.9,15,17,22,6,81.4,18,14,0,0
+478,Cenk Tosun\Cenk-Tosun,FW,Everton,5,48,0.5,0,0.1,0,0,0,0,80,1,0,0,0
+479,Andros Townsend\Andros-Townsend,MFFW,Crystal Palace,34,2258,25.1,2.3,3.7,69,61,117,12,67.9,39,11,0,0
+480,Conor Townsend\Conor-Townsend,DF,West Brom,25,2234,24.8,1,2.1,56,45,96,65,74.9,22,4,0,0
+481,Adama TraorÃ©\Adama-Traore,FW,Wolves,37,2649,29.4,2.2,5.4,32,28,43,15,65.9,56,13,0,0
+482,Bertrand TraorÃ©\Bertrand-Traore,FW,Aston Villa,36,2317,25.7,6.4,3.3,26,26,49,16,71.2,34,23,0,0
+483,TrÃ©zÃ©guet\Trezeguet,FW,Aston Villa,21,1166,13,3.8,2,32,27,43,16,69.5,12,12,0,0
+484,Leandro Trossard\Leandro-Trossard,FWMF,Brighton,35,2607,29,5.1,4.3,27,41,51,5,74.9,46,23,0,0
+485,Kostas Tsimikas\Kostas-Tsimikas,DF,Liverpool,2,7,0.1,0,0,0,0,0,0,75,0,0,0,0
+486,Axel Tuanzebe\Axel-Tuanzebe,DF,Manchester Utd,9,404,4.5,0,0,10,14,14,19,89.7,0,0,0,0
+487,Cengiz Ãœnder\Cengiz-Under,MFFW,Leicester City,9,281,3.1,0.3,1.8,3,5,6,0,70.5,6,2,0,0
+488,Yan Valery\Yan-Valery,DFMF,Southampton,3,103,1.1,0.3,0,3,5,6,5,82.8,0,0,0,0
+489,Jamie Vardy\Jamie-Vardy,FW,Leicester City,34,2840,31.6,19.7,4.9,15,16,23,29,66.4,27,27,0,0
+490,JoÃ«l Veltman\Joel-Veltman,DF,Brighton,28,2281,25.3,1.4,1.1,77,35,112,84,77.3,21,4,0,0
+491,Jannik Vestergaard\Jannik-Vestergaard,DF,Southampton,30,2574,28.6,2.1,0.6,61,38,98,159,84.3,7,8,0,0
+492,RÃºben Vinagre\Ruben-Vinagre,DF,Wolves,2,173,1.9,0,0,5,4,6,6,83.7,0,0,0,0
+493,Carlos VinÃ­cius\Carlos-Vinicius,FW,Tottenham,9,308,3.4,1.4,0.1,1,2,2,5,56.8,2,4,0,0
+494,JoÃ£o VirgÃ­nia\Joao-Virginia,GK,Everton,1,48,0.5,0,0,0,0,0,0,52.9,0,0,100,0
+495,Vitinha\Vitinha,MF,Wolves,19,520,5.8,0.6,0.7,10,3,14,2,87.8,12,4,0,0
+496,Jake Vokins\Jake-Vokins,DF,Southampton,1,66,0.7,0,0.2,0,0,0,1,90.9,2,0,0,0
+497,MatÄ›j Vydra\Matej-Vydra,FW,Burnley,28,1371,15.2,6.1,1.8,9,15,14,7,72.6,14,9,0,0
+498,Theo Walcott\Theo-Walcott,MFFW,Southampton,21,1618,18,3,1.2,29,23,38,6,72.4,17,11,0,0
+499,Theo Walcott\Theo-Walcott,FW,Everton,1,13,0.1,0,0,0,0,0,0,100,0,0,0,0
+500,Kyle Walker\Kyle-Walker,DF,Manchester City,24,1946,21.6,0.2,0.5,37,29,52,38,89.4,7,3,0,0
+501,Kyle Walker-Peters\Kyle-Walker-Peters,DF,Southampton,30,2645,29.4,1,1.4,83,70,123,68,80.3,17,7,0,0
+502,Aaron Wan-Bissaka\Aaron-Wan-Bissaka,DF,Manchester Utd,34,3060,34,0.9,2.4,97,113,163,108,86,30,4,0,0
+503,Joel Ward\Joel-Ward,DF,Crystal Palace,26,2256,25.1,0.1,0.4,46,49,98,114,72.7,7,1,0,0
+504,James Ward-Prowse\James-Ward-Prowse,MF,Southampton,38,3420,38,5.3,4.1,84,71,128,76,80.8,57,18,0,0
+505,Ollie Watkins\Ollie-Watkins,FW,Aston Villa,37,3328,37,16,4.2,35,19,47,25,72.8,42,45,0,0
+506,Caleb Watts\Caleb-Watts,MFFW,Southampton,3,39,0.4,0,0,2,3,2,0,61.5,0,0,0,0
+507,Adam Webster\Adam-Webster,DF,Brighton,29,2594,28.8,1.2,0.2,30,51,70,123,82.7,6,6,0,0
+508,Danny Welbeck\Danny-Welbeck,FW,Brighton,24,1545,17.2,6.8,2.2,12,23,17,11,81.7,22,14,0,0
+509,Timo Werner\Timo-Werner,FW,Chelsea,35,2602,28.9,11.9,6.1,28,24,34,4,77.2,34,31,0,0
+510,Ashley Westwood\Ashley-Westwood,MF,Burnley,38,3410,37.9,1.1,5,25,50,73,49,73.7,49,6,0,0
+511,Ben White\Ben-White,DFMF,Brighton,36,3191,35.5,0.7,0.7,56,69,101,78,83.2,8,0,0,0
+512,Georginio Wijnaldum\Georginio-Wijnaldum,MF,Liverpool,38,2941,32.7,3.2,1.8,30,37,55,24,93.3,22,9,0,0
+513,Brandon Williams\Brandon-Williams,DF,Manchester Utd,4,188,2.1,0.1,0,1,5,10,3,85.7,1,1,0,0
+514,Neco Williams\Neco-Williams,DF,Liverpool,6,249,2.8,0.1,0.3,6,8,11,4,73.2,3,0,0,0
+515,Rhys Williams\Rhys-Williams,DF,Liverpool,9,661,7.3,0.5,0.4,6,5,14,67,92,2,0,0,0
+516,Willian\Willian,FWMF,Arsenal,25,1406,15.6,2.1,2.5,16,22,28,4,79.3,29,3,0,0
+517,Joe Willock\Joe-Willock,MF,Arsenal,7,238,2.6,0.4,0,4,9,9,0,75.8,2,0,0,0
+518,Joe Willock\Joe-Willock,MF,Newcastle Utd,14,978,10.9,3.6,0.7,34,30,66,15,76.9,8,12,0,0
+519,Callum Wilson\Callum-Wilson,FW,Newcastle Utd,26,2084,23.2,11.3,2.2,13,18,16,12,69.7,14,16,0,0
+520,Harry Winks\Harry-Winks,MF,Tottenham,15,861,9.6,0.1,0.3,24,12,40,12,84.2,5,1,0,0
+521,Chris Wood\Chris-Wood,FW,Burnley,33,2741,30.5,13.3,2.2,17,27,22,19,66.9,23,37,0,0
+522,Granit Xhaka\Granit-Xhaka,MFDF,Arsenal,31,2522,28,0.8,1.6,58,33,83,55,89.9,18,6,0,0
+523,Andriy Yarmolenko\Andriy-Yarmolenko,FWMF,West Ham,15,375,4.2,0.4,1,6,7,9,1,79,5,2,0,0
+524,DeAndre Yedlin\DeAndre-Yedlin,DF,Newcastle Utd,6,436,4.8,0.1,0.1,10,9,13,19,64.5,3,0,0,0
+525,Okay YokuÅŸlu\Okay-Yokuslu,MF,West Brom,16,1317,14.6,0.9,0.6,47,25,89,40,83.2,5,0,0,0
+526,Wilfried Zaha\Wilfried-Zaha,FW,Crystal Palace,30,2612,29,7.5,3.3,34,21,60,2,75.9,27,19,0,0
+527,Andre-Frank Zambo Anguissa\Andre-Frank-Zambo-Anguissa,MF,Fulham,36,2587,28.7,1.8,2.2,87,47,142,34,84.9,27,8,0,0
+528,Andi Zeqiri\Andi-Zeqiri,FWDF,Brighton,9,171,1.9,0.6,0.1,3,2,3,1,46.5,1,2,0,0
+529,Oleksandr Zinchenko\Oleksandr-Zinchenko,DF,Manchester City,20,1478,16.4,0.7,1.3,21,26,41,49,90.2,13,4,0,0
+530,Hakim Ziyech\Hakim-Ziyech,FWMF,Chelsea,23,1172,13,1.9,3.7,10,14,20,1,74.7,34,12,0,0
+531,Kurt Zouma\Kurt-Zouma,DF,Chelsea,24,2029,22.5,1.8,0,21,23,47,129,91.9,2,12,0,0
+532,Martin Ã˜degaard\Martin-Odegaard,MF,Arsenal,14,866,9.6,1.1,2.1,7,3,12,5,86.4,21,3,0,0
