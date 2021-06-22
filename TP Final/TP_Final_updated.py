@@ -165,7 +165,7 @@ def awayGoals(ht, at):
         return 'Same Team'
 
 
-def runLeague(dataSet):
+def runLeague(dataSet, sims):
     #League Stats
     Points =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     Wins = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -231,13 +231,22 @@ def runLeague(dataSet):
         sortedTeams[x][1][6]= x+1
         # print('|', sortedTeams[x][0][0]," "*(24 - len(sortedTeams[x][0][0])),'|  ', sortedTeams[x][1][0]," "*(3 - len(str(sortedTeams[x][1][0]))),'| ', sortedTeams[x][1][1]," "*(2 - len(str(sortedTeams[x][1][1]))),'|  ', sortedTeams[x][1][2]," "*(2 - len(str(sortedTeams[x][1][2]))),'|  ', sortedTeams[x][1][3]," "*(3 - len(str(sortedTeams[x][1][3]))),'|    ', sortedTeams[x][1][4]," "*(4 - len(str(sortedTeams[x][1][4]))),"|     ", sortedTeams[x][1][5]," "*(7 - len(str(sortedTeams[x][1][5]))),"| ",x+1," "*(2 - len(str(sortedTeams[x][1][6]))),"|")
 
-
+    teamAvg =['name',['Points'],['Wins'],['Draws'],['Losses'],['GF'],['GA']]
     for z in range(20):
         if sortedTeams[z][0][0] == 'Leicester City':
             LCPosRun = sortedTeams[z][1][6]
             LCPointsRun = sortedTeams[z][1][0] 
         if sortedTeams[z][0][0] == 'Manchester City':
             MCPointsRun = sortedTeams[z][1][0]
+        if sortedTeams[z][0][0] == 'Manchester Utd':
+            MUAVGPointsRun = sortedTeams[z][1][0]
+            MUAVGWinsRun = sortedTeams[z][1][1]
+            MUAVGDrawsRun = sortedTeams[z][1][2]
+            MUAVGLossesRun = sortedTeams[z][1][3]
+            MUAVGGFRun = sortedTeams[z][1][4]
+            MUAVGGARun = sortedTeams[z][1][5]
+    # MUAVG[i]= [MUAVGPointsRun,MUAVGWinsRun,MUAVGDrawsRun,MUAVGLossesRun,MUAVGGFRun,MUAVGGARun]
+    MUAVG[i]= MUAVGPointsRun
     LCPos[i] = LCPosRun
     LCPoints[i]= LCPointsRun
     MCPoints[i]= MCPointsRun
@@ -245,6 +254,7 @@ nSim = 1000
 LCPos = np.zeros(nSim)
 LCPoints= np.zeros(nSim)
 MCPoints= np.zeros(nSim)
+MUAVG=np.zeros(nSim)
 
 for i in range(nSim):
     runLeague(Teams)
@@ -276,6 +286,8 @@ for i in range(27):
         LCMFFWPlayers.append(df_LC_MFFW_players.loc[i])
     if Posi == 'FWMF':
         LCMFFWPlayers.append(df_LC_MFFW_players.loc[i])
+    if Posi == 'DFFW':
+        LCMFFWPlayers.append(df_LC_MFFW_players.loc[i])
 # MF
 df_LC_MF_players = pd.DataFrame(lc_stats_skills, columns=['Player', '90s', 'Pos', 'Tkl', 'Cmp%', 'KP', 'Price'])
 LCMFPlayers = []
@@ -292,8 +304,6 @@ LCDFPlayers = []
 for i in range(27):
     Posi = df_LC_DF_players.at[i, 'Pos']
     if Posi == 'DF':
-        LCDFPlayers.append(df_LC_DF_players.loc[i])
-    if Posi == 'DFFW':
         LCDFPlayers.append(df_LC_DF_players.loc[i])
 
 # GK
@@ -352,7 +362,11 @@ for i in range(len(LCGKPlayers)):
     SP_LC_GK.append(LCGKPlayers[i][3])
 
 #%%
-
+#Formacion
+formationDF = 4
+formationMF = 2
+formationMFFW = 3
+formationFW = 1
 #LC Best XI
 # Planteamos el problema con picos
 # Creo el problema
@@ -396,13 +410,13 @@ LC_SavePTemp = np.array([SP_LC_GK])
 P.set_objective('max', LC_xGFWTemp*f*50 + LC_SoTFWTemp*f*12.5 + LC_KPMFFWTemp*mffw*25 + (1+LC_xGMFFWTemp)*mffw*50 + LC_SOTMFFWTemp*mffw*12.5 + LC_CMPMFFWTemp *mffw *12.5+ (1+LC_KPMFTemp)*mf*25 + (1+LC_TKLMFTemp)*mf*12.5 + LC_CMPMFTemp*mf*12.5 + LC_CMPDFTemp*df*12.5 + (1+LC_TKLDFTemp)*df*12.5 + (1+LC_BDFTemp)*df*12.5 + LC_SavePTemp*gk*25)
 #Constraints
 #Limite de FW
-P.add_constraint(sum(f) == 2)
+P.add_constraint(sum(f) == formationFW)
 #Limite de MFFW
-P.add_constraint(sum(mffw) == 1)
+P.add_constraint(sum(mffw) == formationMFFW)
 #Limite de MF
-P.add_constraint(sum(mf) == 3)
+P.add_constraint(sum(mf) == formationMF)
 #Limite de DF
-P.add_constraint(sum(df) == 4)
+P.add_constraint(sum(df) == formationDF)
 #Limite de GK
 P.add_constraint(sum(gk) == 1)
 
@@ -688,6 +702,7 @@ SavePTemp = np.array([SavePGK])
     
 #Defino objetivo y función objetivo
 P.set_objective('max', xGFWTemp*x*50 + SoTFWTemp*x*12.5 + KPMFFWTemp*y*25 + (1+xGMFFWTemp)*y*50 + SOTMFFWTemp*y*12.5 + CMPMFFWTemp*y*12.5 + (1+KPMFTemp)*z*25 + (1+TKLMFTemp)*z*12.5 + CMPMFTemp*z*12.5 + CMPDFTemp*w*12.5 + (1+TKLDFTemp)*w*12.5 + (1+BDFTemp)*w*12.5 + SavePTemp*v*25)
+
 # Interesante la funcion objetivo, tenemos que buscar la forma de darle el peso que le corresponde a cada estadistica /25? y hacerlo igual que el skill? 
 
 #Constraints
@@ -695,11 +710,11 @@ P.set_objective('max', xGFWTemp*x*50 + SoTFWTemp*x*12.5 + KPMFFWTemp*y*25 + (1+x
 # P.add_constraint(sum(cFW) + sum(cMFFW) + sum(cMF) + sum(cDF) + sum(cGK) <= 150000000)
 P.add_constraint(sum(cFWTemp*x) + sum(cMFFWTemp*y) + sum(cMFTemp*z) + sum(cDFTemp*w) + sum(cGKTemp*v) <= 39500000)
 #Limite de FW
-P.add_constraint(sum(x) == 2)
+P.add_constraint(sum(x) == 1)
 #Limite de MFFW
-P.add_constraint(sum(y) == 1)
+P.add_constraint(sum(y) == 3)
 #Limite de MF
-P.add_constraint(sum(z) == 3)
+P.add_constraint(sum(z) == 2)
 #Limite de DF
 P.add_constraint(sum(w) == 4)
 #Limite de GK
@@ -1095,10 +1110,14 @@ for i in range(len(LCPoints)):
 MCPointsCumulative = np.zeros(len(MCPoints))
 for i in range(len(MCPoints)):
     MCPointsCumulative[i] = MCPointsCumulative[i-1] + MCPoints[i]
+MUPointsCumulative = np.zeros(len(MUAVG))
+for i in range(len(MUAVG)):
+    MUPointsCumulative[i] = MUPointsCumulative[i-1] + MUAVG[i]
 
 #Add our data as before, but setting colours and widths of lines
-plt.plot(LCPoints, color="#231F20", linewidth=2)
-plt.plot(MCPoints, color="#6CABDD", linewidth=2)
+plt.plot(LCPointsCumulative, color="#231F20", linewidth=2)
+plt.plot(MCPointsCumulative, color="#6CABDD", linewidth=2)
+plt.plot(MUAVG, color="red", linewidth=2)
 
 #Give the axes and plot a title each
 plt.xlabel('Sims')
