@@ -278,7 +278,7 @@ def defineSkills(teamSkillSet):
 
     Teams = [ManchesterCity, ManchesterUtd, Liverpool, Chelsea, LeicesterCity, WestHam, Tottenham, Arsenal, LeedsUnited, Everton, AstonVilla, NewcastleUtd, Wolves, CrystalPalace, Southampton, Brighton, Burnley, Fulham, WestBrom, SheffieldUtd]
 
-# TODO - Funcion para simular la liga
+# Funcion para simular la liga
 # Goles
 def homeGoals(ht, at):
     if ht[0] != at[0]:
@@ -421,20 +421,6 @@ def runLeague(dataSet, team, sims):
                         GA[x] += awayScore
                         GF[y] += awayScore
                         GA[y] += homeScore
-                    
-                    # dataSet[x][1][0]= Points[x]
-                    # dataSet[x][1][1]= Wins[x]
-                    # dataSet[x][1][2]= Draws[x]
-                    # dataSet[x][1][3]= Loses[x]
-                    # dataSet[x][1][4]= GF[x]
-                    # dataSet[x][1][5]= GA[x]
-
-                    # dataSet[y][1][0]= Points[y]
-                    # dataSet[y][1][1]= Wins[y]
-                    # dataSet[y][1][2]= Draws[y]
-                    # dataSet[y][1][3]= Loses[y]
-                    # dataSet[y][1][4]= GF[y]
-                    # dataSet[y][1][5]= GA[y]
 
         #Send data to average            
         avgPoints[i] = Points
@@ -444,28 +430,29 @@ def runLeague(dataSet, team, sims):
         avgGF[i] = GF
         avgGA[i] = GA
     
-    tablePoints = avgPoints.sum(axis=0)/sims
-    tableWins = avgWins.sum(axis=0)/sims
-    tableLoses = avgLoses.sum(axis=0)/sims
-    tableDraws = avgDraws.sum(axis=0)/sims
-    tableGF = avgGF.sum(axis=0)/sims
-    tableGA = avgGA.sum(axis=0)/sims
+        tablePoints = avgPoints.sum(axis=0)/sims
+        tableWins = avgWins.sum(axis=0)/sims
+        tableLoses = avgLoses.sum(axis=0)/sims
+        tableDraws = avgDraws.sum(axis=0)/sims
+        tableGF = avgGF.sum(axis=0)/sims
+        tableGA = avgGA.sum(axis=0)/sims
 
-    # dataSet[x][1][0]= Points[x]
-    # dataSet[x][1][1]= Wins[x]
-    # dataSet[x][1][2]= Draws[x]
-    # dataSet[x][1][3]= Loses[x]
-    # dataSet[x][1][4]= GF[x]
-    # dataSet[x][1][5]= GA[x]
+    for x in range(20):
+        dataSet[x][1][0]= round(tablePoints[x], 1)
+        dataSet[x][1][1]= round(tableWins[x], 1)
+        dataSet[x][1][2]= round(tableDraws[x], 1)
+        dataSet[x][1][3]= round(tableLoses[x], 1)
+        dataSet[x][1][4]= round(tableGF[x], 1)
+        dataSet[x][1][5]= round(tableGA[x], 1)
 
     #League Table
     sortedTeams = sorted(dataSet, key=lambda x: x[1][0], reverse=True)
-    # print("| TEAM                      | POINTS | WINS | DRAWS | LOSSES | GOALS FOR | GOALS AGAINST | RANK |")
+    print(sortedTeams)
+    print("| RANK | TEAM                      | POINTS | WINS | DRAWS | LOSSES | GOALS FOR | GOALS AGAINST |")
     for x in range(20):
         sortedTeams[x][1][6]= x+1
-        # print('|', sortedTeams[x][0][0]," "*(24 - len(sortedTeams[x][0][0])),'|  ', sortedTeams[x][1][0]," "*(3 - len(str(sortedTeams[x][1][0]))),'| ', sortedTeams[x][1][1]," "*(2 - len(str(sortedTeams[x][1][1]))),'|  ', sortedTeams[x][1][2]," "*(2 - len(str(sortedTeams[x][1][2]))),'|  ', sortedTeams[x][1][3]," "*(3 - len(str(sortedTeams[x][1][3]))),'|    ', sortedTeams[x][1][4]," "*(4 - len(str(sortedTeams[x][1][4]))),"|     ", sortedTeams[x][1][5]," "*(7 - len(str(sortedTeams[x][1][5]))),"| ",x+1," "*(2 - len(str(sortedTeams[x][1][6]))),"|")
-
-    # teamAvg =['name',['Points'],['Wins'],['Draws'],['Losses'],['GF'],['GA']]
+        print("| ",x+1," "*(2 - len(str(sortedTeams[x][1][6]))),'|', sortedTeams[x][0][0]," "*(24 - len(sortedTeams[x][0][0])),'| ', sortedTeams[x][1][0]," "*(4 - len(str(sortedTeams[x][1][0]))),'| ', sortedTeams[x][1][1]," "*(3 - len(str(sortedTeams[x][1][1]))),'| ', sortedTeams[x][1][2]," "*(2 - len(str(sortedTeams[x][1][2]))),'|  ', sortedTeams[x][1][3]," "*(2 - len(str(sortedTeams[x][1][3]))),'|    ', sortedTeams[x][1][4]," "*(4 - len(str(sortedTeams[x][1][4]))),"|     ", sortedTeams[x][1][5]," "*(7 - len(str(sortedTeams[x][1][5]))),"|")
+# TODO - Hacer tabla linda maybe con csv?
     # for z in range(20):
     #     if sortedTeams[z][0][0] == team:
     #         myTeamPosRun = sortedTeams[z][1][6]
@@ -478,7 +465,7 @@ def runSimulation(skillSet, team, sims):
     defineSkills(skillSet)
     runLeague(Teams, team, sims)
 
-runSimulation(team_stats_skills, 'Leicester City', 100)
+runSimulation(team_stats_skills, 'Leicester City', 10)
 #%%
 #Funcion traer own team
 MyStartingXI = []
@@ -706,7 +693,7 @@ def myTeam(teamname,d,m,ma,f):
     createPitch(MyStartingXI,d,m,ma,f)
 
 
-# TODO - Funcion Merge Players to buy & optimizacion
+#Funcion Merge Players to buy & optimizacion
 # Top Players + MyPlayers
 FWPlayers = []
 MFFWPlayers = []
@@ -1015,10 +1002,8 @@ def myNewTeam(money,d,m,ma,f):
     MyNewPlayers_B = sum(BNew)
     MyNewPlayers_SP = sum(SPNew)
 
-
-
-
 # TODO - Funcion setear nuevo skillset del equipo
+
 
 def runTeamImprovement(team,money,d,m,ma,f):
     myTeam(team,d,m,ma,f)
@@ -1040,6 +1025,7 @@ Team = 'Manchester City'
 runTeamImprovement(Team,100,4,3,0,3)
 
 # TODO - Una funcion que corra todo con el team deseado
+# Hay un prototipo al final de la funcion runLeague
     # Con opcion para correr liga actual o con optimizaciones (0 == actual, 1 == nuevo)
     # Actual seria defineskill => liga
 # Nueva => defineSkill(? no se si seria necesario) > myTeam > New Team > defineSkill nuevo => Liga
