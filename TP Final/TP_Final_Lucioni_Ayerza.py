@@ -6,10 +6,11 @@ import pandas as pd
 import numpy as np
 import math
 import matplotlib.pyplot as plt
+import os
 from matplotlib.patches import Arc
 #Data
 team_stats_skills = pd.read_csv('league-stats-skill.csv')
-new_team_stats_skills = pd.read_csv('new-league-stats-skill.csv')
+# new_team_stats_skills = pd.read_csv('new-league-stats-skill.csv')
 pl_players_stats_skills = pd.read_csv('pl-players-stats-skills.csv')
 bundes_player_stats = pd.read_csv('bundesliga-players-stats.csv')
 
@@ -67,10 +68,14 @@ def createPitch(playernames,d,m,ma,f):
     #Players
     playername = []
     tempName = []
-    # TODO - Arreglar para nombres simples 'RODRI' 'FRED', no aparecen
     for i in range(len(playernames)):
-        tempName.append(playernames[i].partition(" ")[2])
-        playername.append(tempName[i].partition("\\")[0])
+        tempName.append(playernames[i].partition("\\")[2])
+        if tempName[i].find('-') == -1:
+            playername.append(tempName[i])
+        else:
+            playername.append(tempName[i].partition("-")[2])
+            if playername[i].find('-') != -1:
+                playername[i] = playername[i].replace('-', " ")
     if d == 4 and m == 3 and ma == 1 and f == 2 :
         print('Formacion 4312')
         player0 = plt.Circle((10, 45), 3, edgecolor="black",
@@ -217,13 +222,19 @@ def createPitch(playernames,d,m,ma,f):
         plt.show()
     
 # TODO - Funciones de graficos 
+# Graficos 
 
 
 #Funcion Skills
 Skill = []
 Teams = []
+
 def defineSkills(teamSkillSet):
+    #RESET VARIABLES
     global Skill, Teams
+    Skill = []
+    Teams = []
+
     df_teams = pd.DataFrame(teamSkillSet, columns=['Rk', 'Squad', 'xG','xGA','Save%','SoT','Tkl','Blocks','Cmp%','KP','Poss'])
     bestXG = df_teams['xG'].max()
     bestXGA = df_teams['xGA'].min()
@@ -370,14 +381,14 @@ def awayGoals(ht, at):
     else:
         return 'Same Team'
 
-def runLeague(dataSet, team, sims):
-    avgPoints = np.zeros(shape=(sims, 20))
-    avgWins = np.zeros(shape=(sims, 20))
-    avgLoses = np.zeros(shape=(sims, 20))
-    avgDraws = np.zeros(shape=(sims, 20))
-    avgGF = np.zeros(shape=(sims, 20))
-    avgGA = np.zeros(shape=(sims, 20))
-    for i in range(sims):
+def runLeague(dataSet, team, nSim):
+    avgPoints = np.zeros(shape=(nSim, 20))
+    avgWins = np.zeros(shape=(nSim, 20))
+    avgLoses = np.zeros(shape=(nSim, 20))
+    avgDraws = np.zeros(shape=(nSim, 20))
+    avgGF = np.zeros(shape=(nSim, 20))
+    avgGA = np.zeros(shape=(nSim, 20))
+    for i in range(nSim):
         #League Stats
         Points =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         Wins = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -430,12 +441,12 @@ def runLeague(dataSet, team, sims):
         avgGF[i] = GF
         avgGA[i] = GA
     
-        tablePoints = avgPoints.sum(axis=0)/sims
-        tableWins = avgWins.sum(axis=0)/sims
-        tableLoses = avgLoses.sum(axis=0)/sims
-        tableDraws = avgDraws.sum(axis=0)/sims
-        tableGF = avgGF.sum(axis=0)/sims
-        tableGA = avgGA.sum(axis=0)/sims
+        tablePoints = avgPoints.sum(axis=0)/nSim
+        tableWins = avgWins.sum(axis=0)/nSim
+        tableLoses = avgLoses.sum(axis=0)/nSim
+        tableDraws = avgDraws.sum(axis=0)/nSim
+        tableGF = avgGF.sum(axis=0)/nSim
+        tableGA = avgGA.sum(axis=0)/nSim
 
     for x in range(20):
         dataSet[x][1][0]= round(tablePoints[x], 1)
@@ -447,12 +458,13 @@ def runLeague(dataSet, team, sims):
 
     #League Table
     sortedTeams = sorted(dataSet, key=lambda x: x[1][0], reverse=True)
-    print(sortedTeams)
-    print("| RANK | TEAM                      | POINTS | WINS | DRAWS | LOSSES | GOALS FOR | GOALS AGAINST |")
+
+    print("| RANK | TEAM             | POINTS |  WINS  | DRAWS | LOSSES | GOALS FOR | GOALS AGAINST |")
     for x in range(20):
         sortedTeams[x][1][6]= x+1
-        print("| ",x+1," "*(2 - len(str(sortedTeams[x][1][6]))),'|', sortedTeams[x][0][0]," "*(24 - len(sortedTeams[x][0][0])),'| ', sortedTeams[x][1][0]," "*(4 - len(str(sortedTeams[x][1][0]))),'| ', sortedTeams[x][1][1]," "*(3 - len(str(sortedTeams[x][1][1]))),'| ', sortedTeams[x][1][2]," "*(2 - len(str(sortedTeams[x][1][2]))),'|  ', sortedTeams[x][1][3]," "*(2 - len(str(sortedTeams[x][1][3]))),'|    ', sortedTeams[x][1][4]," "*(4 - len(str(sortedTeams[x][1][4]))),"|     ", sortedTeams[x][1][5]," "*(7 - len(str(sortedTeams[x][1][5]))),"|")
-# TODO - Hacer tabla linda maybe con csv?
+        print("| ",x+1," "*(2 - len(str(sortedTeams[x][1][6]))),'|', sortedTeams[x][0][0]," "*(15 - len(sortedTeams[x][0][0])),'| ', sortedTeams[x][1][0]," "*(4 - len(str(sortedTeams[x][1][0]))),'| ', sortedTeams[x][1][1]," "*(4 - len(str(sortedTeams[x][1][1]))),'|', sortedTeams[x][1][2]," "*(4 - len(str(sortedTeams[x][1][2]))),'| ', sortedTeams[x][1][3]," "*(4 - len(str(sortedTeams[x][1][3]))),'|   ', sortedTeams[x][1][4]," "*(5 - len(str(sortedTeams[x][1][4]))),"|    ", sortedTeams[x][1][5]," "*(8 - len(str(sortedTeams[x][1][5]))),"|")
+
+#TODO - Proba Top 4 y Stats puntos
     # for z in range(20):
     #     if sortedTeams[z][0][0] == team:
     #         myTeamPosRun = sortedTeams[z][1][6]
@@ -461,13 +473,8 @@ def runLeague(dataSet, team, sims):
     # myTeamPos[i] = myTeamPosRun
     # myTeamPoints[i]= myTeamPointsRun
 
-def runSimulation(skillSet, team, sims):
-    defineSkills(skillSet)
-    runLeague(Teams, team, sims)
-
-runSimulation(team_stats_skills, 'Leicester City', 10)
-#%%
 #Funcion traer own team
+MyTeamPlayers = []
 MyStartingXI = []
 MyStartingXI_xG = 0
 MyStartingXI_SoT = 0
@@ -483,7 +490,29 @@ MyDFPlayers = []
 MyGKPlayers = []
 
 def myTeam(teamname,d,m,ma,f):
+    #RESET VARIABLES
     global MyStartingXI_xG, MyStartingXI_SoT, MyStartingXI_KP, MyStartingXI_CMP, MyStartingXI_TKL, MyStartingXI_B, MyStartingXI_SP, MyFWPlayers, MyMFFWPlayers, MyMFPlayers, MyDFPlayers, MyGKPlayers
+    MyTeamPlayers = []
+    MyStartingXI = []
+    MyStartingXI_xG = 0
+    MyStartingXI_SoT = 0
+    MyStartingXI_KP = 0
+    MyStartingXI_CMP = 0
+    MyStartingXI_TKL = 0
+    MyStartingXI_B = 0
+    MyStartingXI_SP = 0
+    MyFWPlayers = []
+    MyMFFWPlayers = []
+    MyMFPlayers = []
+    MyDFPlayers = []
+    MyGKPlayers = []
+    
+    #All My Players
+    df_all_players = pd.DataFrame(pl_players_stats_skills,  columns=['Player','Squad'])
+    for i in range(532):
+        Squad = df_all_players.at[i, 'Squad']
+        if Squad == teamname:
+            MyTeamPlayers.append(df_all_players.loc[i])
     #FW
     df_FW_players = pd.DataFrame(pl_players_stats_skills,  columns=['Player','Squad', '90s', 'Pos', 'xG', 'SoT', 'Price'])
     for i in range(532):
@@ -682,7 +711,7 @@ def myTeam(teamname,d,m,ma,f):
         if currentv == 1:
             MyStartingXI.append(MyGKPlayers[i][0])
             SPToReplace.append(MyGKPlayers[i][4])
-    print(MyStartingXI)
+    print('Optimal Starting XI:', MyStartingXI)
     MyStartingXI_xG = sum(xGToReplace)
     MyStartingXI_SoT = sum(SoTToReplace)
     MyStartingXI_KP = sum(KPToReplace)
@@ -708,10 +737,34 @@ MyNewPlayers_KP = 0
 MyNewPlayers_CMP = 0 
 MyNewPlayers_TKL = 0 
 MyNewPlayers_B = 0 
-MyNewPlayers_SP = 0 
+MyNewPlayers_SP = 0
 
-def myNewTeam(money,d,m,ma,f):
-    global FWPlayers, MFFWPlayers, MFPlayers, DFPlayers, GKPlayers, MyNewStartingXI, MyNewPlayers_xG, MyNewPlayers_SoT, MyNewPlayers_KP, MyNewPlayers_CMP, MyNewPlayers_TKL, MyNewPlayers_B, MyNewPlayers_SP
+myTeamxG = 0
+myTeamSoT = 0 
+myTeamKP = 0 
+myTeamCP = 0
+myTeamxGA = 0
+myTeamT = 0
+myTeamB = 0
+myTeamSP = 0
+
+def myNewTeam(teamname,money,d,m,ma,f):
+    #RESET VARIABLES
+    global FWPlayers, MFFWPlayers, MFPlayers, DFPlayers, GKPlayers, MyNewStartingXI, MyNewPlayers_xG, MyNewPlayers_SoT, MyNewPlayers_KP, MyNewPlayers_CMP, MyNewPlayers_TKL, MyNewPlayers_B, MyNewPlayers_SP, myTeamxG, myTeamSoT, myTeamKP, myTeamCP, myTeamxGA, myTeamT, myTeamB, myTeamSP
+    FWPlayers = []
+    MFFWPlayers = []
+    MFPlayers = []
+    DFPlayers = []
+    GKPlayers = []
+    MyNewStartingXI= []
+    MyNewPlayers_xG = 0 
+    MyNewPlayers_SoT = 0 
+    MyNewPlayers_KP = 0 
+    MyNewPlayers_CMP = 0 
+    MyNewPlayers_TKL = 0 
+    MyNewPlayers_B = 0 
+    MyNewPlayers_SP = 0 
+    
     #TODO - esto esta por si se quiere agregar o cambiar la liga donde se compra.
     league_players_stats = bundes_player_stats
     #TODO - a la hora de filtrar podriamos agregar que filter sea mejor que los jugadores de nuestro equipo, aka que xGi sea una variable de la media de cada equipo
@@ -958,7 +1011,7 @@ def myNewTeam(money,d,m,ma,f):
     TKLNew = []
     BNew = []
     SPNew = []
-    xGANew = []
+
     for i in range(len(FWPlayers)):
         currentx = round(x[i])
         if currentx == 1:
@@ -992,7 +1045,7 @@ def myNewTeam(money,d,m,ma,f):
         if currentv == 1:
             MyNewStartingXI.append(GKPlayers[i][0])
             SPNew.append(GKPlayers[i][4])   
-    print(MyNewStartingXI)
+    print('New Optimal Starting XI', MyNewStartingXI)
     createPitch(MyNewStartingXI,d,m,ma,f)
     MyNewPlayers_xG = sum(xGNew)
     MyNewPlayers_SoT = sum(SoTNew)
@@ -1002,33 +1055,130 @@ def myNewTeam(money,d,m,ma,f):
     MyNewPlayers_B = sum(BNew)
     MyNewPlayers_SP = sum(SPNew)
 
-# TODO - Funcion setear nuevo skillset del equipo
+    # Setear nuevo skillset del equipo
+    df_teams = pd.DataFrame(team_stats_skills, columns=['Rk', 'Squad', 'xG','xGA','Save%','SoT','Tkl','Blocks','Cmp%','KP','Poss'])
+    teamLocation = 0
+    for i in range(len(df_teams)):
+        Teami = df_teams.at[i, 'Squad']
+        if Teami == teamname:
+            teamLocation = i
+    bestT = df_teams['Tkl'].max()
+    bestB = df_teams['Blocks'].max() 
+    bestSP = df_teams['Save%'].max()
 
+    myTeamxG = df_teams.at[teamLocation, 'xG']
+    myTeamSoT = df_teams.at[teamLocation, 'SoT'] 
+    myTeamKP = df_teams.at[teamLocation, 'KP'] 
+    myTeamCP = df_teams.at[teamLocation, 'Cmp%']
+    #Defensive Stats
+    myTeamxGA = df_teams.at[teamLocation, 'xGA']
+    myTeamT = df_teams.at[teamLocation, 'Tkl']
+    myTeamB = df_teams.at[teamLocation, 'Blocks']
+    myTeamSP = df_teams.at[teamLocation, 'Save%']
 
+    myTeamDef_T = ((myTeamT / bestT)*12.5)
+    myTeamDef_B = ((myTeamB / bestB)*12.5)
+    myTeamDef_SP = ((myTeamSP / bestSP)*25)
+
+    #atk
+    myTeamNew_xG = myTeamxG - MyStartingXI_xG + MyNewPlayers_xG
+    myTeamNew_SoT = myTeamSoT - MyStartingXI_SoT + MyNewPlayers_SoT
+    myTeamNew_KP = myTeamKP - MyStartingXI_KP + MyNewPlayers_KP
+    myTeamNew_CP = (myTeamCP*len(MyTeamPlayers) + MyNewPlayers_CMP)/(len(MyTeamPlayers)+len(CMPNew))
+    #dfc 
+    myTeamNew_TKL = myTeamT - MyStartingXI_TKL + MyNewPlayers_TKL
+    myTeamNew_B = myTeamB - MyStartingXI_B + MyNewPlayers_B
+    myTeamNew_SP = MyNewPlayers_SP
+
+    #New xGA Calc
+    Comparison_Def_Base = myTeamDef_T + myTeamDef_B + myTeamDef_SP
+
+    myTeamNew_Def_T2 = ((myTeamNew_TKL/myTeamT)-1)
+    myTeamNew_Def_B2 = ((myTeamNew_B/myTeamB)-1)
+    myTeamNew_Def_SP2 = ((myTeamNew_SP/myTeamSP)-1)
+
+    New_Def_Base = myTeamDef_T*(1+myTeamNew_Def_T2) + myTeamDef_B*(1+myTeamNew_Def_B2) + myTeamDef_SP*(1+myTeamNew_Def_SP2)
+
+    #New xGA
+    Def_Mejora = (New_Def_Base/Comparison_Def_Base)-1
+    myTeamxGA2 = myTeamxGA*(1-Def_Mejora)
+    myTeamNew_xGA = myTeamxGA2
+
+    #Import Data
+    team_stats_skills.at[teamLocation,'xG']=myTeamNew_xG
+    team_stats_skills.at[teamLocation,'SoT']=myTeamNew_SoT
+    team_stats_skills.at[teamLocation,'KP']=myTeamNew_KP
+    team_stats_skills.at[teamLocation,'Cmp%']=myTeamNew_CP
+    team_stats_skills.at[teamLocation,'xGA']=myTeamNew_xGA
+    team_stats_skills.at[teamLocation,'Tkl']=myTeamNew_TKL
+    team_stats_skills.at[teamLocation,'Blocks']=myTeamNew_B
+    team_stats_skills.at[teamLocation,'Save%']=myTeamNew_SP
+
+    team_stats_skills.to_csv('new-league-stats-skill.csv',index=False)
+
+    team_stats_skills.at[teamLocation,'xG']=myTeamxG
+    team_stats_skills.at[teamLocation,'SoT']=myTeamSoT
+    team_stats_skills.at[teamLocation,'KP']=myTeamKP
+    team_stats_skills.at[teamLocation,'Cmp%']=myTeamCP
+    team_stats_skills.at[teamLocation,'xGA']=myTeamxGA
+    team_stats_skills.at[teamLocation,'Tkl']=myTeamT
+    team_stats_skills.at[teamLocation,'Blocks']=myTeamB
+    team_stats_skills.at[teamLocation,'Save%']=myTeamSP
+
+#Combinacion Optimizaciones
 def runTeamImprovement(team,money,d,m,ma,f):
     myTeam(team,d,m,ma,f)
-    myNewTeam(money,d,m,ma,f)
+    myNewTeam(team,money,d,m,ma,f)
+
+# Funcion principal
+def runSimulation(new, nSim, team, budget, d, m, ma, f):
+    if new == False: 
+        team_stats_skills = pd.read_csv('league-stats-skill.csv')
+        defineSkills(team_stats_skills)
+        runLeague(Teams, team, nSim)
+    else:
+        #Reset CSV
+        team_stats_skills = pd.read_csv('league-stats-skill.csv')
+        csvFile = 'new-league-stats-skill.csv'
+        if os.path.exists(csvFile):
+            os.remove(csvFile)
+            print('CSV File deleted')
+        defineSkills(team_stats_skills)
+        print('===============================')
+        print('League Simulation Before Buying')
+        print('===============================')
+        runLeague(Teams, team, nSim)
+        runTeamImprovement(team, budget, d, m, ma, f)
+        new_team_stats_skills = pd.read_csv('new-league-stats-skill.csv')
+        defineSkills(new_team_stats_skills)
+        print('===============================')
+        print('League Simulation After Buying')
+        print('===============================')
+        runLeague(Teams, team, nSim)
+
+#%%
+#TODO - Traducir a castellano
+# HOW TO USE - Replace values with desired number of simluations, team, budget and formation
+#MODE
+#False = Runs League without changes
+#True = Runs League without changes, then buys optimal new players and runs it again with the team's new stats
+GetNewTeam = True
+
+#NUMBER OF SIMULATIONS
+nSim = 10000
+
+#TEAM
+MyTeam = 'Leicester City'
+
+#BUDGET (in Millions)
+Budget = 39.5
+
+#FORMATION
+#Available: (4,2,3,1 // 4,3,0,3 // 4,3,1,2)
+Defenders = 4
+Midfielders = 2
+MidAttackers = 3
+Forwards = 1
 
 
-
-# Team = 'Leicester City'
-# myTeam(Team,4,2,3,1)
-# Team = 'Chelsea'
-# myTeam(Team,4,2,3,1)
-# Team = 'Liverpool'
-# myTeam(Team,4,3,0,3)
-Team = 'Manchester City'
-# myTeam(Team,4,3,0,3)
-# Team = 'Manchester Utd'
-# myTeam(Team,4,2,3,1)
-
-runTeamImprovement(Team,100,4,3,0,3)
-
-# TODO - Una funcion que corra todo con el team deseado
-# Hay un prototipo al final de la funcion runLeague
-    # Con opcion para correr liga actual o con optimizaciones (0 == actual, 1 == nuevo)
-    # Actual seria defineskill => liga
-# Nueva => defineSkill(? no se si seria necesario) > myTeam > New Team > defineSkill nuevo => Liga
-
-
-# %%
+runSimulation(GetNewTeam, nSim, MyTeam, Budget, Defenders, Midfielders, MidAttackers, Forwards)

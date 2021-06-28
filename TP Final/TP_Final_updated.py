@@ -165,7 +165,7 @@ def awayGoals(ht, at):
         return 'Same Team'
 
 
-def runLeague(dataSet, sims):
+def runLeague(dataSet):
     #League Stats
     Points =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     Wins = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -841,6 +841,7 @@ team_stats_skills.at[4,'Tkl']=LC_New_TKL
 team_stats_skills.at[4,'Blocks']=LC_New_B
 team_stats_skills.at[4,'Save%']=LC_New_SP
 
+print(LC_New_xGA)
 team_stats_skills.to_csv('new-league-stats-skill.csv',index=False)
 
 # %%
