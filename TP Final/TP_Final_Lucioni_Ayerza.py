@@ -1,4 +1,12 @@
-#%% 
+#%%
+# MODELO DE SIMULACION DE LIGA Y OPTIMIZACION DE MERCADO DE PASES DE LA PREMIER LEAGUE
+# TP Final Investigación Operativa - Juan Martín Lucioni y Matías Ayerza
+
+# SOBRE EL CODIGO
+#El código está dividido en dos partes, en primer lugar hay una celda (esta) que se encarga de armar y cargar a la consola la lógica detrás de la simulación y la optimización
+#Al final del código se encuentra la segunda celda, que funciona a manera de panel de control para el usuario, donde se pueden tocar y cambiar las variables deseadas para correr el modelo
+#Los datos provienen de https://fbref.com/en/comps/9/Premier-League-Stats
+
 #Imports
 #Librerias
 import picos
@@ -236,8 +244,6 @@ def scatter_xG(stats):
         Dfc.append(stats[i][3])
         if stats[i][1] < 6:
             plt.text(stats[i][2], stats[i][3]+1,stats[i][0])
-        # if stats[i][0] == "Leicester City":
-        #     plt.text(stats[i][2], stats[i][3]+1,'Leicester City')
     #Cross
     plt.plot([sum(Atk)/len(Atk),sum(Atk)/len(Atk)],[100,50],'k-', linestyle = ":", lw=1)
     plt.plot([50,100],[sum(Dfc)/len(Dfc),sum(Dfc)/len(Dfc)],'k-', linestyle = ":", lw=1)
@@ -411,7 +417,6 @@ def awayGoals(ht, at):
         return 'Same Team'
 
 def runLeague(dataSet, team, nSim):
-    #TODO - Probabilidad de batacazo en un partido? Menos probable si la dif de goles es alta
     myTeamPosRun = np.zeros(nSim)
     MCPosRun = np.zeros(nSim)
     myTeamPointsRun = np.zeros(nSim)
@@ -423,6 +428,8 @@ def runLeague(dataSet, team, nSim):
     runGF = np.zeros(shape=(nSim, 20))
     runGA = np.zeros(shape=(nSim, 20))
     runGD = np.zeros(shape=(nSim, 20))
+
+    upsets = 0
     for i in range(nSim):
         #League Stats
         Points =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -442,6 +449,13 @@ def runLeague(dataSet, team, nSim):
                 else:
                     homeScore = homeGoals(dataSet[x][0], dataSet[y][0])
                     awayScore = awayGoals(dataSet[x][0], dataSet[y][0])
+                    chanceOfUpset = np.random.random()
+                    if chanceOfUpset < 0.03:
+                        upsets += 1
+                        homeScoreTemp = homeScore
+                        homeScore = awayScore
+                        awayScore = homeScoreTemp
+
                     # print(dataSet[x][0][0], homeScore,':', awayScore, dataSet[y][0][0])
                     if homeScore > awayScore:
                         Wins[x] += 1
@@ -527,85 +541,90 @@ def runLeague(dataSet, team, nSim):
         print("| ",x+1," "*(2 - len(str(sortedTeams[x][1][6]))),'|', sortedTeams[x][0][0]," "*(15 - len(sortedTeams[x][0][0])),'| ', sortedTeams[x][1][0]," "*(4 - len(str(sortedTeams[x][1][0]))),'| ', sortedTeams[x][1][1]," "*(4 - len(str(sortedTeams[x][1][1]))),'|', sortedTeams[x][1][2]," "*(4 - len(str(sortedTeams[x][1][2]))),'| ', sortedTeams[x][1][3]," "*(4 - len(str(sortedTeams[x][1][3]))),'|   ', sortedTeams[x][1][4]," "*(5 - len(str(sortedTeams[x][1][4]))),"|    ", sortedTeams[x][1][5]," "*(8 - len(str(sortedTeams[x][1][5]))),"|   ", sortedTeams[x][1][7]," "*(6 - len(str(sortedTeams[x][1][7]))),"|")
     print('===============================')
     print('Probabilidad de que', team, 'quede en el Top 4 =', np.sum(myTeamPosRun < 5)/nSim)
+    # print('Upsets por Sim =', upsets/nSim)
     print('===============================')
-    print('Plots')
-    print('===============================')
+    if nSim > 10:
+        print('Plots')
+        print('===============================')
+        # Graficos de la simulacion
+        # Posicion vs Puntos
+        fig, ax1 = plt.subplots()
+        color = 'tab:green'
+        ax1.set_xlabel('Simulations')
+        ax1.set_ylabel('Points', color=color)
+        ax1.plot(myTeamPointsRun, color=color)
+        ax1.tick_params(axis='y', labelcolor=color)
 
-    fig, ax1 = plt.subplots()
-    color = 'tab:green'
-    ax1.set_xlabel('Simulations')
-    ax1.set_ylabel('Points', color=color)
-    ax1.plot(myTeamPointsRun, color=color)
-    ax1.tick_params(axis='y', labelcolor=color)
-
-    ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+        ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
 
 
-    color = 'tab:blue'
+        color = 'tab:blue'
 
-    ax2.set_ylabel('Position', color=color)  # we already handled the x-label with ax1
-    ax2.plot(myTeamPosRun,"o",color=color)
-    ax2.invert_yaxis()
-    ax2.tick_params(axis='y', labelcolor=color,)
+        ax2.set_ylabel('Position', color=color)  # we already handled the x-label with ax1
+        ax2.plot(myTeamPosRun,"o",color=color)
+        ax2.invert_yaxis()
+        ax2.tick_params(axis='y', labelcolor=color,)
 
-    fig.tight_layout()  # otherwise the right y-label is slightly clipped
-    plt.show()
+        fig.tight_layout()  # otherwise the right y-label is slightly clipped
+        plt.show()
 
-    #Create the bare bones of what will be our visualisation
-    fig, ax = plt.subplots()
+        # Puntos acumulados Team vs Manchester City
+        #Create the bare bones of what will be our visualisation
+        fig, ax = plt.subplots()
 
-    myTeamPointsCumulative = np.zeros(len(myTeamPointsRun))
-    for i in range(len(myTeamPointsRun)):
-        myTeamPointsCumulative[i] = myTeamPointsCumulative[i-1] + myTeamPointsRun[i]
+        myTeamPointsCumulative = np.zeros(len(myTeamPointsRun))
+        for i in range(len(myTeamPointsRun)):
+            myTeamPointsCumulative[i] = myTeamPointsCumulative[i-1] + myTeamPointsRun[i]
 
-    MCPointsCumulative = np.zeros(len(MCPointsRun))
-    for i in range(len(MCPointsRun)):
-        MCPointsCumulative[i] = MCPointsCumulative[i-1] + MCPointsRun[i]
+        MCPointsCumulative = np.zeros(len(MCPointsRun))
+        for i in range(len(MCPointsRun)):
+            MCPointsCumulative[i] = MCPointsCumulative[i-1] + MCPointsRun[i]
 
-    #Add our data as before, but setting colours and widths of lines
-    plt.plot(myTeamPointsCumulative, color="#231F20", linewidth=2)
-    plt.plot(MCPointsCumulative, color="#6CABDD", linewidth=2)
+        #Add our data as before, but setting colours and widths of lines
+        plt.plot(myTeamPointsCumulative, color="#231F20", linewidth=2)
+        plt.plot(MCPointsCumulative, color="#6CABDD", linewidth=2)
 
-    #Give the axes and plot a title each
-    plt.xlabel('Sims')
-    plt.ylabel('Points')
-    plt.title('Team v Man City Running Total Points')
+        #Give the axes and plot a title each
+        plt.xlabel('Sims')
+        plt.ylabel('Points')
+        plt.title('Team v Man City Running Total Points')
 
-    #Add a faint grey grid
-    plt.grid()
-    ax.xaxis.grid(color="#F8F8F8")
-    ax.yaxis.grid(color="#F9F9F9")
+        #Add a faint grey grid
+        plt.grid()
+        ax.xaxis.grid(color="#F8F8F8")
+        ax.yaxis.grid(color="#F9F9F9")
 
-    #Remove the margins between our lines and the axes
-    plt.margins(x=0, y=0)
+        #Remove the margins between our lines and the axes
+        plt.margins(x=0, y=0)
 
-    #Remove the spines of the chart on the top and right sides
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
+        #Remove the spines of the chart on the top and right sides
+        ax.spines['right'].set_visible(False)
+        ax.spines['top'].set_visible(False)
 
-    #Create the bare bones of what will be our visualisation
-    fig, ax = plt.subplots()
+        # Puntos ManCity vs Team por simulacion
+        #Create the bare bones of what will be our visualisation
+        fig, ax = plt.subplots()
 
-    #Add our data as before, but setting colours and widths of lines
-    plt.plot(myTeamPointsRun, color="#231F20", linewidth=2)
-    plt.plot(MCPointsRun, color="#6CABDD", linewidth=2)
+        #Add our data as before, but setting colours and widths of lines
+        plt.plot(MCPointsRun, color="#6CABDD", linewidth=2)
+        plt.plot(myTeamPointsRun, color="#231F20", linewidth=2)
 
-    #Give the axes and plot a title each
-    plt.xlabel('Sims')
-    plt.ylabel('Points')
-    plt.title('Team v Man City Points Per Sim')
+        #Give the axes and plot a title each
+        plt.xlabel('Sims')
+        plt.ylabel('Points')
+        plt.title('Team v Man City Points Per Sim')
 
-    #Add a faint grey grid
-    plt.grid()
-    ax.xaxis.grid(color="#F8F8F8")
-    ax.yaxis.grid(color="#F9F9F9")
+        #Add a faint grey grid
+        plt.grid()
+        ax.xaxis.grid(color="#F8F8F8")
+        ax.yaxis.grid(color="#F9F9F9")
 
-    #Remove the margins between our lines and the axes
-    plt.margins(x=0, y=0)
+        #Remove the margins between our lines and the axes
+        plt.margins(x=0, y=0)
 
-    #Remove the spines of the chart on the top and right sides
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
+        #Remove the spines of the chart on the top and right sides
+        ax.spines['right'].set_visible(False)
+        ax.spines['top'].set_visible(False)
     
 
 #Funcion traer own team
@@ -1270,6 +1289,14 @@ def runSimulation(new, nSim, team, budget, d, m, ma, f):
     if new == False: 
         team_stats_skills = pd.read_csv('league-stats-skill.csv')
         defineSkills(team_stats_skills)
+        print('===============================')
+        print('Attack/Defense Scatter Plot')
+        print('===============================')
+        scatter_xG(Skill)
+        myTeam(team,d,m,ma,f)
+        print('===============================')
+        print('Resultados de la Liga')
+        print('===============================')
         runLeague(Teams, team, nSim)
     else:
         #Reset CSV
@@ -1282,7 +1309,7 @@ def runSimulation(new, nSim, team, budget, d, m, ma, f):
         print('=========================================================================================')
         print('Simulacion de Liga antes de comprar')
         print('=========================================================================================')
-        print('xG Scatter Plot')
+        print('Attack/Defense Scatter Plot')
         print('===============================')
         scatter_xG(Skill)
         print('===============================')
@@ -1295,7 +1322,7 @@ def runSimulation(new, nSim, team, budget, d, m, ma, f):
         print('=========================================================================================')
         print('Simulacion de Liga despues de comprar')
         print('=========================================================================================')
-        print('xG Scatter Plot')
+        print('Attack/Defense Scatter Plot')
         print('===============================')
         scatter_xG(Skill)
         print('===============================')
@@ -1314,7 +1341,7 @@ def runSimulation(new, nSim, team, budget, d, m, ma, f):
 GetNewTeam = True
 
 # NUMERO DE SIMULACIONES
-nSim = 1000
+nSim = 10000
 
 # EQUIPO
 MyTeam = 'Leicester City'
