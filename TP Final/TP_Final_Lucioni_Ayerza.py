@@ -222,8 +222,37 @@ def createPitch(playernames,d,m,ma,f):
         plt.show()
     
 # TODO - Funciones de graficos 
-# Graficos 
+# Graficos
+def scatter_xG(stats):
+    fig, ax = plt.subplots()
 
+    #Set plot size
+    fig.set_size_inches(7, 5)
+    Atk = []
+    Dfc = []
+    for i in range(len(stats)):
+        plt.plot(stats[i][2], stats[i][3], "o",label=stats[i][0])
+        Atk.append(stats[i][2])
+        Dfc.append(stats[i][3])
+        if stats[i][1] < 6:
+            plt.text(stats[i][2], stats[i][3]+1,stats[i][0])
+        # if stats[i][0] == "Leicester City":
+        #     plt.text(stats[i][2], stats[i][3]+1,'Leicester City')
+    #Cross
+    plt.plot([sum(Atk)/len(Atk),sum(Atk)/len(Atk)],[100,50],'k-', linestyle = ":", lw=1)
+    plt.plot([50,100],[sum(Dfc)/len(Dfc),sum(Dfc)/len(Dfc)],'k-', linestyle = ":", lw=1)
+
+    #Add labels to chart area
+    ax.set_title("Skill Ranking")
+    ax.set_xlabel("Attack")
+    ax.set_ylabel("Defence")
+
+    ax.text(49,50,"Poor attack, poor defense",color="red",size="8")
+
+    ax.text(85,99,"Strong attack, strong defense",color="red",size="8")
+
+    #Display the chart
+    plt.show()
 
 #Funciones de simulacion y optimizacion
 #Funcion Skills
@@ -268,26 +297,26 @@ def defineSkills(teamSkillSet):
         Skill.append(teambyskill)
 
     # Teams
-    ManchesterCity = [Skill[0], [0,0,0,0,0,0,0,0]]
-    ManchesterUtd = [Skill[1], [0,0,0,0,0,0,0,0]]
-    Liverpool = [Skill[2], [0,0,0,0,0,0,0,0]]
-    Chelsea = [Skill[3], [0,0,0,0,0,0,0,0]]
-    LeicesterCity = [Skill[4], [0,0,0,0,0,0,0,0]]
-    WestHam = [Skill[5], [0,0,0,0,0,0,0,0]]
-    Tottenham = [Skill[6], [0,0,0,0,0,0,0,0]]
-    Arsenal = [Skill[7], [0,0,0,0,0,0,0,0]]
-    LeedsUnited = [Skill[8], [0,0,0,0,0,0,0,0]]
-    Everton = [Skill[9], [0,0,0,0,0,0,0,0]]
-    AstonVilla = [Skill[10], [0,0,0,0,0,0,0,0]]
-    NewcastleUtd = [Skill[11], [0,0,0,0,0,0,0,0]]
-    Wolves = [Skill[12], [0,0,0,0,0,0,0,0]]
-    CrystalPalace = [Skill[13], [0,0,0,0,0,0,0,0]]
-    Southampton = [Skill[14], [0,0,0,0,0,0,0,0]]
-    Brighton = [Skill[15], [0,0,0,0,0,0,0,0,0]]
-    Burnley = [Skill[16], [0,0,0,0,0,0,0,0,0]]
-    Fulham = [Skill[17], [0,0,0,0,0,0,0,0]]
-    WestBrom = [Skill[18], [0,0,0,0,0,0,0,0]]
-    SheffieldUtd = [Skill[19], [0,0,0,0,0,0,0,0]]
+    ManchesterCity = [Skill[0], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    ManchesterUtd = [Skill[1], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    Liverpool = [Skill[2], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    Chelsea = [Skill[3], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    LeicesterCity = [Skill[4], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    WestHam = [Skill[5], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    Tottenham = [Skill[6], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    Arsenal = [Skill[7], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    LeedsUnited = [Skill[8], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    Everton = [Skill[9], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    AstonVilla = [Skill[10], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    NewcastleUtd = [Skill[11], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    Wolves = [Skill[12], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    CrystalPalace = [Skill[13], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    Southampton = [Skill[14], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    Brighton = [Skill[15], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    Burnley = [Skill[16], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    Fulham = [Skill[17], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    WestBrom = [Skill[18], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
+    SheffieldUtd = [Skill[19], [0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0]]
 
     Teams = [ManchesterCity, ManchesterUtd, Liverpool, Chelsea, LeicesterCity, WestHam, Tottenham, Arsenal, LeedsUnited, Everton, AstonVilla, NewcastleUtd, Wolves, CrystalPalace, Southampton, Brighton, Burnley, Fulham, WestBrom, SheffieldUtd]
 
@@ -303,7 +332,7 @@ def homeGoals(ht, at):
 
         # Better ATK
         if ht[2] > at[2]:
-            randomFactorTemp = np.random.uniform(-0.1, 0.1)
+            randomFactorTemp = np.random.uniform(-0.15, 0.15)
             randomFactor = round(randomFactorTemp, 2)
             xGToTest = ht[5] * (1+bonusRank+bonusAtk+bonusPoss+randomFactor) + 0.25
             xGTestRound = round(xGToTest)
@@ -314,7 +343,7 @@ def homeGoals(ht, at):
 
         # Equal ATK
         if ht[2] == at[2]:
-            randomFactorTemp = np.random.uniform(-0.1, 0.1)
+            randomFactorTemp = np.random.uniform(-0.15, 0.15)
             randomFactor = round(randomFactorTemp, 2)
             xGToTest = ht[5] * (1+bonusRank+bonusPoss+randomFactor) + 0.25
             xGTestRound = round(xGToTest)
@@ -325,7 +354,7 @@ def homeGoals(ht, at):
 
         # Worse ATK
         if ht[2] < at[2]:
-            randomFactorTemp = np.random.uniform(-0.1, 0.1)
+            randomFactorTemp = np.random.uniform(-0.15, 0.15)
             randomFactor = round(randomFactorTemp, 2)
             xGToTest = ht[5] * (1+bonusRank+bonusAtk+bonusPoss+randomFactor) + 0.25
             xGTestRound = round(xGToTest)
@@ -347,7 +376,7 @@ def awayGoals(ht, at):
 
         # Better ATK
         if at[2] > ht[2]:
-            randomFactorTemp = np.random.uniform(-0.1, 0.1)
+            randomFactorTemp = np.random.uniform(-0.15, 0.15)
             randomFactor = round(randomFactorTemp, 2)
             xGToTest = at[5] * (1+bonusRank+bonusAtk+bonusPoss+randomFactor)
             xGTestRound = round(xGToTest)
@@ -358,7 +387,7 @@ def awayGoals(ht, at):
 
         # Equal ATK
         if at[2] == ht[2]:
-            randomFactorTemp = np.random.uniform(-0.1, 0.1)
+            randomFactorTemp = np.random.uniform(-0.15, 0.15)
             randomFactor = round(randomFactorTemp, 2)
             xGToTest = at[5] * (1+bonusRank+bonusPoss+randomFactor)
             xGTestRound = round(xGToTest)
@@ -369,7 +398,7 @@ def awayGoals(ht, at):
 
         # Worse ATK
         if at[2] < ht[2]:
-            randomFactorTemp = np.random.uniform(-0.1, 0.1)
+            randomFactorTemp = np.random.uniform(-0.15, 0.15)
             randomFactor = round(randomFactorTemp, 2)
             xGToTest = at[5] * (1+bonusRank+bonusAtk+bonusPoss+randomFactor)
             xGTestRound = round(xGToTest)
@@ -382,19 +411,24 @@ def awayGoals(ht, at):
         return 'Same Team'
 
 def runLeague(dataSet, team, nSim):
-    avgPoints = np.zeros(shape=(nSim, 20))
-    avgWins = np.zeros(shape=(nSim, 20))
-    avgLoses = np.zeros(shape=(nSim, 20))
-    avgDraws = np.zeros(shape=(nSim, 20))
-    avgGF = np.zeros(shape=(nSim, 20))
-    avgGA = np.zeros(shape=(nSim, 20))
-    avgGD = np.zeros(shape=(nSim, 20))
+    #TODO - Probabilidad de batacazo en un partido? Menos probable si la dif de goles es alta
+    myTeamPosRun = np.zeros(nSim)
+    MCPosRun = np.zeros(nSim)
+    myTeamPointsRun = np.zeros(nSim)
+    MCPointsRun = np.zeros(nSim)
+    runPoints = np.zeros(shape=(nSim, 20))
+    runWins = np.zeros(shape=(nSim, 20))
+    runDraws = np.zeros(shape=(nSim, 20))
+    runLoses = np.zeros(shape=(nSim, 20))
+    runGF = np.zeros(shape=(nSim, 20))
+    runGA = np.zeros(shape=(nSim, 20))
+    runGD = np.zeros(shape=(nSim, 20))
     for i in range(nSim):
         #League Stats
         Points =[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         Wins = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        Loses = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         Draws = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        Loses = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         GF = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         GA = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         GD = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -434,24 +468,46 @@ def runLeague(dataSet, team, nSim):
                         GA[x] += awayScore
                         GF[y] += awayScore
                         GA[y] += homeScore
-                    GD[x] = homeScore - awayScore
-                    GD[y] = awayScore - homeScore
+                    GD[x] += homeScore - awayScore
+                    GD[y] += awayScore - homeScore
 
         #Send data to average            
-        avgPoints[i] = Points
-        avgWins[i] = Wins
-        avgLoses[i] = Loses
-        avgDraws[i] = Draws
-        avgGF[i] = GF
-        avgGA[i] = GA
-        avgGD[i] = GD
+        runPoints[i] = Points
+        runWins[i] = Wins
+        runDraws[i] = Draws
+        runLoses[i] = Loses
+        runGF[i] = GF
+        runGA[i] = GA
+        runGD[i] = GD
     
-        tablePoints = avgPoints.sum(axis=0)/nSim
-        tableWins = avgWins.sum(axis=0)/nSim
-        tableLoses = avgLoses.sum(axis=0)/nSim
-        tableDraws = avgDraws.sum(axis=0)/nSim
-        tableGF = avgGF.sum(axis=0)/nSim
-        tableGA = avgGA.sum(axis=0)/nSim
+        tablePoints = runPoints.sum(axis=0)/nSim
+        tableWins = runWins.sum(axis=0)/nSim
+        tableDraws = runDraws.sum(axis=0)/nSim
+        tableLoses = runLoses.sum(axis=0)/nSim
+        tableGF = runGF.sum(axis=0)/nSim
+        tableGA = runGA.sum(axis=0)/nSim
+        tableGD = runGD.sum(axis=0)/nSim
+
+        #Rank
+        for z in range(20):
+            dataSet[z][2][0]= Points[z]
+            dataSet[z][2][1]= Wins[z]
+            dataSet[z][2][2]= Draws[z]
+            dataSet[z][2][3]= Loses[z]
+            dataSet[z][2][4]= GF[z]
+            dataSet[z][2][5]= GA[z]
+            dataSet[z][2][7]= GD[z]
+        
+        sortedTeamsRun = sorted(dataSet, key=lambda x: x[2][0], reverse=True)
+
+        for w in range(20):
+            sortedTeamsRun[w][2][6]= w+1
+            if sortedTeamsRun[w][0][0] == team:
+                myTeamPosRun[i] = sortedTeamsRun[w][2][6]
+                myTeamPointsRun[i] = sortedTeamsRun[w][2][0]
+            elif sortedTeamsRun[w][0][0] == 'Manchester City':
+                MCPosRun[i] = sortedTeamsRun[w][2][6]
+                MCPointsRun[i] = sortedTeamsRun[w][2][0]
 
     for x in range(20):
         dataSet[x][1][0]= round(tablePoints[x], 1)
@@ -460,7 +516,7 @@ def runLeague(dataSet, team, nSim):
         dataSet[x][1][3]= round(tableLoses[x], 1)
         dataSet[x][1][4]= round(tableGF[x], 1)
         dataSet[x][1][5]= round(tableGA[x], 1)
-        dataSet[x][1][7]= round(tableGF[x] - tableGA[x])
+        dataSet[x][1][7]= round(tableGD[x], 1)
 
     #League Table
     sortedTeams = sorted(dataSet, key=lambda x: x[1][0], reverse=True)
@@ -468,16 +524,89 @@ def runLeague(dataSet, team, nSim):
     print("| RANK | TEAM             | POINTS |  WINS  | DRAWS | LOSSES | GOALS FOR | GOALS AGAINST | GOAL DIFF. |")
     for x in range(20):
         sortedTeams[x][1][6]= x+1
-        print("| ",x+1," "*(2 - len(str(sortedTeams[x][1][6]))),'|', sortedTeams[x][0][0]," "*(15 - len(sortedTeams[x][0][0])),'| ', sortedTeams[x][1][0]," "*(4 - len(str(sortedTeams[x][1][0]))),'| ', sortedTeams[x][1][1]," "*(4 - len(str(sortedTeams[x][1][1]))),'|', sortedTeams[x][1][2]," "*(4 - len(str(sortedTeams[x][1][2]))),'| ', sortedTeams[x][1][3]," "*(4 - len(str(sortedTeams[x][1][3]))),'|   ', sortedTeams[x][1][4]," "*(5 - len(str(sortedTeams[x][1][4]))),"|    ", sortedTeams[x][1][5]," "*(8 - len(str(sortedTeams[x][1][5]))),"|    ", sortedTeams[x][1][7]," "*(5 - len(str(sortedTeams[x][1][7]))),"|")
+        print("| ",x+1," "*(2 - len(str(sortedTeams[x][1][6]))),'|', sortedTeams[x][0][0]," "*(15 - len(sortedTeams[x][0][0])),'| ', sortedTeams[x][1][0]," "*(4 - len(str(sortedTeams[x][1][0]))),'| ', sortedTeams[x][1][1]," "*(4 - len(str(sortedTeams[x][1][1]))),'|', sortedTeams[x][1][2]," "*(4 - len(str(sortedTeams[x][1][2]))),'| ', sortedTeams[x][1][3]," "*(4 - len(str(sortedTeams[x][1][3]))),'|   ', sortedTeams[x][1][4]," "*(5 - len(str(sortedTeams[x][1][4]))),"|    ", sortedTeams[x][1][5]," "*(8 - len(str(sortedTeams[x][1][5]))),"|   ", sortedTeams[x][1][7]," "*(6 - len(str(sortedTeams[x][1][7]))),"|")
+    print('===============================')
+    print('Probabilidad de que', team, 'quede en el Top 4 =', np.sum(myTeamPosRun < 5)/nSim)
+    print('===============================')
+    print('Plots')
+    print('===============================')
 
-#TODO - Proba Top 4 y Stats puntos
-    # for z in range(20):
-    #     if sortedTeams[z][0][0] == team:
-    #         myTeamPosRun = sortedTeams[z][1][6]
-    #         myTeamPointsRun = sortedTeams[z][1][0] 
+    fig, ax1 = plt.subplots()
+    color = 'tab:green'
+    ax1.set_xlabel('Simulations')
+    ax1.set_ylabel('Points', color=color)
+    ax1.plot(myTeamPointsRun, color=color)
+    ax1.tick_params(axis='y', labelcolor=color)
 
-    # myTeamPos[i] = myTeamPosRun
-    # myTeamPoints[i]= myTeamPointsRun
+    ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+
+    color = 'tab:blue'
+
+    ax2.set_ylabel('Position', color=color)  # we already handled the x-label with ax1
+    ax2.plot(myTeamPosRun,"o",color=color)
+    ax2.invert_yaxis()
+    ax2.tick_params(axis='y', labelcolor=color,)
+
+    fig.tight_layout()  # otherwise the right y-label is slightly clipped
+    plt.show()
+
+    #Create the bare bones of what will be our visualisation
+    fig, ax = plt.subplots()
+
+    myTeamPointsCumulative = np.zeros(len(myTeamPointsRun))
+    for i in range(len(myTeamPointsRun)):
+        myTeamPointsCumulative[i] = myTeamPointsCumulative[i-1] + myTeamPointsRun[i]
+
+    MCPointsCumulative = np.zeros(len(MCPointsRun))
+    for i in range(len(MCPointsRun)):
+        MCPointsCumulative[i] = MCPointsCumulative[i-1] + MCPointsRun[i]
+
+    #Add our data as before, but setting colours and widths of lines
+    plt.plot(myTeamPointsCumulative, color="#231F20", linewidth=2)
+    plt.plot(MCPointsCumulative, color="#6CABDD", linewidth=2)
+
+    #Give the axes and plot a title each
+    plt.xlabel('Sims')
+    plt.ylabel('Points')
+    plt.title('Team v Man City Running Total Points')
+
+    #Add a faint grey grid
+    plt.grid()
+    ax.xaxis.grid(color="#F8F8F8")
+    ax.yaxis.grid(color="#F9F9F9")
+
+    #Remove the margins between our lines and the axes
+    plt.margins(x=0, y=0)
+
+    #Remove the spines of the chart on the top and right sides
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+
+    #Create the bare bones of what will be our visualisation
+    fig, ax = plt.subplots()
+
+    #Add our data as before, but setting colours and widths of lines
+    plt.plot(myTeamPointsRun, color="#231F20", linewidth=2)
+    plt.plot(MCPointsRun, color="#6CABDD", linewidth=2)
+
+    #Give the axes and plot a title each
+    plt.xlabel('Sims')
+    plt.ylabel('Points')
+    plt.title('Team v Man City Points Per Sim')
+
+    #Add a faint grey grid
+    plt.grid()
+    ax.xaxis.grid(color="#F8F8F8")
+    ax.yaxis.grid(color="#F9F9F9")
+
+    #Remove the margins between our lines and the axes
+    plt.margins(x=0, y=0)
+
+    #Remove the spines of the chart on the top and right sides
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+    
 
 #Funcion traer own team
 MyTeamPlayers = []
@@ -1150,17 +1279,27 @@ def runSimulation(new, nSim, team, budget, d, m, ma, f):
             os.remove(csvFile)
             print('CSV File deleted')
         defineSkills(team_stats_skills)
-        print(Skill)
+        print('=========================================================================================')
+        print('Simulacion de Liga antes de comprar')
+        print('=========================================================================================')
+        print('xG Scatter Plot')
         print('===============================')
-        print('League Simulation Before Buying')
+        scatter_xG(Skill)
+        print('===============================')
+        print('Resultados de la Liga')
         print('===============================')
         runLeague(Teams, team, nSim)
         runTeamImprovement(team, budget, d, m, ma, f)
         new_team_stats_skills = pd.read_csv('new-league-stats-skill.csv')
         defineSkills(new_team_stats_skills)
-        print(Skill)
+        print('=========================================================================================')
+        print('Simulacion de Liga despues de comprar')
+        print('=========================================================================================')
+        print('xG Scatter Plot')
         print('===============================')
-        print('League Simulation After Buying')
+        scatter_xG(Skill)
+        print('===============================')
+        print('Resultados de la Liga')
         print('===============================')
         runLeague(Teams, team, nSim)
 
@@ -1172,7 +1311,7 @@ def runSimulation(new, nSim, team, budget, d, m, ma, f):
 # MODO
 #False = Corre la liga sin cambios
 #True = Corre la liga sin cambios, despues optimiza la compra de nuevos jugadores y vuelve a correr la liga con los cambios
-GetNewTeam = False
+GetNewTeam = True
 
 # NUMERO DE SIMULACIONES
 nSim = 1000
